@@ -1,0 +1,8 @@
+streamlit
+groq
+sentence-transformers
+faiss-cpu
+numpy
+python-docx
+pymupdf
+google-genai
