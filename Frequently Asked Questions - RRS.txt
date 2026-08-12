@@ -1,0 +1,33 @@
+Frequently Asked Questions - RRS
+
+1. What benefits are there for me to keep this system updated with my research and achievement records?
+
+New features will be added over time for the benefit of researchers, namely KPI tracking and a screen for HCM promotion purposes. RMC will strive to maintain paperless record keeping as these features are introduced, and will only accept records maintained in RRS as official.
+
+2. Where should I record my conference if it does not have proceeding?
+
+Record it under"Other Presentations".
+
+3. Why am I unable to reuse old External Authors from RDCMS?
+
+New records moving forward requires new attributes to match MyRA reporting. Please re-enter external author information for new entries.
+
+4. How do I enter Creative Works to match my KPI?
+
+Record your Creative Works normally and select your "Quartile Equivalence". It will be verified by your Deputy Dean. This is mostly for FCM and FAC staff who have these equivalencies in their KPI.
+
+5. Why is there no principal author in the system? What is corresponding author?
+
+You may now order the list of authors instead of identifying a principal author. Place your top author as author number 1, and so on.
+
+The person who entered the record will maintain it. You can change the owner of the record in the system.
+
+Corresponding author is a mechanism used for promotions.
+
+6. Who verifies my records if I am the verifier for my Faculty?
+
+Both Deans and Deputy Dean (R&I) are assigned as verifiers for a Faculty.
+
+A paper maintained or authored by the Dean will be sent for verification by the Deputy Dean (R&I) and vice versa.
+
+A paper where both the Dean and Deputy Dean (R&I) are listed as authors will be sent to RMC for verification.
