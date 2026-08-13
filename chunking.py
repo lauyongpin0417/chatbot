@@ -10,6 +10,7 @@ import pymupdf
 import pytesseract
 from PIL import Image
 import io
+import numpy as np
 
 KNOWLEDGE_DIR = "knowledge_docs"
 OCR_LANGUAGES = "eng"  # add "+chi_sim+chi_tra" if your PDFs contain Chinese text
@@ -20,12 +21,96 @@ def _read_markdown(filepath):
         return f.read()
 
 
-def _ocr_page(page):
-    """Renders a PDF page to an image and runs OCR on it."""
+def _ocr_page(page, min_gap_px=15, bin_px=5, line_tol=12):
+    """
+    Renders a PDF page to an image and runs OCR on it, using Tesseract's
+    word-level bounding boxes to detect multi-column layouts and read them
+    in the correct left-to-right, top-to-bottom order.
+
+    Why not pytesseract.image_to_string(): that method relies on Tesseract's
+    own page-layout analysis to decide reading order, which regularly fails
+    on flow-diagram-style pages (several boxes/arrows side by side, each
+    with its own bullets) — it tends to read across columns row-by-row
+    instead of finishing one column before starting the next, scrambling
+    the step order. This function instead finds actual vertical whitespace
+    gaps between columns of text and reads column-by-column.
+
+    This is a heuristic and not foolproof: it depends on there being a
+    real empty gap (>= min_gap_px) between columns, so it can still fail
+    on diagrams with narrow gutters, overlapping shapes, or columns that
+    don't line up cleanly. For pages where this still produces poor
+    results, manually converting that page to markdown remains the most
+    reliable fallback (see README).
+    """
     pix = page.get_pixmap(dpi=250)
     img_bytes = pix.tobytes("png")
     img = Image.open(io.BytesIO(img_bytes))
-    return pytesseract.image_to_string(img, lang=OCR_LANGUAGES)
+
+    data = pytesseract.image_to_data(img, lang=OCR_LANGUAGES, output_type=pytesseract.Output.DICT)
+    words = []
+    for i in range(len(data["text"])):
+        text = data["text"][i].strip()
+        if not text:
+            continue
+        left, top, w = data["left"][i], data["top"][i], data["width"][i]
+        words.append({"text": text, "left": left, "top": top, "right": left + w})
+
+    if not words:
+        return ""
+
+    # Build a horizontal density histogram to find empty vertical gaps
+    # between columns of text.
+    min_left = min(w["left"] for w in words)
+    max_right = max(w["right"] for w in words)
+    n_bins = (max_right - min_left) // bin_px + 1
+    density = np.zeros(n_bins, dtype=int)
+    for w in words:
+        b0, b1 = (w["left"] - min_left) // bin_px, (w["right"] - min_left) // bin_px
+        density[b0:b1 + 1] += 1
+
+    empty = density == 0
+    boundaries = []
+    run_start = None
+    for i, is_empty in enumerate(empty):
+        if is_empty and run_start is None:
+            run_start = i
+        elif not is_empty and run_start is not None:
+            if (i - run_start) * bin_px >= min_gap_px:
+                boundaries.append((run_start + i) // 2 * bin_px + min_left)
+            run_start = None
+    boundaries = [min_left - 1] + boundaries + [max_right + 1]
+
+    # Assign each word to a column based on which gap-bounded region it falls in.
+    columns = [[] for _ in range(len(boundaries) - 1)]
+    for w in words:
+        for ci in range(len(boundaries) - 1):
+            if boundaries[ci] <= w["left"] < boundaries[ci + 1]:
+                columns[ci].append(w)
+                break
+
+    # Within each column (left to right), group words into lines by
+    # vertical position, then read lines top to bottom.
+    page_lines = []
+    for col in columns:
+        if not col:
+            continue
+        col_sorted = sorted(col, key=lambda w: w["top"])
+        line_groups = []
+        for w in col_sorted:
+            placed = False
+            for g in line_groups:
+                if abs(g[0]["top"] - w["top"]) < line_tol:
+                    g.append(w)
+                    placed = True
+                    break
+            if not placed:
+                line_groups.append([w])
+        for g in line_groups:
+            g_sorted = sorted(g, key=lambda w: w["left"])
+            page_lines.append(" ".join(w["text"] for w in g_sorted))
+        page_lines.append("")  # blank line between columns for readability
+
+    return "\n".join(page_lines).strip()
 
 
 def _read_pdf(filepath):
