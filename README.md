@@ -33,26 +33,21 @@ Notes on format quality:
   structured for retrieval.
 - `.docx` works well if it uses Word's built-in Heading 1/2/3 styles and
   real Word tables — this preserves structure similarly to markdown.
-- `.pdf` is read using a vision AI model (Gemini) that "looks at" each page
-  directly and transcribes it into markdown — similar to how a person would
-  read it, rather than traditional character-by-character OCR. This handles
-  text trapped in screenshots/images well, and is significantly more
-  reliable at preserving the correct row/column order in flow-diagram
-  tables (the exact issue you ran into with Copilot Agent Builder earlier).
-  It's not guaranteed to be 100% perfect on very complex tables, so for
-  anything critical, spot-check a few answers against the source after
-  adding a new PDF — but it should need far less manual correction than
-  before.
-- This does mean every new PDF costs a small number of free Gemini API
-  calls (one per page) when the app is redeployed/restarted. The free tier
-  (see Costs below) comfortably covers a manual with a few hundred pages.
+- `.pdf` uses OCR automatically on every page (via Tesseract, running fully
+  locally — no external API, no rate limits, no outages), so it will pick up
+  text trapped in images/screenshots. However, OCR still cannot reliably
+  preserve the row/column order of complex multi-column flow diagram tables
+  — for PDFs with important flow-diagram tables (like the RMS manual),
+  manually converting to markdown first (like you did for
+  RMS_User_Manual_FINAL.md) is still the safest option if accuracy on those
+  tables matters. Plain-text-heavy PDFs work fine as-is.
+- `packages.txt` tells Streamlit Cloud to install the Tesseract OCR engine
+  (a system-level program, not a Python package) — don't delete this file,
+  the PDF OCR feature depends on it.
 
-## Step 1: Get free API keys
-1. **Groq** (for answering questions) — go to https://console.groq.com and sign
-   up (no credit card needed), then create an API key 
-2. **Gemini** (for reading PDFs — vision-based, only needed if you plan to add
-   PDF files) — go to https://aistudio.google.com/apikey and sign in with a
-   Google account, then create a free API key (no credit card needed)
+## Step 1: Get a free Groq API key
+1. Go to https://console.groq.com and sign up (no credit card needed)
+2. Go to API Keys, create a new key, copy it somewhere safe
 
 ## Step 2: Put this project on GitHub
 1. Create a free GitHub account if you don't have one: https://github.com
@@ -67,7 +62,6 @@ Notes on format quality:
 4. Before deploying, click "Advanced settings" > "Secrets" and add:
    ```
    GROQ_API_KEY = "your-groq-api-key-here"
-   GEMINI_API_KEY = "your-gemini-api-key-here"
    ```
 5. Click Deploy. First build takes a few minutes (it needs to download the
    embedding model).
@@ -100,7 +94,5 @@ If your supervisor gives you an updated manual:
 - Groq API: free tier — about 1,000 questions/day, 30/minute, which should be
   more than enough for a small group of students. If it's ever exceeded,
   Groq will return a rate-limit error rather than charging you.
-- Gemini API (only used when loading PDF files, not for regular chat): free
-  tier, no card required — around 1,500 requests/day, 15/minute on the
-  Flash model, which comfortably covers reading a few hundred PDF pages
-  each time the app restarts.
+- Tesseract OCR runs locally within the app, so PDF reading has no usage
+  limits or extra cost.

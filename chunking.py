@@ -7,25 +7,12 @@ import os
 import re
 from docx import Document
 import pymupdf
+import pytesseract
+from PIL import Image
 import io
 
 KNOWLEDGE_DIR = "knowledge_docs"
-
-# Gemini vision model used to "read" PDF pages like a human would, rather
-# than traditional OCR — this preserves table/column order far better,
-# since the model sees the whole page layout at once instead of stitching
-# together individually-recognized characters.
-GEMINI_MODEL = "gemini-3.6-flash"
-PAGE_TRANSCRIBE_PROMPT = """Transcribe the content of this document page into clean markdown.
-
-Rules:
-- If the page contains a flow diagram or a stage/status/timeline table, output it as a
-  proper markdown table with the correct column order, matching what is visually shown
-  left-to-right in the image. Double check column alignment before finalizing.
-- Preserve headings, step numbers, and bullet lists as they appear.
-- Transcribe all visible text, including text inside screenshots, form fields, and diagrams.
-- Do not summarize or omit content — this is a full transcription, not a summary.
-- Do not add commentary or explanation outside the transcribed content."""
+OCR_LANGUAGES = "eng"  # add "+chi_sim+chi_tra" if your PDFs contain Chinese text
 
 
 def _read_markdown(filepath):
@@ -33,45 +20,27 @@ def _read_markdown(filepath):
         return f.read()
 
 
-def _get_gemini_client():
-    from google import genai
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        raise RuntimeError(
-            "GEMINI_API_KEY is not set. Add it to your Streamlit Secrets to enable "
-            "vision-based PDF reading."
-        )
-    return genai.Client(api_key=api_key)
-
-
-def _transcribe_page_with_vision(client, page):
-    """Renders a PDF page to an image and asks Gemini to transcribe it directly,
-    preserving table/column structure — similar to how a human would read it."""
-    from google.genai import types
-    pix = page.get_pixmap(dpi=200)
+def _ocr_page(page):
+    """Renders a PDF page to an image and runs OCR on it."""
+    pix = page.get_pixmap(dpi=250)
     img_bytes = pix.tobytes("png")
-    response = client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=[
-            types.Part.from_bytes(data=img_bytes, mime_type="image/png"),
-            PAGE_TRANSCRIBE_PROMPT,
-        ],
-    )
-    return response.text or ""
+    img = Image.open(io.BytesIO(img_bytes))
+    return pytesseract.image_to_string(img, lang=OCR_LANGUAGES)
 
 
 def _read_pdf(filepath):
     """
-    Extracts text from a PDF by having a vision model 'read' each page
-    directly (like a human would), rather than using traditional OCR. This
-    gives much more reliable results for pages containing flow diagrams or
-    multi-column tables, since the model sees the full page layout at once.
+    Extracts text from a PDF by rendering every page as an image and running
+    OCR on it. This is fully local and free (no external API calls), so it
+    doesn't fail from rate limits or server outages. Trade-off: complex
+    multi-column flow-diagram tables may come out with scrambled row/column
+    order — for those, manually converting to markdown is still the most
+    reliable approach.
     """
-    client = _get_gemini_client()
     doc = pymupdf.open(filepath)
     pages_text = []
     for page in doc:
-        text = _transcribe_page_with_vision(client, page).strip()
+        text = _ocr_page(page).strip()
         pages_text.append(text)
     doc.close()
     return "\n\n".join(pages_text)

@@ -1,15 +1,8 @@
 import streamlit as st
-import os
 from groq import Groq
 from retriever import ManualRetriever
 
 st.set_page_config(page_title="Grant Procedure Guide", page_icon="📘")
-
-# Make secrets available as environment variables for modules (chunking.py)
-# that read them via os.environ, since Streamlit Secrets aren't always
-# auto-exposed that way depending on version.
-if "GEMINI_API_KEY" in st.secrets:
-    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
 
 SYSTEM_PROMPT = """You are a helpful assistant answering student questions about MMU research grant procedures (RMS).
 
