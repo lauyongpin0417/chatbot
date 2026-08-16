@@ -271,16 +271,48 @@ LOADERS = {
 }
 
 
-def _split_text_into_chunks(text, source_name, max_chunk_chars=1800, overlap_chars=200):
-    header_pattern = re.compile(r"(?=^#{1,4}\s)", re.MULTILINE)
-    sections = header_pattern.split(text)
-    sections = [s.strip() for s in sections if s.strip()]
+PAGE_MARKER_RE = re.compile(r"<!--\s*Page\s+\d+\s*-->", re.IGNORECASE)
+HEADER_LINE_RE = re.compile(r"^#{1,4}\s+(.+)$", re.MULTILINE)
+# Vision-transcribed pages use bold pseudo-headers like "**Section 3.1.1:** ..."
+# instead of real markdown "#" headers — this catches those too.
+BOLD_HEADER_RE = re.compile(r"^\*\*([^*]{3,80})\*\*", re.MULTILINE)
 
-    if not sections:
-        sections = [text]
+
+def _extract_chunk_title(chunk_text, source_name):
+    m = HEADER_LINE_RE.search(chunk_text)
+    if m:
+        return m.group(1).strip()
+    m = BOLD_HEADER_RE.search(chunk_text)
+    if m:
+        return m.group(1).strip().rstrip(":").strip()
+    for line in chunk_text.split("\n"):
+        line = line.strip()
+        if line and not PAGE_MARKER_RE.match(line):
+            return re.sub(r"^#+\s*", "", line)[:80]
+    return source_name
+
+
+def _split_text_into_chunks(text, source_name, max_chunk_chars=1800, overlap_chars=200):
+    # Split on "<!-- Page N -->" markers first (inserted by transcribe_full_pdf.py)
+    # — these are reliable, code-generated boundaries. Without this, a
+    # vision-transcribed document with no real "#" headers (just bold
+    # pseudo-headers) gets treated as ONE giant section spanning the whole
+    # file, which then gets blindly sliced every max_chunk_chars characters
+    # with no regard for page or section boundaries at all.
+    page_sections = PAGE_MARKER_RE.split(text)
+    page_sections = [s.strip() for s in page_sections if s.strip()]
+    if not page_sections:
+        page_sections = [text]
+
+    header_pattern = re.compile(r"(?=^#{1,4}\s)", re.MULTILINE)
+    all_sections = []
+    for page_text in page_sections:
+        sub_sections = header_pattern.split(page_text)
+        sub_sections = [s.strip() for s in sub_sections if s.strip()]
+        all_sections.extend(sub_sections if sub_sections else [page_text])
 
     chunks = []
-    for section in sections:
+    for section in all_sections:
         if len(section) <= max_chunk_chars:
             chunks.append(section)
         else:
@@ -292,12 +324,12 @@ def _split_text_into_chunks(text, source_name, max_chunk_chars=1800, overlap_cha
 
     result = []
     for chunk in chunks:
-        if not chunk.strip():
+        stripped = chunk.strip()
+        if not stripped:
             continue
-        first_line = chunk.strip().split("\n")[0]
-        title = re.sub(r"^#+\s*", "", first_line).strip()
+        title = _extract_chunk_title(stripped, source_name)
         result.append({
-            "title": title if title else source_name,
+            "title": title,
             "text": chunk,
             "source": source_name,
         })
