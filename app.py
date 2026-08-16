@@ -17,8 +17,8 @@ Rules:
 
 
 @st.cache_resource(show_spinner="Loading knowledge base (first run may take a minute)...")
-def get_retriever():
-    return ManualRetriever()
+def get_retriever(api_key):
+    return ManualRetriever(groq_api_key=api_key)
 
 
 def build_prompt(question, retrieved_chunks):
@@ -46,7 +46,7 @@ def main():
         st.stop()
 
     client = Groq(api_key=api_key)
-    retriever = get_retriever()
+    retriever = get_retriever(api_key)
 
     if "messages" not in st.session_state:
         st.session_state.messages = []

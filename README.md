@@ -16,34 +16,57 @@ Confirm this is acceptable with your supervisor before sharing widely.
 - `knowledge_docs/` — put all your knowledge source files here:
   **.md, .pdf, and .docx are all supported**. Every file in this folder gets
   loaded automatically — you don't need to edit any code to add a new one.
-- `requirements.txt` — dependencies
+- `requirements.txt` — Python dependencies
+- `packages.txt` — tells Streamlit Cloud to install the Tesseract OCR engine
+  (a system-level program, not a Python package) — don't delete this file,
+  tier 2 of PDF reading depends on it
 
 ## Adding or updating knowledge files
 1. Drop your new `.md`, `.pdf`, or `.docx` file into the `knowledge_docs/`
    folder in your GitHub repo (use GitHub's "Add file > Upload files" button)
 2. Streamlit Cloud auto-redeploys when it detects the change (usually within
    a minute or two)
-3. That's it — no code changes needed. This is currently the only way to
-   update the knowledge base (there's no in-app upload feature for
-   supervisors/other users to add files directly without going through
-   GitHub).
+3. That's it — no code changes needed for `.md`/`.docx` files, or for `.pdf`
+   pages that have a text layer or are plain scanned text. This is currently
+   the only way to update the knowledge base (there's no in-app upload
+   feature for supervisors/other users to add files directly without going
+   through GitHub).
+4. If your PDF has flow-diagram pages (see tier 3 above), open
+   `chunking.py`, find the `VISION_PAGES` dict near the top, and add an
+   entry like `"YourFile.pdf": [12, 13]` with the 1-indexed page numbers of
+   the diagram pages (open the PDF in a normal viewer and note the page
+   numbers as shown there). Test locally with `test_vision_ocr.py` before
+   pushing — see below.
 
 Notes on format quality:
 - `.md` gives the best results, since headings and tables are cleanly
   structured for retrieval.
 - `.docx` works well if it uses Word's built-in Heading 1/2/3 styles and
   real Word tables — this preserves structure similarly to markdown.
-- `.pdf` uses OCR automatically on every page (via Tesseract, running fully
-  locally — no external API, no rate limits, no outages), so it will pick up
-  text trapped in images/screenshots. However, OCR still cannot reliably
-  preserve the row/column order of complex multi-column flow diagram tables
-  — for PDFs with important flow-diagram tables (like the RMS manual),
-  manually converting to markdown first (like you did for
-  RMS_User_Manual_FINAL.md) is still the safest option if accuracy on those
-  tables matters. Plain-text-heavy PDFs work fine as-is.
-- `packages.txt` tells Streamlit Cloud to install the Tesseract OCR engine
-  (a system-level program, not a Python package) — don't delete this file,
-  the PDF OCR feature depends on it.
+- `.pdf` pages are handled in three tiers, cheapest first, so most of a PDF
+  costs nothing and only the pages that truly need it use paid-tier-quality
+  extraction:
+  1. **Pages with a real embedded text layer** (i.e. not scanned — you can
+     select/copy the text in a normal PDF viewer) are extracted directly.
+     Free, instant, perfectly accurate.
+  2. **Scanned/image pages with no text layer** are read with local
+     Tesseract OCR — free, unlimited, runs on-device. Fine for plain
+     paragraphs; not reliable for complex multi-column diagrams.
+  3. **Pages you've explicitly listed in `VISION_PAGES`** at the top of
+     `chunking.py` (typically flow diagrams — several boxes/arrows side by
+     side, each with its own bullets — that Tesseract reads in the wrong
+     order) are transcribed by a free Groq vision model
+     (`qwen/qwen3.6-27b`), which actually understands the diagram's layout
+     instead of guessing at column order.
+
+  Tier 3 is the only one that costs API tokens, and this model's free tier
+  is a **daily token budget** (200,000 tokens/day), not just a per-minute
+  rate limit — each page costs roughly 3,500-4,700 tokens, so it's only
+  good for a few dozen pages per day. **Do not add every page of a PDF to
+  `VISION_PAGES`** — only the handful of pages that are actually diagrams;
+  tier 1/2 handles everything else for free. If a page in `VISION_PAGES`
+  still comes out wrong, manually converting that specific page to markdown
+  remains the most reliable fallback.
 
 ## Step 1: Get a free Groq API key
 1. Go to https://console.groq.com and sign up (no credit card needed)
@@ -91,8 +114,14 @@ If your supervisor gives you an updated manual:
 
 ## Costs
 - Streamlit Community Cloud: free, no card required
-- Groq API: free tier — about 1,000 questions/day, 30/minute, which should be
-  more than enough for a small group of students. If it's ever exceeded,
-  Groq will return a rate-limit error rather than charging you.
-- Tesseract OCR runs locally within the app, so PDF reading has no usage
-  limits or extra cost.
+- Groq API (chat): free tier — about 1,000 questions/day, 30/minute, which
+  should be more than enough for a small group of students. If it's ever
+  exceeded, Groq will return a rate-limit error rather than charging you.
+- Groq API (vision, for `VISION_PAGES` only): a separate free-tier budget of
+  200,000 tokens/day for the vision model, ~3,500-4,700 tokens per page.
+  This only runs once per PDF (when it's first added, or whenever the
+  knowledge base cache is rebuilt) — but if you list too many pages in
+  `VISION_PAGES`, a single rebuild can exhaust the day's budget by itself.
+  Keep `VISION_PAGES` to just the pages that genuinely need it.
+- Tesseract OCR (tier 2, most scanned pages) runs locally within the app,
+  so it has no usage limits or extra cost.

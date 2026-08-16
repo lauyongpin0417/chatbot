@@ -11,9 +11,9 @@ MODEL_NAME = "all-MiniLM-L6-v2"  # small, free, fast, good enough for this use c
 
 
 class ManualRetriever:
-    def __init__(self, folder_path=KNOWLEDGE_DIR):
+    def __init__(self, folder_path=KNOWLEDGE_DIR, groq_api_key=None):
         self.model = SentenceTransformer(MODEL_NAME)
-        self.chunks = load_and_chunk_knowledge_folder(folder_path)
+        self.chunks = load_and_chunk_knowledge_folder(folder_path, groq_api_key=groq_api_key)
         texts = [c["text"] for c in self.chunks]
         embeddings = self.model.encode(texts, show_progress_bar=False, normalize_embeddings=True)
         self.embeddings = np.array(embeddings).astype("float32")
@@ -36,7 +36,8 @@ class ManualRetriever:
 
 
 if __name__ == "__main__":
-    retriever = ManualRetriever()
+    import os
+    retriever = ManualRetriever(groq_api_key=os.environ.get("GROQ_API_KEY"))
     test_queries = [
         "What are the stages in the Pre-Approved Claim flow?",
         "How do I add a new member to a project?",
