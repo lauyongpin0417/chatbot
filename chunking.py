@@ -282,6 +282,14 @@ def _extract_chunk_title(chunk_text, source_name):
     m = HEADER_LINE_RE.search(chunk_text)
     if m:
         return m.group(1).strip()
+    # Prefer a bold pseudo-header that looks like a real section marker
+    # (contains a digit, e.g. "Section 3.1.1") over generic model preamble
+    # like "**Analyze the image:**" or "**List:**" that sometimes appears
+    # first in a vision-transcribed page.
+    for m in BOLD_HEADER_RE.finditer(chunk_text):
+        candidate = m.group(1).strip().rstrip(":").strip()
+        if re.search(r"\d", candidate):
+            return candidate
     m = BOLD_HEADER_RE.search(chunk_text)
     if m:
         return m.group(1).strip().rstrip(":").strip()
@@ -292,7 +300,7 @@ def _extract_chunk_title(chunk_text, source_name):
     return source_name
 
 
-def _split_text_into_chunks(text, source_name, max_chunk_chars=1800, overlap_chars=200):
+def _split_text_into_chunks(text, source_name, max_chunk_chars=6000, overlap_chars=300):
     # Split on "<!-- Page N -->" markers first (inserted by transcribe_full_pdf.py)
     # — these are reliable, code-generated boundaries. Without this, a
     # vision-transcribed document with no real "#" headers (just bold
@@ -311,23 +319,37 @@ def _split_text_into_chunks(text, source_name, max_chunk_chars=1800, overlap_cha
         sub_sections = [s.strip() for s in sub_sections if s.strip()]
         all_sections.extend(sub_sections if sub_sections else [page_text])
 
-    chunks = []
+    # A whole section (a page, or a "#"-delimited region within a page) stays
+    # as ONE chunk regardless of length, as long as it's under the safety
+    # ceiling — this is what actually prevents mid-section cuts, rather than
+    # hoping max_chunk_chars is "big enough". Character-slicing only kicks
+    # in for the rare pathological section that exceeds even that ceiling,
+    # and when it does, every slice keeps the section's own title attached
+    # so a later slice never loses its identity (which is also embedded
+    # together with the text in retriever.py — see there for why that matters).
+    chunks = []  # list of (chunk_text, forced_title_or_None)
     for section in all_sections:
         if len(section) <= max_chunk_chars:
-            chunks.append(section)
+            chunks.append((section, None))
         else:
+            title = _extract_chunk_title(section, source_name)
             start = 0
+            first = True
             while start < len(section):
                 end = start + max_chunk_chars
-                chunks.append(section[start:end])
+                piece = section[start:end]
+                if not first:
+                    piece = f"[continued — {title}]\n\n{piece}"
+                chunks.append((piece, title))  # reuse the same clean title for every slice
                 start = end - overlap_chars
+                first = False
 
     result = []
-    for chunk in chunks:
+    for chunk, forced_title in chunks:
         stripped = chunk.strip()
         if not stripped:
             continue
-        title = _extract_chunk_title(stripped, source_name)
+        title = forced_title if forced_title else _extract_chunk_title(stripped, source_name)
         result.append({
             "title": title,
             "text": chunk,
@@ -369,7 +391,7 @@ def load_and_chunk_knowledge_folder(folder_path=KNOWLEDGE_DIR, groq_api_key=None
     return all_chunks
 
 
-def load_and_chunk_markdown(filepath, max_chunk_chars=1800, overlap_chars=200):
+def load_and_chunk_markdown(filepath, max_chunk_chars=3500, overlap_chars=300):
     text = _read_markdown(filepath)
     return _split_text_into_chunks(text, source_name=os.path.basename(filepath),
                                     max_chunk_chars=max_chunk_chars, overlap_chars=overlap_chars)

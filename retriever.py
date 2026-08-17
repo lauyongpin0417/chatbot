@@ -14,7 +14,14 @@ class ManualRetriever:
     def __init__(self, folder_path=KNOWLEDGE_DIR, groq_api_key=None):
         self.model = SentenceTransformer(MODEL_NAME)
         self.chunks = load_and_chunk_knowledge_folder(folder_path, groq_api_key=groq_api_key)
-        texts = [c["text"] for c in self.chunks]
+        # Embed title + text together, not just text. Without the title, a
+        # chunk that's mostly bullet points/status fields (e.g. the tail end
+        # of a long section, if one ever needs splitting) has no signal in
+        # its own vector connecting it back to what topic it's actually
+        # about — so it scores weakly against a query that names that topic,
+        # even though the content is technically relevant. Prepending the
+        # title anchors every chunk's embedding to its section identity.
+        texts = [f"{c['title']}\n\n{c['text']}" for c in self.chunks]
         embeddings = self.model.encode(texts, show_progress_bar=False, normalize_embeddings=True)
         self.embeddings = np.array(embeddings).astype("float32")
         self.index = faiss.IndexFlatIP(self.embeddings.shape[1])  # cosine similarity via inner product on normalized vectors

@@ -63,7 +63,7 @@ def main():
 
         with st.chat_message("assistant"):
             with st.spinner("Searching the manual..."):
-                retrieved = retriever.search(question, top_k=5)
+                retrieved = retriever.search(question, top_k=6)
                 prompt = build_prompt(question, retrieved)
 
                 response = client.chat.completions.create(
