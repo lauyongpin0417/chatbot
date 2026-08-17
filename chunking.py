@@ -273,15 +273,39 @@ LOADERS = {
 
 PAGE_MARKER_RE = re.compile(r"<!--\s*Page\s+\d+\s*-->", re.IGNORECASE)
 HEADER_LINE_RE = re.compile(r"^#{1,4}\s+(.+)$", re.MULTILINE)
-# Vision-transcribed pages use bold pseudo-headers like "**Section 3.1.1:** ..."
-# instead of real markdown "#" headers — this catches those too.
+# Vision-transcribed pages use inconsistent header styling from page to page
+# (some use "**Section 3.1.1:**" bold, others use a plain bulleted/quoted
+# line like '*   "7.5 Goods Receipt and Asset Tagging"' with no bold at
+# all) — since the model's formatting choice isn't reliable, the most
+# robust signal is the section NUMBER pattern itself ("7.5 Some Title"),
+# which the document's actual structure guarantees is consistent.
+SECTION_LINE_RE = re.compile(r"^\d+\.\d+(?:\.\d+)?\s+[A-Z].{2,70}$")
 BOLD_HEADER_RE = re.compile(r"^\*\*([^*]{3,80})\*\*", re.MULTILINE)
+
+
+def _find_section_heading_line(chunk_text):
+    """
+    Looks for a line that IS ENTIRELY a numbered section heading (e.g.
+    "7.5 Goods Receipt and Asset Tagging"), after stripping common bullet/
+    quote wrapping — not just a section number mentioned in passing inside
+    a longer sentence (e.g. "...see 7.2.1 Pre-Approval claim)." would NOT
+    match, since that's a cross-reference, not this chunk's own heading).
+    """
+    for line in chunk_text.split("\n"):
+        stripped = line.strip().lstrip("*-").strip()
+        stripped = stripped.strip('"').strip()
+        if SECTION_LINE_RE.match(stripped):
+            return stripped
+    return None
 
 
 def _extract_chunk_title(chunk_text, source_name):
     m = HEADER_LINE_RE.search(chunk_text)
     if m:
         return m.group(1).strip()
+    heading = _find_section_heading_line(chunk_text)
+    if heading:
+        return heading
     # Prefer a bold pseudo-header that looks like a real section marker
     # (contains a digit, e.g. "Section 3.1.1") over generic model preamble
     # like "**Analyze the image:**" or "**List:**" that sometimes appears
@@ -298,6 +322,7 @@ def _extract_chunk_title(chunk_text, source_name):
         if line and not PAGE_MARKER_RE.match(line):
             return re.sub(r"^#+\s*", "", line)[:80]
     return source_name
+
 
 
 def _split_text_into_chunks(text, source_name, max_chunk_chars=6000, overlap_chars=300):

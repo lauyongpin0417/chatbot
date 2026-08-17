@@ -787,7 +787,7 @@ The user wants the text from the image transcribed into clean, structured plain 
         *   **Stage 1: Grant Opening**
             *   Action: RMC announce Grant opening In RMS
             *   Timeline: Submission duration is set
-            *   Status: 
+            *   Status: -
         *   **Stage 2: Submission**
             *   Action: PL prepare and submit research grant proposal
             *   Timeline: Depend on submission. Before project and appointment end date
