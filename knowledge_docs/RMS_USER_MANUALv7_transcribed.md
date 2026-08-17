@@ -787,26 +787,27 @@ The user wants the text from the image transcribed into clean, structured plain 
         *   **Stage 1: Grant Opening**
             *   Action: RMC announce Grant opening In RMS
             *   Timeline: Submission duration is set
-            *   Status: Draft
+            *   Status: 
         *   **Stage 2: Submission**
             *   Action: PL prepare and submit research grant proposal
             *   Timeline: Depend on submission. Before project and appointment end date
-            *   Status: Submit to Faculty Deputy Dean / Dean
+            *   Status: Draft
         *   **Stage 3: Faculty Recommend**
             *   Action: Faculty Deputy Dean or Dean review and suggest evaluation panel
             *   Timeline: 3 Working days
-            *   Status: RMC verification
+            *   Status: Submit to Faculty Deputy Dean / Dean
         *   **Stage 4: RMC**
             *   Action: Select panel for evaluation
             *   Timeline: 3 Working days
-            *   Status: MMU Panel Reviewer
+            *   Status: RMC verification
         *   **Stage 5: Evaluation**
             *   Action: Selected panel will review the proposal
             *   Timeline: 3-10 Working days
-            *   Status: RMC Director Approval
+            *   Status: MMU Panel Reviewer
         *   **Stage 6: RMC Director**
             *   Action: RMC Director approved the proposal
             *   Timeline: 3-10 Working days
+            *   Status: RMC Director Approval
     *   **Section 3.1.2:** "3.1.2 RMC Calling For New Proposal"
     *   **List:**
         *   "a. Create an announcement for the opening of any internal grant."
