@@ -4,6 +4,12 @@ from retriever import ManualRetriever
 
 st.set_page_config(page_title="Grant Procedure Guide", page_icon="📘")
 
+# Groq deprecated the old llama-3.x chat models in 2026 — this is the direct
+# cause of the "model_not_found" 404. gpt-oss-120b is their current
+# recommended general-purpose replacement (120b is stronger; use
+# openai/gpt-oss-20b instead if you want faster/cheaper responses).
+ANSWER_MODEL = "openai/gpt-oss-120b"
+
 SYSTEM_PROMPT = """You are a helpful assistant answering student questions about MMU research grant procedures (RMS).
 
 Rules:
@@ -67,7 +73,7 @@ def main():
                 prompt = build_prompt(question, retrieved)
 
                 response = client.chat.completions.create(
-                    model="llama-3.3-70b-versatile",
+                    model=ANSWER_MODEL,
                     messages=[
                         {"role": "system", "content": SYSTEM_PROMPT},
                         {"role": "user", "content": prompt},
