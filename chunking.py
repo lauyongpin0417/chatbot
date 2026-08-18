@@ -282,6 +282,40 @@ HEADER_LINE_RE = re.compile(r"^#{1,4}\s+(.+)$", re.MULTILINE)
 SECTION_LINE_RE = re.compile(r"^\d+\.\d+(?:\.\d+)?\s+[A-Z].{2,70}$")
 BOLD_HEADER_RE = re.compile(r"^\*\*([^*]{3,80})\*\*", re.MULTILINE)
 
+# FAQ files (e.g. "Frequently Asked Questions - RMS.txt") are typically a flat
+# numbered list of "N. Q: ... A: ..." pairs with no markdown "#" headers at
+# all. Without this, the generic splitter below treats the whole file as ONE
+# section (or blindly character-slices it if it's long), which means dozens
+# of unrelated Q&A pairs get embedded together as a single vector — the
+# retriever can find "the FAQ file" but not "this specific question", and the
+# model then has to guess which of the many answers buried in that blob is
+# the right one. Splitting on the "N. Q:" boundary gives each Q&A pair its
+# own chunk, titled with the question text itself, so retrieval can match
+# the actual question being asked.
+FAQ_QA_SPLIT_RE = re.compile(r"(?=^\s*\d+\.\s+\**Q\s*:)", re.MULTILINE)
+# DOTALL + non-greedy so this captures the full question text even when it
+# wraps across multiple lines in the source file, stopping right before the
+# "A:" line rather than at the first newline within the question itself.
+FAQ_Q_LINE_RE = re.compile(r"^\s*\d+\.\s+\**Q\s*:\s*(.+?)\s*\n\s*\**A\s*:", re.MULTILINE | re.DOTALL)
+
+
+def _looks_like_faq(text):
+    """At least 3 numbered 'Q:' entries is a reasonable bar for 'this file is
+    a FAQ list', low enough to catch short files but high enough to not
+    misfire on a manual that happens to mention 'Q:' once or twice."""
+    return len(FAQ_QA_SPLIT_RE.findall(text)) >= 3
+
+
+def _split_faq_into_chunks(text, source_name):
+    blocks = FAQ_QA_SPLIT_RE.split(text)
+    blocks = [b.strip() for b in blocks if b.strip()]
+    result = []
+    for block in blocks:
+        m = FAQ_Q_LINE_RE.search(block)
+        title = re.sub(r"\s+", " ", m.group(1)).strip() if m else _extract_chunk_title(block, source_name)
+        result.append({"title": title, "text": block, "source": source_name})
+    return result
+
 
 def _find_section_heading_line(chunk_text):
     """
@@ -405,7 +439,10 @@ def load_and_chunk_knowledge_folder(folder_path=KNOWLEDGE_DIR, groq_api_key=None
             text = LOADERS[ext](filepath)
         if not text.strip():
             continue
-        chunks = _split_text_into_chunks(text, source_name=filename)
+        if ext == ".txt" and _looks_like_faq(text):
+            chunks = _split_faq_into_chunks(text, source_name=filename)
+        else:
+            chunks = _split_text_into_chunks(text, source_name=filename)
         all_chunks.extend(chunks)
         loaded_any = True
 
