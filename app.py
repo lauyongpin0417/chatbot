@@ -19,6 +19,12 @@ Rules:
 - When relevant, mention which section the answer came from.
 - Do not invent deadlines, forms, amounts, or steps not present in the context.
 - If a question is ambiguous, ask one short clarifying question instead of guessing.
+- Use a source only when it directly answers the question. Do not combine an amount, timeline,
+  status, or step from one procedure with another procedure.
+- Copy numeric values (for example RM amounts and working days) exactly from the single source
+  that supports them. If the provided excerpts do not directly support a value, say you do not know.
+- When listing a flow, list only stages explicitly present in the supporting excerpt; do not infer
+  missing stages from similar flows.
 """
 
 
@@ -29,7 +35,8 @@ def get_retriever(api_key):
 
 def build_prompt(question, retrieved_chunks):
     context = "\n\n---\n\n".join(
-        f"[Source: {c['title']}]\n{c['text']}" for c in retrieved_chunks
+        f"[Source {i}: {c['title']}]\n{c['text']}"
+        for i, c in enumerate(retrieved_chunks, start=1)
     )
     return f"""Context excerpts from the RMS User Manual:
 
@@ -69,7 +76,9 @@ def main():
 
         with st.chat_message("assistant"):
             with st.spinner("Searching the manual..."):
-                retrieved = retriever.search(question, top_k=6)
+                # More loosely related excerpts make it easy for the answer
+                # model to merge facts from separate RMS procedures.
+                retrieved = retriever.search(question, top_k=3)
                 prompt = build_prompt(question, retrieved)
 
                 response = client.chat.completions.create(

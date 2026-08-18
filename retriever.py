@@ -26,7 +26,9 @@ RERANK_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"  # free cross-encoder
 # final top_k on purpose: the bi-encoder is a coarse filter, so the true best
 # match sometimes sits at rank 8-15 rather than rank 1-3 — the cross-encoder
 # needs those candidates present to be able to promote them.
-CANDIDATE_POOL_SIZE = 20
+# The manual has a small number of chunks. Re-ranking all of them avoids
+# losing the precise section during the coarse semantic-search stage.
+CANDIDATE_POOL_SIZE = 80
 
 
 def _sigmoid(x):
@@ -51,7 +53,7 @@ class ManualRetriever:
         self.index = faiss.IndexFlatIP(self.embeddings.shape[1])  # cosine similarity via inner product on normalized vectors
         self.index.add(self.embeddings)
 
-    def search(self, query, top_k=5, min_score=0.15, candidate_pool_size=CANDIDATE_POOL_SIZE):
+    def search(self, query, top_k=3, min_score=0.20, candidate_pool_size=CANDIDATE_POOL_SIZE):
         """
         Stage 1: FAISS returns candidate_pool_size candidates by cosine
         similarity (fast, coarse).
@@ -90,7 +92,21 @@ class ManualRetriever:
         rerank_scores = self.reranker.predict(pairs)
         rerank_scores = _sigmoid(np.array(rerank_scores))
 
-        ranked = sorted(zip(candidate_indices, rerank_scores), key=lambda p: p[1], reverse=True)
+        # Locally verified excerpts are corrections checked against the source
+        # PDF. Give them a small tie-break boost over older AI transcription.
+        adjusted_scores = []
+        for idx, score in zip(candidate_indices, rerank_scores):
+            if self.chunks[idx]["source"] == "RMS_verified_pages.md":
+                score = min(1.0, score + 0.10)
+            adjusted_scores.append(score)
+        ranked = sorted(zip(candidate_indices, adjusted_scores), key=lambda p: p[1], reverse=True)
+
+        # A verified excerpt was created only when the earlier transcription
+        # for that exact page was incomplete or wrong. It is sufficient and
+        # authoritative by itself, so withholding nearby legacy chunks avoids
+        # contradicting it with a similarly worded but different procedure.
+        if ranked and self.chunks[ranked[0][0]]["source"] == "RMS_verified_pages.md":
+            ranked = ranked[:1]
 
         results = []
         for rank, (idx, score) in enumerate(ranked[:top_k]):

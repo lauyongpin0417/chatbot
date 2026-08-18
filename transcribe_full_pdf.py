@@ -32,7 +32,7 @@ Once it's fully done and you've spot-checked the .md file:
        conflicting content in the knowledge base)
     3. Push to GitHub
 """
-import sys
+import argparse
 import os
 import json
 import time
@@ -87,7 +87,11 @@ def _transcribe_page(client, page, dpi=200):
             }
         ],
         temperature=0,
-        max_completion_tokens=2048,
+        # Disable Qwen's private reasoning so it cannot consume the output
+        # budget and truncate a flow diagram before the transcription.
+        reasoning_effort="none",
+        reasoning_format="hidden",
+        max_completion_tokens=4096,
     )
     return _strip_thinking_content(response.choices[0].message.content).strip()
 
@@ -115,9 +119,23 @@ def _write_markdown(out_path, data, total_pages):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python transcribe_full_pdf.py <path_to_pdf>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description="Transcribe a PDF, optionally replacing specific pages in an existing checkpoint."
+    )
+    parser.add_argument("pdf_path", help="Path to the source PDF")
+    parser.add_argument(
+        "--redo-pages",
+        metavar="PAGES",
+        help="Comma-separated 1-indexed pages to transcribe again, e.g. 7,80",
+    )
+    args = parser.parse_args()
+
+    try:
+        redo_pages = {
+            int(part.strip()) for part in (args.redo_pages or "").split(",") if part.strip()
+        }
+    except ValueError:
+        parser.error("--redo-pages must be a comma-separated list of page numbers, e.g. 7,80")
 
     keys_env = os.environ.get("GROQ_API_KEYS", "")
     api_keys = [k.strip() for k in keys_env.split(",") if k.strip()]
@@ -127,17 +145,22 @@ def main():
         print("Then close and reopen your terminal, and try again.")
         sys.exit(1)
 
-    pdf_path = sys.argv[1]
+    pdf_path = args.pdf_path
     base_name = os.path.splitext(os.path.basename(pdf_path))[0]
     checkpoint_path = f"{base_name}_checkpoint.json"
     out_path = f"{base_name}_transcribed.md"
 
     doc = pymupdf.open(pdf_path)
     total_pages = len(doc)
+    invalid_pages = sorted(p for p in redo_pages if not 1 <= p <= total_pages)
+    if invalid_pages:
+        parser.error(f"--redo-pages contains page(s) outside 1..{total_pages}: {invalid_pages}")
 
     data = _load_checkpoint(checkpoint_path)
     already_done = sum(1 for v in data.values() if v.strip())
     print(f"{pdf_path}: {total_pages} pages total, {already_done} already done (resuming from checkpoint).")
+    if redo_pages:
+        print(f"Re-transcribing page(s): {', '.join(map(str, sorted(redo_pages)))}")
     print(f"Using {len(api_keys)} API key(s).\n")
 
     key_index = 0
@@ -145,7 +168,11 @@ def main():
 
     for i in range(total_pages):
         page_num = i + 1
-        if data.get(page_num, "").strip():
+        # With --redo-pages, do exactly the requested repair.  Do not also
+        # spend quota retrying unrelated blank legacy pages.
+        if redo_pages and page_num not in redo_pages:
+            continue
+        if not redo_pages and data.get(page_num, "").strip():
             continue  # already done in a previous run, skip
 
         page = doc[i]
@@ -179,9 +206,9 @@ def main():
                         doc.close()
                         sys.exit(0)
                 else:
-                    print(f"failed ({e}) — leaving this page blank for now, will retry next run.")
-                    data[page_num] = ""
-                    _save_checkpoint(checkpoint_path, data)
+                    # Preserve a previous transcript if a targeted redo fails;
+                    # a transient network error must never erase usable data.
+                    print(f"failed ({e}) — preserving the previous page text.")
                     break
 
         time.sleep(1)  # be gentle on rate limits between pages

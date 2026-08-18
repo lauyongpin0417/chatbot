@@ -191,7 +191,9 @@ def _vision_ocr_page(page, client, dpi=200, max_retries=3):
                     }
                 ],
                 temperature=0,
-                max_completion_tokens=2048,
+                reasoning_effort="none",
+                reasoning_format="hidden",
+                max_completion_tokens=4096,
             )
             return strip_thinking_content(response.choices[0].message.content).strip()
         except Exception as e:
@@ -294,6 +296,14 @@ HEADER_LINE_RE = re.compile(r"^#{1,4}\s+(.+)$", re.MULTILINE)
 # robust signal is the section NUMBER pattern itself ("7.5 Some Title"),
 # which the document's actual structure guarantees is consistent.
 SECTION_LINE_RE = re.compile(r"^\d+\.\d+(?:\.\d+)?\s+[A-Z].{2,70}$")
+# Generated manuals do not consistently use Markdown headings, but their
+# numbered RMS section headings are reliable boundaries. Split these before
+# the size fallback so Purchasing cannot share an embedding with the
+# neighbouring Pay-and-Claim (<RM1K) section.
+SECTION_SPLIT_RE = re.compile(
+    r"(?=^(?:#{1,4}\s+)?\d+\.\d+(?:\.\d+)?\s+[A-Z][^\n]{2,120}$)",
+    re.MULTILINE,
+)
 BOLD_HEADER_RE = re.compile(r"^\*\*([^*]{3,80})\*\*", re.MULTILINE)
 
 # FAQ files (e.g. "Frequently Asked Questions - RMS.txt") are typically a flat
@@ -385,10 +395,9 @@ def _split_text_into_chunks(text, source_name, max_chunk_chars=6000, overlap_cha
     if not page_sections:
         page_sections = [text]
 
-    header_pattern = re.compile(r"(?=^#{1,4}\s)", re.MULTILINE)
     all_sections = []
     for page_text in page_sections:
-        sub_sections = header_pattern.split(page_text)
+        sub_sections = SECTION_SPLIT_RE.split(page_text)
         sub_sections = [s.strip() for s in sub_sections if s.strip()]
         all_sections.extend(sub_sections if sub_sections else [page_text])
 
