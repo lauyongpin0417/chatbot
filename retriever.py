@@ -51,7 +51,7 @@ class ManualRetriever:
         self.index = faiss.IndexFlatIP(self.embeddings.shape[1])  # cosine similarity via inner product on normalized vectors
         self.index.add(self.embeddings)
 
-    def search(self, query, top_k=5, min_score=0.5, candidate_pool_size=CANDIDATE_POOL_SIZE):
+    def search(self, query, top_k=5, min_score=0.15, candidate_pool_size=CANDIDATE_POOL_SIZE):
         """
         Stage 1: FAISS returns candidate_pool_size candidates by cosine
         similarity (fast, coarse).
@@ -61,9 +61,23 @@ class ManualRetriever:
 
         min_score filters on the cross-encoder's score (passed through a
         sigmoid, so ~0-1 like a probability rather than the model's raw
-        logit). This is a DIFFERENT scale from the old bi-encoder-only
-        cosine threshold — 0.5 is a neutral "more likely relevant than not"
-        cutoff; tune it against your own queries if it's too strict/loose.
+        logit). 0.15 is a deliberately loose default — in practice, ms-marco
+        cross-encoder scores for genuinely relevant (query, chunk) pairs can
+        still land well under 0.5 when the wording doesn't closely match
+        (e.g. the manual says "RM500" while the question says "above what
+        amount"), so a strict cutoff silently drops correct answers and the
+        bot ends up saying "I don't know" about things that ARE in the
+        manual. Tune this against your own queries — run this file directly
+        with min_score=0 to see the real score distribution first.
+
+        Regardless of min_score, the single best-scoring candidate is always
+        kept even if it falls below the threshold. An empty result list
+        means the LLM gets zero context and can only ever say "I don't
+        know" — but the top candidate, even at a so-so score, is usually
+        still more useful to hand to the model than nothing at all, and the
+        model's own instructions already tell it to say "I don't know" if
+        that context turns out to be insufficient. min_score still prunes
+        the noisy tail (ranks 2+), which is where it actually helps.
         """
         pool = min(candidate_pool_size, len(self.chunks))
         query_vec = self.embed_model.encode([query], normalize_embeddings=True).astype("float32")
@@ -79,8 +93,8 @@ class ManualRetriever:
         ranked = sorted(zip(candidate_indices, rerank_scores), key=lambda p: p[1], reverse=True)
 
         results = []
-        for idx, score in ranked[:top_k]:
-            if score < min_score:
+        for rank, (idx, score) in enumerate(ranked[:top_k]):
+            if rank > 0 and score < min_score:
                 continue
             results.append({
                 "title": self.chunks[idx]["title"],
@@ -97,9 +111,18 @@ if __name__ == "__main__":
         "What are the stages in the Pre-Approved Claim flow?",
         "How do I add a new member to a project?",
         "What is the timeline for RMC Verification in the Purchasing flow?",
+        # Previously returned "I don't know" in production — run these with
+        # min_score=0 to see the REAL score distribution before deciding
+        # what min_score should actually be. If the right chunk shows up
+        # here with a score below your current min_score, that confirms
+        # the threshold (not retrieval itself) was the problem.
+        "For external grant purchasing, above what amount does the internal purchasing procedure apply?",
+        "What is the threshold amount for Asset Tagging registration?",
+        "What is the processing time for the Payroll stage? Is there any exception?",
+        "What are the possible values for the \"Evaluation Status\" field?",
     ]
     for q in test_queries:
         print(f"\n=== Query: {q} ===")
-        results = retriever.search(q, top_k=3)
+        results = retriever.search(q, top_k=5, min_score=0)  # min_score=0 to see everything
         for r in results:
             print(f"[{r['score']:.3f}] {r['title']}")
