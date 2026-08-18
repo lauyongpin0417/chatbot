@@ -61,10 +61,24 @@ Rules:
 - Output only the transcribed content, nothing else — no preamble like "Here is the text:".
 """
 
+# Reasoning-capable vision models can emit private work inside <think> tags.
+# Treat an unclosed opening tag as extending to the end of the response: a
+# truncated reasoning block is never valid manual content.
+THINKING_BLOCK_RE = re.compile(r"<think\b[^>]*>.*?(?:</think\s*>|\Z)", re.IGNORECASE | re.DOTALL)
+TRANSCRIPT_PAGE_MARKER_RE = re.compile(r"(<!--\s*Page\s+\d+\s*-->)", re.IGNORECASE)
+def strip_thinking_content(text):
+    """Remove model reasoning blocks before text can be chunked or embedded."""
+    # A broken tag must not remove the remainder of a multi-page transcript.
+    parts = TRANSCRIPT_PAGE_MARKER_RE.split(text or "")
+    return "".join(
+        part if TRANSCRIPT_PAGE_MARKER_RE.fullmatch(part) else THINKING_BLOCK_RE.sub("", part)
+        for part in parts
+    )
+
 
 def _read_markdown(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
-        return f.read()
+        return strip_thinking_content(f.read())
 
 
 def _ocr_page(page, min_gap_px=15, bin_px=5, line_tol=12):
@@ -179,7 +193,7 @@ def _vision_ocr_page(page, client, dpi=200, max_retries=3):
                 temperature=0,
                 max_completion_tokens=2048,
             )
-            return response.choices[0].message.content.strip()
+            return strip_thinking_content(response.choices[0].message.content).strip()
         except Exception as e:
             if attempt == max_retries - 1:
                 print(f"  Warning: vision transcription failed for a page after {max_retries} attempts: {e}")
@@ -231,7 +245,7 @@ def _read_pdf(filepath, groq_api_key=None):
         pages_text.append(text)
 
     doc.close()
-    return "\n\n".join(pages_text)
+    return strip_thinking_content("\n\n".join(pages_text))
 
 
 def _read_docx(filepath):
@@ -260,7 +274,7 @@ def _read_docx(filepath):
 
 def _read_txt(filepath):
     with open(filepath, "r", encoding="utf-8", errors="replace") as f:
-        return f.read()
+        return strip_thinking_content(f.read())
 
 
 LOADERS = {

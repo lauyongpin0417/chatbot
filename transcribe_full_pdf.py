@@ -37,6 +37,7 @@ import os
 import json
 import time
 import base64
+import re
 import pymupdf
 from groq import Groq
 
@@ -58,6 +59,11 @@ Rules:
 - Do not skip visible text, including footers, page numbers, or captions.
 - Output only the transcribed content, nothing else — no preamble like "Here is the text:".
 """
+
+# Strip private reasoning from both complete and truncated model responses.
+THINKING_BLOCK_RE = re.compile(r"<think\b[^>]*>.*?(?:</think\s*>|\Z)", re.IGNORECASE | re.DOTALL)
+def _strip_thinking_content(text):
+    return THINKING_BLOCK_RE.sub("", text or "")
 
 
 def _is_rate_limit_error(e):
@@ -83,13 +89,14 @@ def _transcribe_page(client, page, dpi=200):
         temperature=0,
         max_completion_tokens=2048,
     )
-    return response.choices[0].message.content.strip()
+    return _strip_thinking_content(response.choices[0].message.content).strip()
 
 
 def _load_checkpoint(path):
     if os.path.exists(path):
         with open(path, "r", encoding="utf-8") as f:
-            return {int(k): v for k, v in json.load(f).items()}
+            raw = json.load(f)
+        return {int(k): _strip_thinking_content(v) for k, v in raw.items()}
     return {}
 
 
@@ -101,7 +108,7 @@ def _save_checkpoint(path, data):
 def _write_markdown(out_path, data, total_pages):
     parts = []
     for page_num in range(1, total_pages + 1):
-        text = data.get(page_num, "")
+        text = _strip_thinking_content(data.get(page_num, ""))
         parts.append(f"<!-- Page {page_num} -->\n\n{text}")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write("\n\n---\n\n".join(parts))
