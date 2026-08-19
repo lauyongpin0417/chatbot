@@ -44,6 +44,15 @@ RERANK_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"  # free cross-encoder
 # losing the precise section during the coarse semantic-search stage.
 CANDIDATE_POOL_SIZE = 80
 
+# Minimum RAW (pre-boost) cross-encoder score a RMS_verified_pages.md
+# candidate needs before it's eligible for the tie-break boost below. Real
+# matches for a genuinely relevant pair can score well under 0.5 on this
+# scale (see search()'s docstring), so this is set low on purpose — it only
+# needs to rule out actual noise (observed at 0.0000-0.0005 for a query that
+# doesn't match anything in the knowledge base), not borderline-but-real
+# matches.
+VERIFIED_BOOST_MIN_RAW_SCORE = 0.15
+
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
 
 
@@ -139,10 +148,23 @@ class ManualRetriever:
         rerank_scores = _sigmoid(np.array(rerank_scores))
 
         # Locally verified excerpts are corrections checked against the source
-        # PDF. Give them a small tie-break boost over older AI transcription.
+        # PDF. Give them a small tie-break boost over older AI transcription
+        # — but ONLY when their own raw score already shows genuine topical
+        # relevance (>= VERIFIED_BOOST_MIN_RAW_SCORE). A flat, unconditional
+        # +0.10 add is enormous relative to how tiny raw cross-encoder scores
+        # get for a query that doesn't match ANYTHING well (confirmed live:
+        # 0.0000-0.0005 for an unrelated document's questions once the
+        # knowledge base held more than one topic) — without this gate, that
+        # +0.10 alone was enough to promote an objectively irrelevant
+        # verified excerpt to 1st place over the genuinely correct chunk,
+        # since raw scores that low leave essentially no real margin to
+        # overcome. Gating on the candidate's OWN raw score (not a
+        # comparison to others) keeps the boost doing what it was meant to —
+        # a tie-break among already-plausible matches — without being able
+        # to resurrect a candidate from actual noise.
         adjusted_scores = []
         for idx, score in zip(candidate_indices, rerank_scores):
-            if self.chunks[idx]["source"] == "RMS_verified_pages.md":
+            if self.chunks[idx]["source"] == "RMS_verified_pages.md" and score >= VERIFIED_BOOST_MIN_RAW_SCORE:
                 score = min(1.0, score + 0.10)
             adjusted_scores.append(score)
         ranked = sorted(zip(candidate_indices, adjusted_scores), key=lambda p: p[1], reverse=True)
@@ -151,7 +173,19 @@ class ManualRetriever:
         # for that exact page was incomplete or wrong. It is sufficient and
         # authoritative by itself, so withholding nearby legacy chunks avoids
         # contradicting it with a similarly worded but different procedure.
-        if ranked and self.chunks[ranked[0][0]]["source"] == "RMS_verified_pages.md":
+        #
+        # Gated on the SAME min_score bar as everything else — without this,
+        # a query about a totally unrelated topic (e.g. a different document
+        # entirely, once the knowledge base holds more than one) scores every
+        # candidate near zero, and the flat +0.10 boost above is enough by
+        # itself to put a verified excerpt in 1st place on pure noise. This
+        # rule would then discard every other candidate — including the
+        # actually-relevant one from the other document — leaving the model
+        # with an irrelevant chunk as its only context. Confirmed live: this
+        # is what made "power consumption"/"carafe wait time" questions about
+        # an unrelated uploaded manual return "I don't know" even though the
+        # right chunk was sitting right there among the discarded candidates.
+        if ranked and ranked[0][1] >= min_score and self.chunks[ranked[0][0]]["source"] == "RMS_verified_pages.md":
             ranked = ranked[:1]
 
         results = []
