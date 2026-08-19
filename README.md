@@ -106,6 +106,44 @@ if password != st.secrets.get("ACCESS_CODE", ""):
 And add `ACCESS_CODE = "something"` to your Streamlit Secrets alongside the
 Groq key.
 
+## Letting other users add knowledge files from the app itself
+The chat page has a "📤 Add a knowledge base file" section
+(`.md`/`.txt`/`.docx`/`.pdf`, 5 MB limit for the text formats, 25 MB for
+PDF) that anyone using the app can upload through. **There is no access
+gate on it by design** — the same public link that lets anyone chat also
+lets anyone commit a new file into `knowledge_docs/`. Only turn this on if
+you're comfortable with that, or wrap the whole app in the access-code
+check above first.
+
+To enable it, add two more Secrets in Streamlit Cloud:
+```
+GITHUB_TOKEN = "your-fine-grained-personal-access-token"
+GITHUB_REPO = "yourusername/rms-grant-chatbot"
+```
+Create the token at https://github.com/settings/tokens → "Fine-grained
+tokens" → scope it to **only this one repository**, permission **"Contents:
+Read and write"** and nothing else. Keeping it fine-grained and
+single-repo means that even if it's ever leaked or misused, the damage is
+capped at this repo's files — it can't touch your other repos or account
+settings.
+
+What it actually does: writes the uploaded file straight to `knowledge_docs/`
+via GitHub's API (the same effect as the manual "Add file > Upload files"
+step below, just triggered from the chat page), which then auto-redeploys
+like any other push. It won't overwrite a same-named existing file — it
+adds a unique suffix instead.
+
+**An uploaded PDF is deliberately never sent to the vision model** — it
+only gets the free tier-1/2 treatment (embedded text layer, or local
+Tesseract OCR for scanned pages) described above, same as any PDF dropped
+into `knowledge_docs/` manually. This is intentional: since there's no
+access gate on this uploader, letting an upload trigger vision-model calls
+would let anyone burn through your shared Groq vision quota (200,000
+tokens/day) just by uploading PDFs. If an uploaded PDF has flow-diagram or
+table pages that come out garbled, download it, run
+`transcribe_full_pdf.py` locally as usual, and replace it with the
+resulting `.md` (see "Adding or updating knowledge files" above).
+
 ## Updating the knowledge base later
 If your supervisor gives you an updated manual:
 1. Replace `RMS_User_Manual_FINAL.md` in your GitHub repo with the new version

@@ -1,12 +1,54 @@
 <!-- Page 1 -->
 
+RMS User Manual Table of content
 
+1.0 RMS User Manual Table of content 1
+2.0 Introduction 4
+3.0 Grant Proposal 7
+3.1 Grant Proposal for Internal Fund 7
+3.1.1 Application Flow for Internal Fund 7
+3.1.3 Project Leader 9
+3.1.4 Deputy Dean / Dean R&I as reviewer 12
+3.1.5 MMU Panel as reviewer 13
+3.2 Grant Proposals for External Fund (known as Grant Funnel) 15
+3.2.1 Application Flow for External Fund 15
+3.2.2 Steps to update grant funnel 15
+
+4.0 Project Management 18
+4.1 List Projects 18
+4.2 New Approved Project 19
+4.2.1 New Approved Project Flow 19
+4.2.2 Project Leader Register New Approved Project 19
+4.2.3 RMC Review New Approved Project 28
+4.2.4 Account Receivable (AR) budget receipting (Receipting) 33
+4.2.5 Finance Management (FM) update budget (Transfer Budget) 35
+4.3 Project Progress Monitoring 37
+4.3.1 Project Progress Reporting 37
+4.3.2 Steps to update progress 37
+4.3.3 Project’s Expenses Tab 39
+4.3.4 Grant Expenses (GREX) Update by Finance Management (FM) 41
+4.4 End of Project (EOP) Report 44
+4.4.1 EOP Flow 44
+4.4.2 Project Leader to EOP preparations steps 44
+4.4.3 Financial Reconciliation by Finance Management (FM) 46
+4.4.4 EOP approved by RMC 49
+
+5.0 Hiring 50
+5.1 Hiring Process flow 50
+5.2 New research personnel hiring 50
+5.2.1 Invitation By Project Leader : New Hiring 50
+5.2.2 Invitation By Project Member : New Hiring 53
+5.2.3 Research Personnel : New Hiring 53
+5.3 Renewing Research Personnel contract 57
+5.3.1 Project Leader : Renew hiring 57
+5.3.2 Research Personnel : Renew hiring 58
+5.4 Cancel or Termination of Appointment 59
+5.5 Hiring Evaluation by RMC 60
+5.6 Evaluation and Approving Hiring by HCM 62
 
 ---
 
 <!-- Page 2 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -25,6 +67,7 @@ RMS Manual
 6.5.1 Budget Replan Flow 75
 6.6 Virement (Inter code/vot budget transfer) 76
 6.6.1 Virement Flow 77
+
 7.0 Spending 80
 7.1 Purchasing using External Grant Flow (Call for Quotation and Sole Single Sourcing (SSS) formerly known as Direct Purchase) 80
 7.2 Purchasing (Project Leader, Members and Research Personnel)(External Grant) 80
@@ -61,8 +104,6 @@ Sample of Purchasing request 84
 
 <!-- Page 3 -->
 
-
-
 RMS Manual
 
 7.8 Page Charges (Applicable for MMU Staff only) 112
@@ -93,55 +134,53 @@ RMS Manual
 
 <!-- Page 4 -->
 
-
-
 RMS Manual
 
 2.0 Introduction
 
 This user guide is designed to provide documentation for Project Leader and Project Member to use Research Management System (RMS). RMS development has been initiated on start 1 Feb 2018 with internal resources.
 Main goal of RMS is to have a better grant management system in a single platform, centralized database for easier data sharing among different units, among project members and also for more accurate data gathering especially for MyRA and Setara exercises and also for any certification audit.
-For any inquiry please do not hesitate to contact us at rmc@mmu.edu.my. For rectification of any system error, please provide details of the error and a snapshot or printsreen of the error.
+For any inquiry please do not hesitate to contact us at rmc@mmu.edu.my. For rectification of any system error, please provide details of the error and a snapshot or printscreen of the error.
 
 RMS can be accessed at rms.mmu.edu.my (staff & PG student) and https://rms.mmu.edu.my/research-personnel (research personnel hired through grants). It works best with the latest version of chrome browser.
 
 Link to RMS for staff & PG Student- https://rms.mmu.edu.my
 
-Login Form
-* Please use your IDM as your credential.
-Username
-MU
-Password
-Log in
-Lost your password ?
-For research-personnel click HERE
-Research Website
-Research Management System (RMS)
-Please upgrade to the latest version of your browser
-Best viewed in Chrome & Firefox
-© 2020 All Rights Reserved. Multimedia University
+1. Staff & PG Student Login
+   * Please use your IDM as your credential.
+   Username
+   MU
+   Password
+   *******
+   Log in
+   Lost your password ?
+   For research-personnel click HERE
+   Research Website
+   Research Management System (RMS)
+   Please upgrade to the latest version of your browser
+   Best viewed in Chrome & Firefox
+   © 2020 All Rights Reserved. Multimedia University
+   Enter Username : IDM ID MUXXXXXXX (Login PG ID)
+   Enter Password : IDM password
 
-Enter Username : IDM ID MUXXXXXXX (Login PG ID)
-Enter Password : IDM password
-
-Login Form
-* Please use your IDM as your credential.
-Username
-student id
-Password
-Log in
-Lost your password ?
-For research-personnel click HERE
-Research Website
-Research Management System (RMS)
-Please upgrade to the latest version of your browser
-Best viewed in Chrome & Firefox
-© 2020 All Rights Reserved. Multimedia University
-
-Enter Username : Student ID
-Enter Password : password
-This is for Post Graduate (PG) to apply PG Conference without external grant
-Please login to https://spm.mmu.edu.my if you need to reset your password
+2. Student Login
+   * Please use your IDM as your credential.
+   Username
+   student id
+   Password
+   *******
+   Log in
+   Lost your password ?
+   For research-personnel click HERE
+   Research Website
+   Research Management System (RMS)
+   Please upgrade to the latest version of your browser
+   Best viewed in Chrome & Firefox
+   © 2020 All Rights Reserved. Multimedia University
+   Enter Username : Student ID
+   Enter Password : password
+   This is for Post Graduate (PG) to apply PG Conference without external grant
+   Please login to https://spm.mmu.edu.my if you need to reset your password
 
 26 Aug 2024 Page 4
 
@@ -149,16 +188,83 @@ Please login to https://spm.mmu.edu.my if you need to reset your password
 
 <!-- Page 5 -->
 
+MMU
+MULTIMEDIA UNIVERSITY
 
+RMS Manual
+
+Link to RMS for research personnel hired through grants-
+https://rms.mmu.edu.my/research-personnel
+
+MMU
+MULTIMEDIA UNIVERSITY
+
+Login Form
+
+Username
+email
+
+Password
+********
+
+Log in
+Lost your password ?
+
+Research Management System (RMS)
+Please upgrade to the latest version of your browser
+Best viewed in Chrome & Firefox
+© 2020 All Rights Reserved. Multimedia University
+
+Enter Username : email registered in RMS
+(update during hiring)
+Enter Password : password
+
+RMS Welcome Board-PL,PM
+
+MMU
+MULTIMEDIA UNIVERSITY
+
+Welcome,
+
+Dashboard
+Grant Proposal
+Project Management
+Monitoring
+Change Request
+Hiring
+Spending
+Conference Application
+
+RMS Menu Info
+<<<Left Panel
+
+RMS Welcome board for research personnel
+
+MMU
+MULTIMEDIA UNIVERSITY
+
+Welcome,
+
+Dashboard
+
+New
+
+MMUE/
+
+Project Leader
+Post : Research Assistant
+
+Details
+
+26 Aug 2024 Page 5
 
 ---
 
 <!-- Page 6 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 RMS Menu and Note introduction..
@@ -169,20 +275,20 @@ Purchasing <-- Module Name & Back Page
 Show 10 rows Excel PDF Print <-- Download in excel /pdf format <--Print
 Click for more rows
 No Ref ID Project ID Type Total Amount
-Click for sorting
 1 PCH/MMUE190022/2019/8909 MMUE/190022 Call For Quotation Not available
 2 PCH/MMUE190021/2019/8710 MMUE/190021 Call For Quotation Not available
 
-*   Click 'Show 10 rows' and select number of rows to be displayed
-*   The list can be downloaded by clicking the 'excel' or 'pdf' button
-*   The triangular button in the list menu is for sorting the list.
+Click for sorting
 
-Right>>
+• Click 'Show 10 rows' and select number of rows to be displayed
+• The list can be downloaded by clicking the 'excel' or 'pdf' button
+• The triangular button in the list menu is for sorting the list.
+
+Right->>
 Last Login : 01 Oct 2019
 switch to RRS/RMS -->
-0
 
-Filter by Status --> Filters Add New
+Filter by Status --> Filters + Add New
 Add new application
 Search:
 
@@ -190,10 +296,10 @@ Submission Date Status Action
 2019-09-20 Draft Detail <--For detail & action
 2019-10-01 Draft Detail
 
-*   On the top right panel, click the logo to switch to RRS or to log out.
-*   Status : to indicate current status of application.
-*   Add New button is used to create a new application in the RMS
-*   Click the Detail button to see the details of the application
+• On the top right panel, click the logo to switch to RRS or to log out.
+• Status : to indicate current status of application.
+• Add New button is used to create a new application in the RMS
+• Click the Detail button to see the details of the application
 
 Back to table of content
 
@@ -203,16 +309,63 @@ Back to table of content
 
 <!-- Page 7 -->
 
+RMS Manual
 
+3.0 Grant Proposal
+A platform where leaders are able to make a new project's proposal. Applicable for MMU academicians. Grants proposals are divided into two (the dependencies on which budget used).
+- Internal Fund (IR Fund and MMU GRA)
+- External Fund (Grant Funnel)
+
+3.1 Grant Proposal for Internal Fund
+RMC will make an announcement on the opening of the grant proposal submission. Project Leaders are required to submit their proposals before the closing date. Proposal will be reviewed by the faculty Deputy Dean or Dean and a group of reviewers.
+
+3.1.1 Application Flow for Internal Fund
+
+1. Grant Opening
+   Action: RMC announce Grant opening In RMS
+   Timeline: Submission duration is set
+   Status: Draft
+
+2. Submission
+   Action: PL prepare and submit research grant proposal
+   Timeline: Depend on submission. Before project and appointment end date
+   Status: Submit to Faculty Deputy Dean / Dean
+
+3. Faculty Recommend
+   Action: Faculty Deputy Dean or Dean review and suggest evaluation panel
+   Timeline: 3 Working days
+   Status: RMC verification
+
+4. RMC
+   Action: Select panel for evaluation
+   Timeline: 3 Working days
+   Status: RMC verification
+
+5. Evaluation
+   Action: Selected panel will review the proposal
+   Timeline: 3-10 Working days
+   Status: MMU Panel Reviewer
+
+6. RMC Director
+   Action: RMC Director approved the proposal
+   Timeline: 3-10 Working days
+   Status: RMC Director Approval
+
+3.1.2 RMC Calling For New Proposal
+a. Create an announcement for the opening of any internal grant.
+b. Click the Add New button on your right and update the internal grant that RMC wants to call for proposal (IR Fund or MMU GRA).
+c. This announcement will directly appear on all researcher screens.
+d. Create a new proposal title, description and save.
+
+26 Aug 2024 Page 7
 
 ---
 
 <!-- Page 8 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Grant Proposal Settings / New Announcement
@@ -232,14 +385,14 @@ e. Announcement has been submitted to all.
 
 Grant Proposal Setting
 
-| Final Submission Date | Scheme | Status | Action |
-| :--- | :--- | :--- | :--- |
-| 31 May 2020 | MMUGRA | Open | Edit |
-| 31 May 2020 | MMUJ Fund | Open | Edit |
+| Scheme | Status | Action |
+| :--- | :--- | :--- |
+| MMU GRA | Open | Edit |
+| MMU Fund | Open | Edit |
 
 f. Set the proposal submission date
 * Click detail to set end submission date
-* Change the final submission date .This is the last date RMC will accept the application.
+* Change the final submission date. This is the last date RMC will accept the application.
 
 Edit Settings
 
@@ -263,18 +416,20 @@ Back to table of content
 
 <!-- Page 9 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
 3.1.3 Project Leader
+
 a. Log in to rms.mmu.edu.my. Go to the grant proposal menu, click on the application menu then Add new to add the grant details. Project Type : Internal
 b. Enter the internal project title and select the type of scheme (IR Fund / MMU GRA).
 
 Grant Proposal / Add New
 
 ADD NEW GRANT PROPOSAL FUNNEL
-* indicates a compulsory field
+Note: * indicates a compulsory field
 
 *Project type
 Internal
@@ -284,12 +439,12 @@ External
 Proposal for Ir Fund
 
 *Type of scheme
-(Please email to IRMC at irmc@mmu.edu.my for any external grant not included in the list)
+(Please email to IRMC at mrc@mmu.edu.my for any external grant not included in the list.)
 IR Fund
 
 Save as Draft
 
-c. Fill in the details of the project by clicking the Edit button for every section of the Project Information, Project Member , Budget Plan, Expected Outcome, Milestone & Activity, Publication Record, Research Grant Record and student details for MMU GRA scheme.
+c. Fill in the details of the project by clicking the Edit button for every section of the Project Information, Project Member, Budget Plan, Expected Outcome, Milestone & Activity, Publication Record, Research Grant Record and student details for MMU GRA scheme.
 
 Note : Publication record data are retrieved from RRS. Project Leaders need to select those related to the current proposal.
 Data for PG Supervision record are retrieved from CaMSys (for active students only)
@@ -349,10 +504,9 @@ ix. Research Centre
 
 <!-- Page 10 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 x. Start Date
@@ -363,7 +517,9 @@ e. Add Project member by selecting members from the list
 Potential Members List
 
 MMU Staff List
+
 Show 10 rows
+
 Search:
 
 | No | Salutation | Name | Faculty | Action |
@@ -385,7 +541,7 @@ Duration(Month)
 
 Budget Description:
 
-Amount (RM):
+Amount (RM)
 0
 
 Save Close
@@ -405,10 +561,6 @@ h. Add Milestone and activity
 
 <!-- Page 11 -->
 
-
-
-MMU
-MULTIMEDIA UNIVERSITY
 RMS Manual
 
 Grant Proposal / Details / Edit Milestone & Activity
@@ -420,21 +572,23 @@ Milestone & Activity
 
 Add Milestone
 
-Ref ID MMU/RMC/GRPROP/MMU GRA/2020/1005
-Type of Proposal MMUGRA
-Project Title MMU GRA Fund proposal
-Project Start Date 23 May 2020
-Project End Date 22 May 2021
+| Ref ID | MMU/RMC/GRPROP/MMU GRA/2020/1005 |
+| Type of Proposal | MMUGRA |
+| Project Title | MMU GRA Fund proposal |
+| Project Start Date | 23 May 2020 |
+| Project End Date | 22 May 2021 |
 
 Add at least one activity for each milestone
 
-Milestone Action
-stone 1 Edit Milestone
-Delete Milestone
-Add Activity
+| Milestone | Action |
+| :--- | :--- |
+| stone 1 | Edit Milestone |
+| | Delete Milestone |
+| | Add Activity |
 
-Activity Duration (Months) Start Date End Date Action
-Appointment of MMU GRA 12 01 Jun 2022 31 May 2023 Delete Edit
+| Activity | Duration (Months) | Start Date | End Date | Action |
+| :--- | :--- | :--- | :--- | :--- |
+| Appointment of MMU GRA | 12 | 01 Jun 2022 | 31 May 2023 | Delete | Edit |
 
 i. Select the related publications for this proposal. Click the link “HERE” if no related record is found in the list..
 
@@ -458,15 +612,15 @@ Other Publications ( 1 )
 
 <!-- Page 12 -->
 
-
-
 RMS Manual
+
 You can click on Journal (20). 20 journals will be displayed and you will be able to select one or more from the 20 journals.
-j. Enter the approved grant record for the last five years. Click the link "HERE" if no related record is found in the list.
+j. Enter the approved grant record for the last five years. Click the link “HERE” if no related record is found in the list.
 k. Update student details for MMU GRA application. Then click the submit button for Faculty Deputy Dean or Dean verification.
 l. Review process begins. Project leaders need to amend and justify every request made from reviewers.
 m. The process continues until the proposal is approved or not. For an approved proposal, Project Leader shall continue updating the project information in Project Management > New Approved project before submitting to RMC.
 n. For a rejected proposal, the application now is in draft status. Project leader shall improve on the proposal and submit for the future cycle.
+
 Back to table of content
 
 3.1.4 Deputy Dean / Dean R&I as reviewer
@@ -484,28 +638,35 @@ c. Summary of application status:
 | Evaluation Status | Draft, Submitted to DD R&I, Revert by DD R&I, Submitted to RMC, Submitted to MMU Panel Reviewer, Resubmit to RMC(after evaluation done by MMU Panel of Reviewers), Successful/Not Successful |
 
 d. Use the Evaluate this record button to evaluate the proposal and submit to RMC
+
 Back to table of content
+
 26 Aug 2024 Page 12
 
 ---
 
 <!-- Page 13 -->
 
-
-
 RMS Manual
 
 3.1.5 MMU Panel as reviewer
+
 a. Panel may view a list of proposals assigned in the Grant Proposal, select My Evaluation.
+
 My Evaluation
 
 My Evaluation List
+
 Show 10 rows Excel PDF Print
+
 Search:
+
 Filters
-No Title Scheme Proposal ID Status Action
-1 Behavioural Analysis of Driver Profiles in Malaysia and the impacts on Electric Vehicles Charging Demand IR Fund MMU/RMC/GRPROP/IR FUND/ Waiting for Panel Approval Detail
-2 Energy Saving Potential of Devices with Energy Saving Technology and Phantom Loads IR Fund MMU/RMC/GRPROP/IR FUND/ Waiting for Panel Approval Detail
+
+| No | Title | Scheme | Proposal ID | Status | Action |
+|---|---|---|---|---|---|
+| 1 | Behavioural Analysis of Driver Profiles in Malaysia and the impacts on Electric Vehicles Charging Demand | IR Fund | MMU/RMC/GRPROP/IR FUND/... | Waiting for Panel Approval | Detail |
+| 2 | Energy Saving Potential of Devices with Energy Saving Technology and Phantom Loads | IR Fund | MMU/RMC/GRPROP/IR FUND/... | Waiting for Panel Approval | Detail |
 
 b. Click detail to start evaluating the proposal
 
@@ -514,7 +675,7 @@ Instruction :
 • After all modules has verified , please click on "Resubmission" or "Complete My Evaluation" button. *This button will appear once all modules has verified.
 • Complete the assessment form if your decision is approved/comply.
 
-Proposal ID MMU/RMC/GRPROP/IR FUND/
+Proposal ID MMU/RMC/GRPROP/IR FUND/...
 Type of Proposal MMU Fund
 Project Title
 Project Status Approved
@@ -540,10 +701,9 @@ Details
 
 <!-- Page 14 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 c. Evaluate the proposal for each with 'Evaluation not complete'. State the evaluation decision for each proposal item.
@@ -565,7 +725,7 @@ d. Once all items in the proposal are evaluated. Rating for each question is 1 t
 e. Summary of the evaluation status.
 
 | Info | Remarks |
-| --- | --- |
+| :--- | :--- |
 | Application ID | Application ID |
 | Grant Batch | Eg IR Fund 2020/2021 |
 | PL | PL name |
@@ -576,10 +736,6 @@ e. Summary of the evaluation status.
 
 <!-- Page 15 -->
 
-
-
-MMU
-MULTIMEDIA UNIVERSITY
 RMS Manual
 
 | Project Title | Title of project proposal |
@@ -593,9 +749,12 @@ This module is for the Project Leaders to update their research proposal/ideas e
 
 3.2.1 Application Flow for External Fund
 
-| Status in RMS | | | | |
-| :--- | :--- | :--- | :--- | :--- |
-| Draft | *Submit to RMC | Submit to funder | Approved by funder | New Approved project |
+Status in RMS
+1. Draft
+2. *Submit to RMC
+3. Submit to funder
+4. Approved by funder
+5. New Approved project
 
 * In case the proposal requires evaluation by RMC t, Project Leader need to change the status “Submitted to RMC” in project status (see black color arrow).
 
@@ -604,14 +763,14 @@ Grant Proposal / Details
 Instructions :
 1. Submit button only can be pressed when the project leader change project status to Approved by Funder
 
-Proposal ID MMU/RMC/GRPROP/TM R&D/2020/24411
-Funding Agency TM R&D
-Project Title testing
-Project Status Draft
+Proposal ID: MMU/RMC/GRPROP/TM R&D/2020/24411
+Funding Agency: TM R&D
+Project Title: testing
+Project Status: Draft
 
 Submit this records
 
-* The button “Submit this record” disabled for projects with status Draft , Submitted to RMC and Submitted to funder. (refer to picture above).
+• The button “Submit this record” disabled for projects with status Draft , Submitted to RMC and Submitted to funder. (refer to picture above).
 
 3.2.2 Steps to update grant funnel
 a. Log in to rms.mmu.edu.my. Go to the Grant Proposal menu, click on the Application menu and then click Add New to add the grant details. Select Project Type : External
@@ -622,19 +781,35 @@ a. Log in to rms.mmu.edu.my. Go to the Grant Proposal menu, click on the Applica
 
 <!-- Page 16 -->
 
-
-
----
-
-<!-- Page 17 -->
-
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
+Grant Proposal / Add New
+
+ADD NEW GRANT PROPOSAL FUNNEL
+Note: * indicates a compulsory field
+
+*Project type
+Internal
+External
+
+*Project Title
+Project Title
+
+*Type of scheme
+(Please email to rmc@mmu.edu.my for any external grant not included in the list)
+-- Select type of proposal--
+
+Save as Draft
+
+b. Enter the project title and select the type of scheme/ fund (e.g. FRGS / TM R&D and etc). Please email to rmc@mmu.edu.my for any request to add a new scheme / fund in the drop down button if required.
+c. Update the status of proposal by clicking in the button in the project project status field.The possible status are (Draft, Review, Submitted to funder, Rejected By Funder and Approved by funder)
+
 Grant Proposal / Details
 
-Proposal ID MMUR/MC/GRPROP/FRGS/2020/605
+Proposal ID MMURMC/GRPROP/FRGS/2020/605
 Funding Agency FRGS
 Project Title tere
 Project Status Draft
@@ -642,6 +817,60 @@ Project Status Draft
 Project Informations
 Last Update Update required
 No comment available
+
+Attachment
+
+Submit this records
+
+Edit
+
+Add New
+
+The “Submit this record “ button will only be activated when the project leader changes project status to the “Approved by Funder”.
+
+Change Project Status
+
+Status
+Draft
+Draft
+Submitted to funder
+Rejected by funder
+Approved by funder
+
+d. Update project information by clicking the Edit button
+
+26 Aug 2024 Page 16
+
+---
+
+<!-- Page 17 -->
+
+MMU
+MULTIMEDIA UNIVERSITY
+
+RMS Manual
+
+Grant Proposal / Details
+
+Submit this records
+
+Proposal ID
+MMU/RMC/GRPROP/FRG S/2020/605
+
+Funding Agency
+FRGS
+
+Project Title
+tere
+
+Project Status
+Draft
+
+Project Informations
+Last Update Update required
+No comment available
+
+Edit
 
 e. Update target proposal submission date and amount request then click Save. Target submission date within the next 3 months.
 
@@ -656,7 +885,7 @@ tere
 
 Save
 
-f. The update of the proposal for the grant funnel is now completed. For proposal status please refer to the steps described above. External Can Be updated until the project is changed to “Approved by Funder”. (The project will be transferred under the New Approved Project in the Project Management module).
+f. The update of the proposal for the grant funnel is now completed. For proposal status please refer to the steps described above.External Can Be updated until the project is changed to “Approved by Funder”. (The project will be transferred under the New Approved Project in the Project Management module).
 
 Back to table of content
 
@@ -666,13 +895,63 @@ Back to table of content
 
 <!-- Page 18 -->
 
+MMU
+MULTIMEDIA UNIVERSITY
 
+RMS Manual
+
+4.0 Project Management
+This module contains all functions related to managing research projects. It starts from the creation of a newly approved project to project completion and progress reporting.
+
+4.1 List Projects
+Displays all projects under a project leader(PL) or project member (PM).
+
+4.1.1 Select any project from the list for more information by clicking the Detail button.
+
+List Project
+
+Project List
+
+Show 10 rows Excel PDF Print
+
+| No | Project SAP ID | Funding Source | PL Name | Start Date | End Date | Status | Action |
+|---|---|---|---|---|---|---|---|
+| 1 | MMUE/150010 | AADK | [Redacted] | 2015-08-10 | 2016-06-30 | Completed | Detail |
+| 2 | MMUE/170401 | [Redacted] | [Redacted] | 2018-12-01 | 2020-12-31 | Approved | Detail |
+| 3 | MMU/190001 | [Redacted] | [Redacted] | 2019-01-01 | 2019-12-31 | EOP | Detail |
+| 4 | MMUE/150008 | Al-Imam | [Redacted] | 2015-06-01 | 2020-05-31 | Completed | Detail |
+| 5 | MMUE/190080 | Asian Private Law, South Korea | [Redacted] | 2019-05-13 | 2019-12-31 | Virement | Detail |
+| 6 | MMUE/150012 | ASTRO | [Redacted] | 2015-01-20 | 2019-04-30 | Completed | Detail |
+| 7 | MMUE/190079 | BRUNEL_RESEARCH ACCELERATOR IN DEVELOPING COUNTRIES GRANT | [Redacted] | 2019-07-01 | 2021-08-31 | Approved | Detail |
+| 8 | MMUE/190212 | Canada IDRC (International Development Research Centre) | [Redacted] | 2020-10-01 | 2022-04-30 | Approved | Detail |
+| 9 | MMUE/140097 | CPA.Australia | [Redacted] | 2014-11-01 | 2017-03-31 | Completed | Detail |
+| 10 | MMUE/140036 | CREST | [Redacted] | 2014-04-01 | 2016-11-30 | Completed | Detail |
+
+Showing 1 to 10 of 1,406 entries
+
+Previous 1 2 3 4 5 ... 141 Next
+
+4.1.2 The following tabs will appears
+i. Information- project details e.g. start date, end date , approved amount and etc
+ii. Supporting Document - approved proposal,
+iii. Budget Plan - project financial planning
+iv. Milestone - project activity/milestone
+v. Expenses- project expenses (detail expenses is extracted from SAP)
+vi. Commitment- commitment related to project expenses (detail expenses is compile from all application made in RMS)
+
+List Project / Details
+
+Information Supporting Document Budget Plan Milestone Expenses Commitment
+
+PROJECT INFORMATIONS
+
+Back to table of content
+
+26 Aug 2024 Page 18
 
 ---
 
 <!-- Page 19 -->
-
-
 
 RMS Manual
 
@@ -705,9 +984,9 @@ Upon receiving new grants, Project Leaders need to register a new approved proje
    - Action: RMS notify PL
    - Status: Approved
 
-4.2.2 Project Leader Register New Approved Project.
+4.2.2 Project Leader Register New Approved Project .
 4.2.1.1 Steps
-a. Click the Project Management menu and select New Approved Project to enter details (Project Management > New Approved project).
+a. Click the Project Management menu and select New Approved Project to enter details (Project Management > New Approved project ).
 Important : Fields with asterisk (*) are compulsory fields. For TM R&D Project, the approved budget is the Project Cost not the Project Value.
 
 26 Aug 2024 Page 19
@@ -715,8 +994,6 @@ Important : Fields with asterisk (*) are compulsory fields. For TM R&D Project, 
 ---
 
 <!-- Page 20 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -735,13 +1012,36 @@ Project ID
 Project Number(given by funder)
 Project code
 
-* Executive Summary of
+* Executive Summary of the Project
+Comment
+
+Select partial supplement in the dropdown menu for projects with multiple/partial budget disbursements.
+
+* Budget Supplement Record
+-- Select Supplement Record --
+-- Select Supplement Record --
+Full supplement
+Partial supplement
+
+b. Enter details of the project and click Save as Draft. For New funder category Project Leader shall update in the New funder in Source (select in the dropdown). Update the Funding sources, Funding Agency and Funding Agency Category( e.g. International, National or Industry)
+
+* Source
+New
+
+Funding Sources | Funding Agency | Funding Agency Category | Funding Type
+--- | --- | --- | ---
+eg : FRGS | eg : MOHE | -- SELECT - | EXTERNAL
+
+c. Search recently updated project in the Project List with Draft status. Click on the ‘Detail’ button to view the details of the project (see Sample Project List below). Now we can see there are 5 tabs information,supporting documents, budget plan, milestone and expenses (see Sample Project Details). Please key in all information needed in these tabs.
+
+26 Aug 2024 Page 20
 
 ---
 
 <!-- Page 21 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
@@ -751,16 +1051,14 @@ List Project
 
 Project List
 
-Show 10 rows Excel PDF Print Filters
+Show 10 rows Excel PDF Print
 
-Search:
-
-| No | Project SAP ID | Funding Source | PL Name | Start Date | End Date | Status | Action |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | | | | 2018-10-08 | 2020-10-31 | Submitted | Detail |
-| 2 | | | | 2018-10-01 | 2019-09-30 | Draft | Detail Delete |
-| 3 | | | | 2018-10-01 | 2019-09-30 | Request Topup | Detail |
-| 4 | | | | 2018-10-01 | 2019-09-30 | Approved | Detail |
+No Project SAP ID Funding Source PL Name Start Date End Date Status Action
+1 2018-10-08 2020-10-31 Submitted Detail
+2 2018-10-01 2019-09-30 Draft Detail
+Delete
+3 2018-10-01 2019-09-30 Request Topup Detail
+4 2018-10-01 2019-09-30 Approved Detail
 
 Sample Project Details
 
@@ -778,9 +1076,8 @@ Instructions :
 1. Allocate budget.
 2. Add at least 1 activity for each allocation or import the activity using 'Import Budget' button by follow the excel format template in the link provided.
 
-| Date | Description | Amount | Action |
-| :--- | :--- | :--- | :--- |
-| Total Amount Approved | | 100000 | Budget Allocation |
+Date Description Amount Action
+Total Amount Approved 100000 Budget Allocation
 
 R&D Equipment: Special Equipment and Minor Modifications and Repairs 01
 
@@ -791,8 +1088,6 @@ Click Budget Allocation button and below form will appear
 ---
 
 <!-- Page 22 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -805,7 +1100,6 @@ Amount Approved
 10000.00
 
 R&D Equipment: Special Equipment and Minor Modifications and Repairs.01
-0.00
 
 Temporary & Contract Personnel .02
 Amount:
@@ -837,8 +1131,6 @@ f. Update the budget plan according to monthly plans. Please indicate the budget
 
 <!-- Page 23 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
 
@@ -846,14 +1138,23 @@ RMS Manual
 
 Information Budget Plan Milestone Expenses
 
+Submit to RMC
+
 Instructions :
 1. Allocate budget.
-2. Add at least 1 activity for each allocation or import the activity using 'Import Budget' button by follow the excel format template in the link provided.
+2. Add at least 1 activity for each allocation or import the activity using 'Import Budget' button to follow the excel format template in the link provided.
 
 | Date | Description | Amount | Action |
 | :--- | :--- | :--- | :--- |
-| Total Amount Approved | | 10000 | Budget Allocation<br>Instruction:<br>- Please ensure you are using this template of excel file<br>- Please remove the instruction in excel before upload the file<br>Choose File No file chosen<br>Import Budget |
-| Temporary & Contract Personnel: 02 | | 10000.00 | Add New |
+| Total Amount Approved | | 10000 | Budget Allocation |
+| | | | Instruction: |
+| | | | - Please ensure you are using this template of excel file |
+| | | | - Please remove the instruction in excel before upload the file |
+| | | | Choose File No file chosen |
+| | | | Import Budget |
+| | | 10000.00 | Add New |
+
+Temporary & Contract Personnel 02
 
 Two (2) ways to update budget details. (see above picture)
 *   **Add New** - add budget directly into RMS.
@@ -883,16 +1184,58 @@ Save Close
 
 <!-- Page 24 -->
 
+MMU
+MULTIMEDIA UNIVERSITY
 
+RMS Manual
+
+ii. Import Budget
+
+Budget Allocation
+Instruction:
+- Please ensure you are using this template of excel file
+- Please remove the instruction in excel before upload the file
+
+Prepare the budget plan details using the downloaded excel template and ensure sum of allocations equals to the Total Vot Budget in RMS. For example, the labour budget (e.g. RS salary1) (refer to below picture ) need to be provided for each month.
+
+| budget type | date | description | amount | Format Date |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | 11/25/2018 | Buy VPI machine | 5000 | MM/DD/YYYY |
+| 1 | 12/25/2018 | Buy Laptop | 2 | |
+| 1 | 12/25/2018 | Laptop | 2000 | |
+| 2 | 09/25/2018 | RS salary1 | 1800 | |
+| 2 | 10/25/2018 | RS salary1 | 1800 | |
+| 2 | 11/25/2018 | RS salary1 | 1800 | |
+| 2 | 12/25/2018 | RS salary1 | 1800 | |
+| 2 | 09/25/2018 | RS salary | 2000 | |
+| 2 | 10/25/2018 | RS salary | 2000 | |
+| 2 | 11/25/2018 | RS salary | 2000 | |
+
+Make sure the format for date is MM/DD/YYYY in the excel template. This date refers to the payout date.
+
+Remove ** REFERENCE: and all the instructions in excel template before uploading the file into RMS.
+
+REFERENCE:***(please remove this reference before import the data)
+| budget type | Description |
+| :--- | :--- |
+| 1 | R&D Equipment: Special Equipment and Minor Modifications and Repairs.01 |
+| 2 | Temporary & Contract Personnel .02 |
+| 3 | R&D Material: Research Materials and Supplies .0 |
+| 4 | R&D Incidental: Travel and Transportation .04 |
+| 5 | R&D Incidental: Special Services/ Rental.05 |
+| 6 | R&D FAC: Facility Admin Cost.06 |
+
+Click Choose File, select the updated template and then click Import Budget.
+
+26 Aug 2024 Page 24
 
 ---
 
 <!-- Page 25 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Sample completed budget plan for Temporary & Contract Personnel
@@ -983,7 +1326,7 @@ Budget Plan
 Milestone
 Expenses
 
-Instructions :
+Instructions:
 1. Fill out all the required (*) fields and click 'save' button.
 2. Add Milestone. Each milestone should have at least 1 activity
 
@@ -992,8 +1335,6 @@ Instructions :
 ---
 
 <!-- Page 26 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -1010,7 +1351,6 @@ i. Add activity for each milestone.
 Milestone Action
 Milestone One Edit Milestone
 Add Activity
-Add Milestone
 
 j. Update activity period (start date and duration in month)
 
@@ -1030,16 +1370,19 @@ Save Close
 
 <!-- Page 27 -->
 
+MMU
+MULTIMEDIA UNIVERSITY
 
+RMS Manual
+
+Sample Completed Milestone
+
+Milestone
+Determination and development of network 28 Feb 2019 parameters for measurement. Determination and development of energy-related components. Determination and development of energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation
 
 ---
 
 <!-- Page 28 -->
-
-
-
-MMU
-MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
@@ -1055,12 +1398,15 @@ Show 10 rows Excel PDF Print
 
 | No | Project SAP ID | Funding Source | PL Name | Start Date | End Date | Status | Action |
 |---|---|---|---|---|---|---|---|
-| 1 | | TM R&D | Tan Saw Chin | 2018-12-01 | 2019-11-30 | Submitted | Detail |
+| 1 | | TM R&D | Tan | 2018-12-01 | 2019-11-30 | Submitted | Detail |
 | 2 | MMUE/180021 | TM R&D | Raphael Phan Chung Wei | 2018-11-01 | 2020-10-31 | Approved | Detail |
 | 3 | MMUE/180010 | TM R&D | MD. SHABIUL ISLAM | 2018-07-01 | 2020-06-30 | Approved | Detail |
 | 4 | MMUE/180004 | MMU E-Grant | Mohd Ridzuan Bin Mokhtar | 2018-03-12 | 2019-10-31 | Commissioning | Detail |
 
-b. Check the information key in by Project Leader. Verify (Information, Supporting Document Budget Plan and Milestone)
+Filters
+Search:
+
+b. Check the information key in by Project Leader . Verify (Information,Supporting Document Budget Plan and Milestone)
 
 List Project / Details
 
@@ -1074,8 +1420,9 @@ Sample Update Project Member
 
 PROJECT MEMBERS
 
-MMU Researcher
 Assign MMU Researcher
+
+MMU Researcher
 
 | Name | Faculty / Affiliation | Actions |
 |---|---|---|
@@ -1086,8 +1433,9 @@ Assign MMU Researcher
 | Ruzainna Ab Razak | FOM | Profile Delete |
 | Nurazlin Mohd Fauzi | FOM | Profile Delete |
 
-External Researcher
 Assign External Researcher
+
+External Researcher
 
 26 Aug 2024 Page 28
 
@@ -1095,10 +1443,9 @@ Assign External Researcher
 
 <!-- Page 29 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 ii. External Researcher
@@ -1114,7 +1461,7 @@ Instructions :
 PROJECT DOCUMENTS
 
 | No | Document | Action |
-| :--- | :--- | :--- |
+|---|---|---|
 | 1. | IC/PSC/ GDC Minute Approval * | Upload View Delete |
 | 2. | Latest Presentation Slide * | Upload View Delete |
 | 3. | RD01 | Upload |
@@ -1127,12 +1474,13 @@ PROJECT DOCUMENTS
 
 d. Check All budget Plan > Details to cross check budget key in
 
-R&D Equipment: Special Equipment and Minor Modifications and Repairs.01 70000.00 Details Add New
-Temporary & Contract Personnel .02 452592.00 Details Add New
-R&D Material: Research Materials and Supplies .03 80294.40 Details Add New
-R&D Incidental: Travel and Transportation .04 25000.00 Details Add New
-R&D Incidental: Special Services and Rentals.05 84510.00 Details Add New
-R&D FAC: Facility Admin Cost.06 35619.82 Details Add New
+| R&D Equipment: Special Equipment and Minor Modifications and Repairs.01 | 70000.00 | Details Add New |
+|---|---|---|
+| Temporary & Contract Personnel .02 | 452592.00 | Details Add New |
+| R&D Material: Research Materials and Supplies .03 | 80294.40 | Details Add New |
+| R&D Incidental: Travel and Transportation .04 | 25000.00 | Details Add New |
+| R&D Incidental: Special Services and Rentals.05 | 84510.00 | Details Add New |
+| R&D FAC: Facility Admin Cost.06 | 35619.82 | Details Add New |
 
 Budget plan detail should be key in as detail as possible . eg For Salary expenses for two personnel shall be written one by one as their salary should be pay monthly
 
@@ -1142,25 +1490,74 @@ Budget plan detail should be key in as detail as possible . eg For Salary expens
 
 <!-- Page 30 -->
 
-
-
 RMS Manual
 
 Example Budget Details Breakdown
 
-| | | | | |
-|---|---|---|---|---|
-| Temporary & Contract Personnel .02 | | 452592.00 | Details | Add New |
-| 2020-12-31 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-01-31 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-02-28 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-03-31 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-04-30 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-05-31 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-06-30 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-07-31 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-08-31 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
-| 2019-09-30 | Reach Scholar (RS) & Research Fellow (RF) & Admin Manager | 37716.00 | Edit | Delete |
+Temporary & Contract Personnel .02
+452592.00
+Details
+Add New
+
+2020-12-31
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-01-31
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-02-28
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-03-31
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-04-30
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-05-31
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-06-30
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-07-31
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-08-31
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
+
+2019-09-30
+Reach Scholar (RS) & Research Fellow (RF) & Admin Manager
+37716.00
+Edit
+Delete
 
 ** Remark : refer to how PL update budget plan
 
@@ -1186,26 +1583,70 @@ ii. Check project milestone
 
 <!-- Page 31 -->
 
+MMU
+MULTIMEDIA UNIVERSITY
 
+RMS Manual
+
+Milestone
+Determination and development of network 28 Feb 2019 parameters for measurement. Determination and development of energy-related components. Determination and development of SDN deployment rate/model/constraints.
+
+Action
++ Add Milestone
+
+No | Activity | Duration (Months) | Start Date | End Date | Action
+--- | --- | --- | --- | --- | ---
+1 | Determination and development of network 28 Feb 2019 parameters for measurement. Determination and development of energy-related components. Determination and development of SDN deployment rate/model/ | 3 | 2019-02-28 | 2019-05-28 | Delete Edit
+
+Milestone
+Proposal of measurement and monitoring scheme. ILP Formulation and development of Energy saving and – Optimal real time traffic scheduling. ILP formulation and development of deployment rates/aware SDN migration load balancing in hybrid SDN.
+
+Action
+Edit Milestone
++ Add Activity
+
+No | Activity | Duration (Months) | Start Date | End Date | Action
+--- | --- | --- | --- | --- | ---
+1 | Proposal of measurement and monitoring scheme. ILP Formulation and development of Energy saving and – Optimal real time | 3 | 2019-05-31 | 2019-08-31 | Delete Edit
+
+f. Verify all above completely filled up by Project Leader. If all ok, create SAP ID (step 7) , if not to revert to PL (correction or justification need)
+
+g. Before click Approve , update sap id and network no in the RMS then (submit to finance for receipting and FM budget transfer) or Log in to SAP
+
+i. Create SAP ID using CJ20N.
+
+Favorites
+RMC
+• CJ20N - CJ20n Project Builder
+• ME51N - ME51n-Create Purchase Requisition
+• ME52N - ME52n Change Purchase Requisition
+• CJ30 - CJ30 Change Project Original Budget
+• CJ32 - CJ32-Change Project Release
+• CJ34 - Project Budget Transfer
+• CJ37 - CJ37Budget Supplement in Project
+
+ii. Do budget Supplement in Project CJ37
+
+iii. Do Budget Release in CJ32
+
+26 Aug 2024 Page 31
 
 ---
 
 <!-- Page 32 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
-* CJ20N - CJ20N Project Builder
-* ME51N - ME51N-Create Purchase Requisition
-* ME52N - ME52N Change Purchase Requisition
-* CJ30 - CJ30 Change Project Original Budget
-* CJ32 - CJ32-Change Project Release
-* CJ34 - Project Budget Transfer
-* CJ37 - CJ37Budget Supplement in Project
+*   CJ20N - CJ20N Project Builder
+*   ME51N - ME51N-Create Purchase Requisition
+*   ME52N - ME52N Change Purchase Requisition
+*   CJ30 - CJ30 Change Project Original Budget
+*   CJ32 - CJ32 Change Project Release
+*   CJ34 - Project Budget Transfer
+*   CJ37 - CJ37Budget Supplement in Project
 
 Back to table of content
 
@@ -1215,20 +1656,21 @@ Back to table of content
 
 <!-- Page 33 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 4.2.4 Account Receivable (AR) budget receipting (Receipting)
 4.2.4.1 Steps
 a. Go to the Finance Module, click on the Receipting.
+
 Finance
 Upload Grex
 Receipting
 
 b. Filter for “Receipting” to continue evaluation.
+
 Filters
 Mode
 All
@@ -1237,13 +1679,16 @@ Receipting
 Transfer Budget
 
 c. Click Receipting to evaluate
+
 Project List
 Show 10 rows Excel PDF Print
-Search: 810
-No Project SAP ID Funding Source PL Name Start Date End Date Status Action
-1 MMUE/2100 FRDGS 2021-09-01 2022-08-31 Approved Receipting
-2 MMUE/2100 FRDGS 2021-08-15 2022-08-14 Approved Receipting
-3 MMUE/2100 FRDGS 2021-08-15 2022-08-14 Approved Receipting
+Search:
+
+| No | Project SAP ID | Funding Source | PI Name | Start Date | End Date | Status | Action |
+|---|---|---|---|---|---|---|---|
+| 1 | MMUE/2100 | FRDGS | | 2021-09-01 | 2022-08-31 | Approved | Receipting |
+| 2 | MMUE/2100 | FRDGS | | 2021-08-15 | 2022-08-14 | Approved | Receipting |
+| 3 | MMUE/2100 | FRDGS | | 2021-08-15 | 2022-08-14 | Approved | Receipting |
 
 d. Verify on proof of payment
 
@@ -1253,30 +1698,37 @@ d. Verify on proof of payment
 
 <!-- Page 34 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
+
 List Project / Details
+
 MMUE/
+
 Proof of payment
 Download
+
 *SAP Code
 MMUE/
+
 *Receipt Ref No
+
 *Upload Receipt
 Choose File No file chosen
+
 Submit
+
 e. Update Receipt Ref No and upload the receipt
+
 Back to table of content
+
 26 Aug 2024 Page 34
 
 ---
 
 <!-- Page 35 -->
-
-
 
 RMS Manual
 
@@ -1298,11 +1750,12 @@ Transfer Budget
 c. Click Transfer Budget in action column
 Project List
 Show 10 rows Excel PDF Print
-No Project SAP ID Funding Source PL Name Start Date End Date Status Action
-1 MMUE/180021 TM R&D Raphael Phan Chong Wei 2018-11-01 2020-10-31 Approved Transfer Budget
+No Project SAP ID Funding Source PI Name Start Date End Date Status Action
+1 MMUE/180021 TM R&D Raphael Phan Ching Wei 2018-11-01 2020-10-31 Approved Transfer Budget
 2 MMUE/180010 TM R&D MD. SHABIUL ISLAM 2019-07-01 2020-06-30 Approved Completed
 3 MMUE/180018 TM R&D Kalaiarasi A/P Somasundaram 2019-01-11 2019-04-30 Approved Transfer Budget
-Showing 1 to 3 of 3 entries Previous 1 Next
+Showing 1 to 3 of 3 entries
+Previous 1 Next
 
 d. Check on the SAP network given in RMS
 e. Update budget in SAP (FM)
@@ -1314,8 +1767,6 @@ f. Update SAP FM Transaction Reference in RMS
 
 <!-- Page 36 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
 
@@ -1326,10 +1777,10 @@ List Project / Details
 MMUE/180021 - Emotionally-Aware Human-Expressive Virtual Assistant for Affective Ambience
 
 | Fund Type | Funder Center/Faculty | Start Date | End Date | WBS Element | Amount | Network No |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|---|---|---|---|---|---|---|
 | EXTERNAL - TM R&D | UTCFED | 2018-11-01 | 2020-10-31 | R&D Equipment.01 | RM 34286.00 | 4119074 |
 | EXTERNAL - TM R&D | UTCFED | 2018-11-01 | 2020-10-31 | R&D Labour .02 | RM 693168.00 | 4119074 |
-| EXTERNAL - TM R&D | UTCFED | 2018-11-01 | 2020-10-31 | R&D Material .03 | RM 18000.00 | 4119074 |
+| EXTERNAL - TM R&D | UTCFED | 2018-11-01 | 2020-10-31 | R&D Material 03 | RM 18000.00 | 4119074 |
 | EXTERNAL - TM R&D | UTCFED | 2018-11-01 | 2020-10-31 | R&D T&T.04 | RM 26000.00 | 4119074 |
 | EXTERNAL - TM R&D | UTCFED | 2018-11-01 | 2020-10-31 | R&D Incidental.05 | RM 129710.00 | 4119074 |
 | EXTERNAL - TM R&D | UTCFED | 2018-11-01 | 2020-10-31 | MMU FAC (TMRND only) | RM 45058.20 | 4119074 |
@@ -1350,19 +1801,21 @@ Back to table of content
 
 <!-- Page 37 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 4.3 Project Progress Monitoring
+
 This module is for project leaders to update and monitor their project in terms of physical progress and financial progress. The system will automatically transform milestones and activities updated in RMS into a monthly project progress. Project Leader is required to update in the physical progress and the system will record the expenses into financial progress
 
 4.3.1 Project Progress Reporting
+
 Progress update is on a monthly basis and on every 20th of every month. An email reminder will be sent out on every 15th, 17th and 20th day of the month requesting the project leader to update their project progress.
 
 The button of Progress Report will be disable if project in below status
+
 1. Draft
 2. Request-virement
 3. Request- Add/Remove
@@ -1370,12 +1823,17 @@ The button of Progress Report will be disable if project in below status
 5. End of Project (EOP)
 
 4.3.2 Steps to update progress
+
 a. Go to Project Management, select project to update progress and click Progress Report
 
 List Project / Details
+
 Information Budget Plan Milestone Expenses
+
 PROJECT INFORMATIONS
+
 Approved
+
 Data Description
 Project Title
 Project SAP ID
@@ -1383,7 +1841,6 @@ SAP Network No
 Cost Centre
 Receipt No
 SAP Ref No
-Edit Progress Report
 
 b. The system will display the following tabs
 ☐ Physical Progress Plan (plan & actual graph) (Require monthly update from project leaders)
@@ -1394,8 +1851,6 @@ b. The system will display the following tabs
 ---
 
 <!-- Page 38 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -1410,14 +1865,15 @@ RM 748016.22
 Total amount spent
 2000
 
-Physical Progress Plan
-Financial Progress Plan
-
 Estimated project duration
 11 months
 
+Physical Progress Plan
+Financial Progress Plan
+
 Physical Progress
-Plan Actual
+Plan
+Actual Plan
 
 100
 90
@@ -1451,19 +1907,20 @@ Rizaluddin Kaspin
 
 Project files
 No file available
-Add files Manage files
+Add files
+Manage files
 
 From the Physical Progress Plan tab, click the Update Progress button to update the physical progress for the reporting month
 
 | Month | Plan (%) | Actual (%) | Comment | Action |
-| :--- | :--- | :--- | :--- | :--- |
+|---|---|---|---|---|
 | Feb 2019 | 8 % | 0 % | | Details |
 | Mar 2019 | 17 % | 0 % | | Details |
 | Apr 2019 | 25 % | 0 % | | Details |
 | May 2019 | 33 % | 0 % | | Details |
 | Jun 2019 | 42 % | 0 % | | Details |
 
-The system only allows reporting for the current month and current actual project progress should not be lower or the same as last month's plan. For example , the Mar 2019 progress (see above picture), should be more than 8%(Feb 2019 plan).
+The system only allows reporting for the current month and current actual project progress should not be lower or the same as last month’s plan. For example , the Mar 2019 progress (see above picture), should be more than 8%(Feb 2019 plan).
 
 26 Aug 2024 Page 38
 
@@ -1471,11 +1928,12 @@ The system only allows reporting for the current month and current actual projec
 
 <!-- Page 39 -->
 
-
-
 RMS Manual
+
 List Project / Details / Progress Report / Progress Details
+
 Progress Plan Details
+
 Activity Name
 • To design a feeding method to process MIMO array antenna signal.
 • Framework and Knowledge Base Module Development
@@ -1484,6 +1942,7 @@ Activity Name
 • Research on facial analysis
 • Research on gesture analysis
 • Research on facial synthesis
+
 Plan 8 %
 Actual Plan 0 %
 Month Feb-2019
@@ -1494,8 +1953,10 @@ Project leaders check their project financial progress by clicking the Financial
 
 Total Amount Approved
 RM 748016.22
+
 Total amount spent
 0
+
 Estimated project duration
 11 months
 
@@ -1503,6 +1964,7 @@ Physical Progress Plan Financial Progress Plan
 
 Financial Progress
 Plan Actual Plan
+
 800000
 700000
 600000
@@ -1514,7 +1976,7 @@ Plan Actual Plan
 0
 Dec-2020 Nov-2018 Dec-2018 Jan-2019 Feb-2019 Mar-2019 Apr-2019 May-2019 Jun-2019 Jul-2019 Aug-2019 Sep-2019 Oct-2019 Nov-2019 Dec-2019
 
-4.3.3 Project's Expenses Tab
+4.3.3 Project’s Expenses Tab
 a. Go to Project Management module, choose project from project list and click details
 b. Go to Expenses Tab
 
@@ -1524,21 +1986,19 @@ b. Go to Expenses Tab
 
 <!-- Page 40 -->
 
-
-
 RMS Manual
 
 Information Supporting Document Budget Plan Milestone Expenses
 
-| Budget Type | Total Budget | Spent | Current Balance | Available Balance |
+| Budget Type | Total Budget | Spent ⓘ | Current Balance ⓘ | Available Balance ⓘ |
 | :--- | :--- | :--- | :--- | :--- |
-| R&D Equipment: Special Equipment and Minor Modifications and Repairs.01 | RM 24000.00 | RM 11124.2 | RM 12875.8 | RM 8195.8 |
+| R&D Equipment: Special Equipment and Minor Modifications and Repairs .01 | RM 24000.00 | RM 11124.2 | RM 12875.8 | RM 8195.8 |
 | Temporary & Contract Personnel .02 | RM 43200.00 | RM 10800 | RM 32400 | RM 23400 |
 | R&D Material: Research Materials and Supplies .03 | RM 0.00 | RM 0 | RM 0 | RM 0 |
 | R&D Incidental: Travel and Transportation .04 | RM 10000.00 | RM 0 | RM 10000 | RM 10000 |
 | R&D Incidental: Special Services and Rentals.05 | RM 10000.00 | RM 0 | RM 10000 | RM 10000 |
 | R&D FAC: Facility Admin Cost.06 | RM 0.00 | RM 0 | RM 0 | RM 0 |
-| Total | RM 87200.00 | RM 21924.2 | RM 65275.8 | RM 51595.8 |
+| **Total** | **RM 87200.00** | **RM 21924.2** | **RM 65275.8** | **RM 51595.8** |
 
 Spent : Expenses that have been paid up to date and updated by finance from SAP Grant Expenses (GREX)
 Current Balance : Balance as of last updated by finance.(Budget Total -Spent)
@@ -1552,7 +2012,8 @@ Back to table of content
 
 <!-- Page 41 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
@@ -1571,12 +2032,15 @@ Instruction:
 Choose File No file chosen
 Import Budget
 
-| Posting Date | WBS Element | Ref Document Number | Name | Name of offsetting account | CO object name | Val/COArea Crcy |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 30/11/2017 | MMUE/150013.02.01 | 41751 | | Salary Payable | Temporary and Contract Personnel | 1,800.00 |
-| 21/11/2017 | MMUE/150013.03.01 | 1900017308 | SEM | Shamala a/p Maniam | Research Materials and Supplies | 130.00 |
+Posting Date WBS Element Ref Document Number Name
+30/11/2017 MMUE/150013.02.01 41751
+21/11/2017 MMUE/150013.03.01 1900017308 SEM
 
-c. Generate report in CJ13 (SAP) for Grex Report.
+Name of offsetting account CO object name Val/COArea Crcy
+Salary Payable Temporary and Contract Personnel 1,800.0
+Shamala a/p Maniam Research Materials and Supplies 130.0
+
+c. Generate report in CJJ3 (SAP) for Grex Report.
 
 26 Aug 2024 Page 41
 
@@ -1584,16 +2048,71 @@ c. Generate report in CJ13 (SAP) for Grex Report.
 
 <!-- Page 42 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
+RMS Manual
+
+Display Project Actual Cost Line Items
+
+DB profile DB profile Status Further selection criteria...
+
+Project Management Selections (DB profile: 0000000000001)
+
+Project MMUE/180021
+
+WBS Element to
+Network/order to
+Activity to
+Materials in network to
+
+Cost Elements
+Cost Element to
+Or
+Cost Element Group
+
+Posting Data
+Posting date 01.10.2018 to 31.10.2018
+
+Settings
+Layout /AND KGSU2
+Further Settings...
+
+Display Actual Cost Line Items for Projects
+
+Document Master Record
+
+Layout /GREX grant expense tau_2
+Object PRJ MMUE/180001 TMR (Multi3DScan) Port...
+Cost Element 61901101 To 73160102 Other Revenues-Grant...
+Posting Date 01.01.2018 To 31.10.2018
+
+Posting Date WBS Element RefDocNo Name
+30.09.2018 MMUE/180001.02 44668
+25.09.2018 MMUE/180001.03 1900014522 RESEARCH AND MATERIAL
+03.09.2018 MMUE/180001.02 1900012188 LOE- RESEARCH
+31.08.2018 MMUE/180001.02 44183
+
+Offset_acct name CO object name Val/COArea Crcy Cost Element
+Salary Payable R & D Labour 5,920.00 73160102
+Mazlan Bin Mahadzir R & D Materials 53.80 73160102
+Nur Nadhirah Binti R & D Labour 2,500.00 73160102
+Salary Payable R & D Labour 5,430.00 73160102
+
+d. Transfer data retrieved from GREX into downloaded excel template from RMS.
+Ensure Grex report columns match with template download from RMS.Example: Posting Date,wbs element ,Ref Document Number, Name ,Name of offsetting account and etc
+e. Upload the excel template back into the system. Select file and Click Import Budget
+
+Instruction:
+- Please ensure you are using this template of excel file
+Choose File No file chosen
+Import Budget
+
+26 Aug 2024 Page 42
 
 ---
 
 <!-- Page 43 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -1609,11 +2128,6 @@ Back to table of content
 ---
 
 <!-- Page 44 -->
-
-
-
-MMU
-MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
@@ -1644,11 +2158,8 @@ Towards the end of the project, the system will notify the project leader to upd
 
 a. Go to Project Management ,search and Click the “End of Project” menu. Then click the Detail button to update the report
 
-MMU
-MULTIMEDIA UNIVERSITY
-
+Last Login : 10 Mar 2020
 Welcome,
-
 Dashboard
 Grant Proposal
 Grant Proposal
@@ -1658,20 +2169,12 @@ New Approved Project
 End of Project
 
 End Of Project
-
 List of End of Project
-
 Show 10 rows Excel PDF Print
-
 No Reference ID Requestor Name SAP ID Source Status Action
 1 EOP/5551/2019/310 TM R&D New Application Detail
-
 Showing 1 to 1 of 1 entries
-
 Previous 1 Next
-
-Filters
-Search:
 
 26 Aug 2024 Page 44
 
@@ -1679,45 +2182,62 @@ Search:
 
 <!-- Page 45 -->
 
-
-
 RMS Manual
+
 b. While waiting for finance account reconciliation, PL shall update percentage (%) of milestone and date of completion
+
 End Of Project / Details
+
 Submit to RMC
+
 Project Completion Summary
+
 Project Title
 Project Id
 Fund Utilized (RM) RM
 Fund Left (RM) RM 37108.75
+
 Milestone Achievement ( Required )
-No. Title Percentage Completion Date
-1 Percentage dd/mm/yyyy
-2 Percentage dd/mm/yyyy scroll down
-3 Percentage dd/mm/yyyy
-4 Percentage dd/mm/yyyy
-c. Click Add Item and update the publications (conference or journal).Only publications reported in RRS can be found.
+
+| No. | Title | Percentage | Completion Date |
+| :--- | :--- | :--- | :--- |
+| 1 | | Percentage | dd/mm/yyyy |
+| 2 | | Percentage | dd/mm/yyyy |
+| 3 | | Percentage | dd/mm/yyyy |
+| 4 | | Percentage | dd/mm/yyyy |
+
+scroll down
+
+c. Click Add Item and update the publications (conference or journal). Only publications reported in RRS can be found.
+
 Publication ( Journal )
+
 Add Item
-No. Title First Page (Journal) Action
-No data available
+
+| No. | Title | First Page (Journal) | Action |
+| :--- | :--- | :--- | :--- |
+| | No data available | | |
+
 Project Information Details
+
 SAP ID.
 Ref No. EOP/7532/2020/5101
 Project Title
 Project Funding Source TM R&D
 Project Approval Date 13 Sep 2017
 Project Target Completion Date
+
 Timestamp
-d. Confirm the finance reconciliation report (not applicable for internal funding).Click to submit the report to RMC for further verification
+
+d. Confirm the finance reconciliation report (not applicable for internal funding). Click to submit the report to RMC for further verification
+
 Back to table of content
+
 26 Aug 2024 Page 45
 
 ---
 
 <!-- Page 46 -->
-
-
 
 RMS Manual
 
@@ -1728,27 +2248,28 @@ b. Click on the End of Project menu, search for status new application and click
 
 MMU
 MULTIMEDIA UNIVERSITY
-Welcome,
+Welcome.
 Dashboard
 End of Project
+Spending
+PG Student Applicant
+Finance
+
 End Of Project
 List of End of Project
 Show 10 rows Excel PDF Print
-No Reference ID Requestor Name SAP ID Source Status Action
+No Reference ID Requestor SAP ID Source Status Action
 1 EOP/7790/2020/5202 Tan Swee Leng MMUJI/180272 MMU GRA New Application Detail
 2 EOP/7627/2019/2411 Zakiah Binti Manjanib @ Munjanib MMUE/180055 FRDGS New Application Detail
 3 EOP/7626/2019/2311 Mohd Izwan Bin Mohd Yusoff MMUE/180054 FRDGS New Application Detail
 4 EOP/7625/2019/2211 Salsiah Binti Mohd Ali MMUE/180081 FRDGS New Application Detail
 5 EOP/7624/2019/2111 Aamida Binti Ahmad MMUE/180072 FRDGS New Application Detail
 
-c. Click “ Download Reconcile Report” and do cross checking on expenses made through this project with the finance system (SAP or etc).
+c. Click “Download Reconcile Report” and do cross checking on expenses made through this project with the finance system (SAP or etc).
 d. Check on expenses detail if ok finance shall be endorsed on the report otherwise need to contact project leader for verification or justification.
 
 MULTIMEDIA UNIVERSITY
-Inquire,
-Inspire
-and
-Innovate
+Inquire, Inspire and Innovate
 
 CHECKLIST - END OF PROJECT (EOP)
 (EXTERNAL GRANT)
@@ -1766,26 +2287,18 @@ SECTION 1 . Project Leader Verification
 
 <!-- Page 47 -->
 
-
-
-MMU
-MULTIMEDIA UNIVERSITY
-
 RMS Manual
 
-COVER LETTER : ............
-END OF
-PROJECT (EOP) : ............
-PUBLICATION : ............
-STATUS ASSET : ............
-RESEARCH
-FUNDING
-RECORD : ............
-RECONCILE : ............
+COVER LETTER : ....................................................
+END OF PROJECT (EOP) : ....................................................
+PUBLICATION : ....................................................
+STATUS ASSET : ....................................................
+RESEARCH FUNDING RECORD : ....................................................
+RECONCILE : ....................................................
 
 SECTION 2. Finance Verification
 
-RECONCILE ........................................
+RECONCILE ....................................................................
 
 SIGNATURE :
 DATE :
@@ -1808,13 +2321,13 @@ DATE :
 
 <!-- Page 48 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
-MULTIMEDIA UNIVERSITY
+MULTIMEDIA UNIVERSITY®
+
 Inquire,
 Inspire
 and
@@ -1822,15 +2335,15 @@ Innovate
 
 RESEARCH MANAGEMENT CENTRE (RMC)
 Grant Reconciliation as at 10 Mar 2020
-MMU1/180272 : Regulatory Framework For Biometric Technology Security: A Socio-Legal Study
+MMU/180272 : Regulatory Framework For Biometric Technology Security: A Socio-Legal Study
 Project Leader : Tan Swee Leng
 
-| No | Trans date | WBS__Element | Student /Debit ID | Ref No | Budget Type | Description | Amount (RM) |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | 2018-12-31 | MMU1/180272.02 | 45617 | | R & D Labour | Salary Payable | 3100.00 |
-| 2 | 2018-11-30 | MMU1/180272.02 | 45472 | | R & D Labour | Salary Payable | 3100.00 |
-| 3 | 2018-10-31 | MMU1/180272.02 | 45025 | | R & D Labour | Salary Payable | 3100.00 |
-| 4 | 2020-02-29 | MMU1/180272.02 | 49442 | | R & D Labour | Salary Payable | 3100.00 |
+| No | Trans date | WBS__Element | Student /Debtor ID | Ref No | Budget Type | Description | Amount (RM) |
+|---|---|---|---|---|---|---|---|
+| 1 | 2018-12-31 | MMU/180272.02 | 45617 | | R & D Labour | Salary Payable | 3100.00 |
+| 2 | 2018-11-30 | MMU/180272.02 | 45472 | | R & D Labour | Salary Payable | 3100.00 |
+| 3 | 2018-10-31 | MMU/180272.02 | 45025 | | R & D Labour | Salary Payable | 3100.00 |
+| 4 | 2020-02-29 | MMU/180272.02 | 49442 | | R & D Labour | Salary Payable | 3100.00 |
 
 e. After signed the report , upload back into RMS for RMC verification
 
@@ -1838,7 +2351,7 @@ EOP
 Cover Letter Final Report Application
 * Final Reconcile Report
 Choose File No file chosen
-PDF Format only
+* PDF Format only
 Save & Submit
 
 f. Project reconcile complete .
@@ -1851,7 +2364,8 @@ Back to table of contents
 
 <!-- Page 49 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
@@ -1873,42 +2387,41 @@ Next
 
 <!-- Page 50 -->
 
-
-
-MMU
-MULTIMEDIA UNIVERSITY
-
 RMS Manual
 
 5.0 Hiring
-*   Research personnel (temporary & contract personnel) can be hired using external and internal research grant budgets. Details of research personnel hiring can be referred to Guideline/Term and Condition in the website Hiring in Research
-*   Research Job personnel is entitled for EPF, EIS and Socso payment and amount of contribution can be referred here :
-    https://www.perkeso.gov.my/index.php/en/social-security-protection/employer-employee-eligibility/rate-of-contributions
-*   Online register EPF account :https://www.kwsp.gov.my/member/register
-*   Research personnel scholarship positions (GRA / RS), are required to apply online for postgraduate study admission at https://admission.mmu.edu.my/ .Details for postgraduate study application can be found in the website of Institute for Postgraduate Studies (IPS) -(https://ips.mmu.edu.my/)
+Research personnel (temporary & contract personnel) can be hired using external and internal research grant budgets. Details of research personnel hiring can be referred to Guideline/Term and Condition in the website Hiring in Research
+Research Job personnel is entitled for EPF, EIS and Socso payment and amount of contribution can be referred here :
+https://www.perkeso.gov.my/index.php/en/social-security-protection/employer-employee-eligibility/rate-of-contributions
+Online register EPF account :https://www.kwsp.gov.my/member/register
+Research personnel scholarship positions (GRA / RS), are required to apply online for postgraduate study admission at https://admission.mmu.edu.my/ .Details for postgraduate study application can be found in the website of Institute for Postgraduate Studies (IPS) -(https://ips.mmu.edu.my/)
 
 5.1 Hiring Process flow
 
-1.  Preparing
-    *   Action: PL invite candidate into RMS. Candidate update information
-    *   Timeline: Depend on submission
-    *   Status: Update Information
-2.  Upload Document
-    *   Action: Candidate to upload all supporting documents
-    *   Timeline: Depend on submission
-    *   Status: Upload Document
-3.  PL Review
-    *   Action: PL decide on duration and salary
-    *   Timeline: Depend on submission
-    *   Status: Project Leader Review Application
-4.  RMC Verify
-    *   Action: RMC check on the document . RMC Admin checking the request in the RMS and in the SAP
-    *   Timeline: 3 Working days
-    *   Status: RMC Review
-5.  Payroll
-    *   Action: HCM update the hiring instruction
-    *   Timeline: 3-5 Working days (except for 1st to 15th of every month)
-    *   Status: Application Complete
+1. Preparing
+Action: PL invite candidate into RMS. Candidate update information
+Timeline: Depend on submission
+Status: Update Information
+
+2. Upload Document
+Action: Candidate to upload all supporting documents
+Timeline: Depend on submission
+Status: Upload Document
+
+3. PL Review
+Action: PL decide on duration and salary
+Timeline: Depend on submission
+Status: Project Leader Review Application
+
+4. RMC Verify
+Action: RMC check on the document . RMC Admin checking the request in the RMS and in the SAP
+Timeline: 3 Working days
+Status: RMC Review
+
+5. Payroll
+Action: HCM update the hiring instruction
+Timeline: 3-5 Working days (except for 1st to 15th of every month)
+Status: Application Complete
 
 5.2 New research personnel hiring
 5.2.1 Invitation By Project Leader : New Hiring
@@ -1922,35 +2435,37 @@ a. Project Leader or members must ensure the candidate is not currently hired by
 
 <!-- Page 51 -->
 
-
-
 RMS Manual
-Last Login: 17 Dec 2020
-Filters New Applicant
-Search:
-Post Applied Appointment Date Status Action
-Graduate Research Assistant 15 September 2018 Revert to Upload Detail
-Graduate Research Assistant 15 September 2018 Revert to Project Leader Detail
-Graduate Research Assistant 15 August 2018 Application Completed Detail
-Research Scholar 01 September 2020 Application Completed Detail
-Graduate Research Assistant 01 September 2020 Application Completed Detail
-Graduate Research Assistant 01 September 2020 Application Completed Detail
-Research Assistant 01 September 2020 Appointment End Detail
 
 b. Fill in the candidate's details. Make sure all details are keyed in correctly, especially name, identification number and etc. Click on the Save then Submit to send the invitation process to the candidate.
 
 List Researcher / Add New Applicant
+
 New Researcher Personnel
+
 Instructions:
 All appointment can only be made once all supporting documents submitted in this system e.g cimb bank account, valid visa, and etc.
-* Project SAP ID Select
-* Full Name (Must follow as ic /passport) Full Name
-*Email Address Email Address
-* Position Select
-* Nationality Local
+
+* Project SAP ID
+Select
+
+* Full Name (Must follow as ic /passport)
+Full Name
+
+*Email Address
+Email Address
+
+* Position
+Select
+
+* Nationality
+Local
 Non-Local
-* Status Full Time
+
+* Status
+Full Time
 Part Time
+
 Save
 
 Info : It is very important to spell names according to the identity card (Malaysian) or passport (International).
@@ -1960,15 +2475,11 @@ c. System will notify the candidates through email. Project leaders need to wait
 d. After the candidate has provided all details, project leaders need to select the candidate with status waiting PL approval. Then click the Detail button
 
 List Researcher
-Show 10 rows Excel PDF Print
-No SAP ID PL Name Applicant Name Post Applied
-1 Nama Pemohon Project
 
-Filters New Applicant
-Search:
-Applied Status Action
-nt Coordinator Waiting for Project Leader Approval Detail
-Cancel
+Show 10 rows Excel PDF Print
+
+No SAP ID PL Name Applicant Name Post
+1 Nama Pemohon Project
 
 26 Aug 2024 Page 51
 
@@ -1976,57 +2487,44 @@ Cancel
 
 <!-- Page 52 -->
 
-
-
 RMS Manual
 
 e. Evaluate and save the application
-*   Make sure appointment date must be within the project period
-*   Appointment shall be done before any task is given to the candidate. For example, to enable salary pay using payout(using payroll system) in Jan 2020, application must be submitted completely before 1st Jan 2020.
-*   The payroll requires the start date of the appointment must be one month and 3 months in advance of the payout date for local and international. Otherwise manual claims of stipend need to be done using a letter of engagement (LOE) for not more than 1 month.
-*   Stipend manual claim can be submitted through RMS after Human Resource complete review the application (“Application Completed” status).
-*   Fill in the appointment start date and monthly stipend. For job research personnel posts, the system will automatically calculate the EPF, EIS and Socso for contribution research grant. Employee’s contribution will be deducted from research personnel’s monthly salary. As far as grant is concerned the total monthly expense is given by Monthly salary + EPF, EIS& Socso(employer contribution). Refer to the hiring documents for more details.
+* Make sure appointment date must be within the project period
+* Appointment shall be done before any task is given to the candidate. For example, to enable salary pay using payout(using payroll system) in Jan 2020, application must be submitted completely before 1st Jan 2020.
+* The payroll requires the start date of the appointment must be one month and 3 months in advance of the payout date for local and international. Otherwise manual claims of stipend need to be done using a letter of engagement (LOE) for not more than 1 month.
+* Stipend manual claim can be submitted through RMS after Human Resource complete review the application (“Application Completed” status).
+* Fill in the appointment start date and monthly stipend. For job research personnel posts, the system will automatically calculate the EPF, EIS and Socso for contribution research grant. Employee’s contribution will be deducted from research personnel’s monthly salary. As far as grant is concerned the total monthly expense is given by Monthly salary + EPF, EIS& Socso(employer contribution). Refer to the hiring documents for more details.
 
-Researcher Info
-Salary/Stipend Details
+Researcher Info Salary/Stipend Details
 
 Duration of Appointment
-Date From
-2018-09-01
+Date From 2018-09-01
+Date To 2018-12-31
+Month of Appointment : 4 months
 
 Proposed Salary
-Monthly Salary (RM)
-RM 1000
+Monthly Salary (RM) RM 1000
+Total Salary : RM 4000
 
 Socso and KWSP Employer Contribution
-Total Socso Amount
-RM 73.4
-
-Total EPF Amount
-Employer Contribution
-(0.15%)
-RM 600
+Total Socso Amount RM 73.4
+Total EPF Amount Employer Contribution (0.15 %) RM 600
+Total Contribution : RM 673.4
 
 Budget Allocation
-Current Budget Allocation (RM)
-RM 121500
-
-Total Spend (RM)
-RM 4673.4
-
-Budget Balance (RM)
-RM 116827
+Current Budget Allocation (RM) RM 121500
+Total Spend (RM) RM 4673.4
+Budget Balance (RM) RM 116827
 
 Evaluate this records
 
 f. Project leaders (PL) to make decision to accept or amend before submitting to RMC
 
 Evaluation
-
-Decision:
+Decision :
 Please select your decision
 Decision is required
-
 Submit
 
 26 Aug 2024 Page 52
@@ -2035,26 +2533,24 @@ Submit
 
 <!-- Page 53 -->
 
-
-
 RMS Manual
+
 g. Revert to candidate if correction is needed or Submit to RMC to continue the hiring process
 
 5.2.2 Invitation By Project Member : New Hiring
+
 a. Follow same step as Project Leader
 b. Need approval from Project Leader
 
 5.2.3 Research Personnel : New Hiring
-a. The candidates will receive an invitation from the project leader or project member.He/she need to log in as research personnel Click Complete My information to complete the details request
 
-MMU
-MULTIMEDIA UNIVERSITY
+a. The candidates will receive an invitation from the project leader or project member.He/she need to log in as research personnel Click Complete My information to complete the details request
 
 Invitation
 
-Dear [Redacted],
+Dear [REDACTED]
 
-You has been invited to join the project [Redacted] led by [Redacted]
+You has been invited to join the project [REDACTED] led by [REDACTED]
 
 To apply for a position in the project, please complete the form by clicking the link below
 
@@ -2075,75 +2571,71 @@ b. Login for the first time,and create a password.
 
 <!-- Page 54 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
+
 Create Password
+
 Password
+Password
+
 Password confirmation
 Confirmation
+
 Save
+
 c. Click detail button to continue
+
 MMU
 MULTIMEDIA UNIVERSITY
+
 Welcome,
+
 Dashboard
+
 New
-MMUE
+
+MMUE/
+
 Project Leader :
 Post : Research Assistant
+
 Details
+
 d. Make sure the personal details are correctly provided.
 - Name (must follow identity card / passport)
 - Local Address in Malaysia (for international candidates)
+
 e. Update details: Personal information, Academic & Professional Qualification, Research experience (optional) and working experience (optional).
-26 Aug 2024 Page 54
-MMU
-MULTIMEDIA UNIVERSITY
-RMS Manual
-Create Password
-Password
-Password confirmation
-Confirmation
-Save
-c. Click detail button to continue
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome,
-Dashboard
-New
-MMUE
-Project Leader :
-Post : Research Assistant
-Details
-d. Make sure the personal details are correctly provided.
-- Name (must follow identity card / passport)
-- Local Address in Malaysia (for international candidates)
-e. Update details: Personal information, Academic & Professional Qualification, Research experience (optional) and working experience (optional).
+
 26 Aug 2024 Page 54
 
 ---
 
 <!-- Page 55 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Step 1
 Complete your information
+
 Step 2
 Project Leader Review Application
+
 Step 3
 RMC Review Application
+
 Step 4
 Upload Supporting Document
+
 Step 5
 Appointment Letter
+
 Step 6
 HR Review Application
 
@@ -2152,21 +2644,25 @@ Application
 Personal Information Required
 by Research Management System (RMS)
 IC number, phone number and address.
+
 Update
 
 Academic & Professional Qualifications Required
 by Research Management System (RMS)
-Institution, course, qualification, cgpa, date from, date to and date awarded.
+Institution , course, qualification, cgpa , date from, date to and date awarded.
+
 Update
 
 Research Experience and Publication(Published only)
 by Research Management System (RMS)
 If you have any research experience and publication (published only) such as conference or journal, please update by click on "Update" button.
+
 Update
 
 Working Experience
 by Research Management System (RMS)
 If you have any working experience, please update by click on "Update" button.
+
 Update
 
 Submit to Verifier
@@ -2176,14 +2672,19 @@ g. Once the application is verified, the candidate will get a notification from 
 
 Step 1
 Complete your information
+
 Step 2
 Project Leader Review Application
+
 Step 3
 RMC Review Application
+
 Step 4
 Upload Supporting Document
+
 Step 5
 Appointment Letter
+
 Step 6
 HR Review Application
 
@@ -2195,32 +2696,18 @@ Supporting Document (depending on the position applied e.g below for position RA
 
 <!-- Page 56 -->
 
-
-
 RMS Manual
 
 | Item | File |
 | :--- | :--- |
-| Copy of Official Identification Document (new application only) | Download NRIC |
-| • Malaysian | Download Birth Certificate |
-| o NRIC | |
-| o Birth Certificate (except for Student Worker & Consultant) | |
-| • Non-Malaysian | |
-| o Passport | |
-| o Visa (except for Research Officer & Post Doc) | |
+| Copy of Official Identification Document (new application only) | Download NRIC<br>Download Birth Certificate |
+| • Malaysian<br>  o NRIC<br>  o Birth Certificate (except for Student Worker & Consultant)<br>• Non-Malaysian<br>  o Passport<br>  o Visa (except for Research Officer & Post Doc) | |
 | Passport Size Photo (new application only) | Download |
-| Latest Curriculum Vitae (CV) | Download |
-| • New application only | |
-| Official Academic Certificate/s (new application only) | Download |
-| • This can be replaced with a letter from the Faculty Dean to confirm the completion of study for those who don't have an official academic transcript yet | |
-| • SPM, Diploma or Higher Level | |
-| Official Academic Transcript/s (new application only) | Download |
-| • Undergraduate degree or master by coursework | |
-| • Can use the latest Academic Transcript available if the final one is not out yet | |
-| Completed Staff Profile Form (new application only) | Download |
-| • Click here to download KMANG form | |
-| Completed Personal Data Protection Form (new application only) | Download |
-| • Click here to download PDPA form | |
+| Latest Curriculum Vitae (CV)<br>• New application only | Download |
+| Official Academic Certificate/s (new application only)<br>• This can be replaced with a letter from the Faculty Dean to confirm the completion of study for those who don’t have an official academic transcript yet<br>• SPM, Diploma or Higher Level | Download |
+| Official Academic Transcript/s (new application only)<br>• Undergraduate degree or master by coursework<br>• Can use the latest Academic Transcript available if the final one is not out yet | Download |
+| Completed Staff Profile Form (new application only)<br>• Click here to download KMANG form | Download |
+| Completed Personal Data Protection Form (new application only)<br>• Click here to download PDPA form | Download |
 | Copy of CIMB Bank Account Statement (new application only – unless accounts have changed account) | Download |
 | Copy of EPF Statement (new application only - except Student Worker) | Download |
 
@@ -2237,8 +2724,6 @@ Back to table of content
 ---
 
 <!-- Page 57 -->
-
-
 
 RMS Manual
 
@@ -2257,17 +2742,34 @@ No SAP ID PL Name Applicant Name Post Applied Status Action
 b. Then click Renew button
 
 List Researcher / Hiring Details
-Step 1 Update Information
-Step 2 Project Leader Review Application
-Step 3 RMC Review Application
+
+Step 1
+Update Information
+
+Step 2
+Project Leader Review Application
+
+Step 3
+RMC Review Application
+
 Application has been completed.
+
 Appointment Letter
+
 Researcher Info Supporting Documents Salary/Stipend Details
+
 Applicant Details
+
 Termination Renew
-Step 4 Upload Supporting Document
-Step 5 Review Supporting Document
-Step 6 HR Review Application
+
+Step 4
+Upload Supporting Document
+
+Step 5
+Review Supporting Document
+
+Step 6
+HR Review Application
 
 c. Specify the new duration of appointment
 
@@ -2276,8 +2778,6 @@ c. Specify the new duration of appointment
 ---
 
 <!-- Page 58 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -2298,7 +2798,7 @@ Project Details
 SAP ID
 Project Title
 
-Durations of Appointment
+Duration of Appointment
 Date From
 2019-03-01
 Date To
@@ -2343,10 +2843,6 @@ Get a renewal notification and continue updating the application (Refer to subse
 
 <!-- Page 59 -->
 
-
-
-MMU
-MULTIMEDIA UNIVERSITY
 RMS Manual
 
 5.4 Cancel or Termination of Appointment
@@ -2354,21 +2850,22 @@ RMS Manual
 a. Cancel of Appointment can be made by clicking the End o contract (red button). This is applicable only if research personnel is yet to be approved or the statuses still waiting for project leader verification
 
 List Researcher
+
 Show 10 rows Excel PDF Print
 
-| No | SAP ID | PL Name | Applicant Name | Post Applied | Status | Action |
-|---|---|---|---|---|---|---|
-| 1 | | | | Research Assistant | Application Completed | Detail |
-| 2 | | | | Research Assistant | Revert to Project Leader | Detail Cancel |
-| 3 | | | | Research Assistant | Application Completed | Detail |
+| No | SAP ID | PL Name | Applicant Name |
+| :--- | :--- | :--- | :--- |
+| 1 | [Redacted] | [Redacted] | [Redacted] |
+| 2 | [Redacted] | [Redacted] | [Redacted] |
+| 3 | [Redacted] | [Redacted] | [Redacted] |
 
 Showing 1 to 3 of 3 entries
-Previous 1 Next
 
 b. Termination of Appointment can only be done for appointment with “Application Complete” status in RMS
 - Step 1, go to Hiring , Search for appointment that needs to be terminated.Click Detail button and then click End Of Contract button (red button)
 
 List Researcher / Hiring Details
+
 End of Contract Renew
 
 Back to table of content
@@ -2379,79 +2876,159 @@ Back to table of content
 
 <!-- Page 60 -->
 
+RMS Manual
 
+5.5 Hiring Evaluation by RMC
+5.5.1 Steps
+a. Go to Hiring Module, click the List Application and Search for “Waiting for RMC Approval” Status then Click Detail
+
+List Researcher
+Show 10 rows Excel PDF Print
+Search:
+Filters
+
+| No | SAP ID | PL Name | Applicant Name | Post Applied | Status | Action |
+|---|---|---|---|---|---|---|
+| 1 | MMUE/180018 | Kalaiarasi A/P Sonai Muthu | SHAARVEENASH A/P THURAISAMY | Research Scholar | Waiting for RMC Approval | Detail |
+| 2 | MMUE/180018 | Kalaiarasi A/P Sonai Muthu | MANIVANAN A/L SEHGAR | Research Scholar | Waiting for RMC Approval | Detail |
+| 3 | MMUE/180010 | MD. SHABIUL ISLAM | Md. Mushfiqur Rahman | Research Scholar | Waiting for RMC Approval | Detail |
+
+Showing 1 to 3 of 3 entries
+Previous 1 Next
+
+b. Check Researcher Info > Check Hiring detail
+• Check on criteria Hiring, international or national requirement. Check with HCM the requirements needed.
+• Requirement for international student hiring e.g minimum wages.
+• Please make sure appointment date must in the project active period
+• To enable salary pay using payroll, the start appointment date must be one month ahead for local ,3 months ahead for international.
+
+List Researcher / Hiring Details
+
+Step 1 Update Information
+Step 2 Project Leader Review Application
+Step 3 RMC Review Application
+
+Waiting for Research Management Center (RMC) review the application.
+
+Project leader comment :
+• Develop storyboard, user flows, process flows and site maps to effectively communicate interaction and design ideas. Perform user research and evaluate user feedback Process knowledge of current and emerging technology /product/trends related to virtual
+
+Researcher Info Salary/Stipend Details
+
+1st Level Checking
+
+Applicant Details
+SAP ID MMUE/180018
+Name SHAARVEENASH A/P THURAISAMY
+
+c. Check Hiring detail (Check appointment date, Salary)
+• Budget availability in RMS (Commitment and Grant Expenses Tab)
+• check project budget (cross checked with SAP)* S_ALR_87013558
+FMAVCR01 - FMAVCR01 Display Annual Data of Control Obj.
+S_ALR_87013558 - S_ALR_87013558 Budget/Actual/Commitmt/Rem.Plan/Assgn
+
+Step 4 RMC Review Supporting Document
+Step 5 Appointment Letter
+
+communicate interaction and design ideas. Perform user research and evaluate user feedback Process knowledge of current and
+Evaluate this
+
+26 Aug 2024 Page 60
 
 ---
 
 <!-- Page 61 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
-Researcher Info Salary/Stipend Details
+
+Researcher Info
+Salary/Stipend Details
 Evaluate this records
+
 Salary Details
-Duration of Appointment 01-Nov-2018 to 30-Apr-2020 ( 18 months )
-Monthly Salary (RM) RM 2500.00
-Total Salary (RM) RM 45000.00
+Duration of Appointment
+01-Nov-2018 to 30-Apr-2020 ( 18 months )
+Monthly Salary (RM)
+RM 2500.00
+Total Salary (RM)
+RM 45000.00
+
 d. Click Evaluate this record button > Decision to approve or revert
-● Indicate date in any comment for future reference
-● And copy all previous justification if more than one time revert to user/applicant
+• Indicate date in any comment for future reference
+• And copy all previous justification if more than one time revert to user/applicant
+
 List Researcher / Hiring Details / Evaluation
+
 Evaluation
+
 Decision :
 Please select your decision
+
 Submit
+
 Back to table of content
+
 26 Aug 2024 Page 61
 
 ---
 
 <!-- Page 62 -->
 
-
-
 RMS Manual
+
 5.6 Evaluation and Approving Hiring by HCM
 5.6.1 Socso Contribution Rate (Employer) (in Tools )
 a. Click Socso Contribution Rate (Employer) button
 i. Click +New Rate to add in new salary for socso
 ii. Click edit button to edit existing contribution rate
+
 5.6.2 Socso Contribution Rate (Employer)KWSP Contribution Rate (Employer)
 a. Click KWSP Contribution Rate (Employer) >Change Employer Percentage (refer to rate contribution table) > key in number format (x.xx , 0.13) > Click Save when done
+
 KWSP Contribution Rate (Employer)
+
 KWSP Percentage
+
 *Employer Percentage
 0.13
+
 Save
+
 5.6.3 Hiring Evaluation and Approval at HCM
 5.6.3.1 New / Renew steps
-a. Click on the Hiring , select List of HCM Pending Task (new/ renew)
-b. All application with the 'Waiting HCM Approval' status will be displayed
+a. Click on the Hiring , select List Of HCM Pending Task (new/ renew)
+b. All application with the Waiting HCM Approval status will be displayed
+
 List of HCM Pending Task
+
 Show 10 rows Excel PDF Print
-Search:
+
 No SAP ID PL Name Applicant Name Post Applied Appointment Date Status Action
 1 MMUE/15... Graduate Research Assistant 01 September 2021 Waiting for HCM Approval Detail
-2 MMUE/180... Vong Seng Heng
+2 MMUE/180... Graduate Research Assistant 01 September 2021 Waiting for HCM Approval Detail
+
 c. Click detail button to check the hiring application
 i. Research Personnel Information
 ii. Supporting Document
 iii. Update payroll start date and perna no
+
 26 Aug 2024 Page 62
 
 ---
 
 <!-- Page 63 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
-Researcher Info Supporting Documents Salary/Stipend Details Appointment Summary
+Researcher Info Supporting Documents Salary/Stipend Details
 Approve LOE Appointment Letter
+Appointment Summary
 
 Salary Details
 Duration of Appointment 01-Aug-2021 to 31-Dec-2021 ( 5 months )
@@ -2462,11 +3039,13 @@ Total Salary (RM) RM 11500.00
 HCM Purpose
 Payroll Date: 2021-09-01
 Perna No: perna no
+
 Update
 
 d. For Job Application RO/ RA/ Project Coordinator / Post Doc
 i. Update Epf percentage (%) (Employer)
 ii. Download the Appointment Letter and get approval signature
+
 Evaluate this records Appointment Letter
 
 iii. Upload the approved appointment letter (Click the “Evaluate this records”) into the RMS
@@ -2475,11 +3054,14 @@ Evaluation
 
 Decision :
 Issue Appointment Letter
+
 Appointment Letter
 Choose File No file chosen
+
 Submit
 
 iv. After the appointment accepted by the candidate, download all document for HCM SSO submission
+
 e. For Scholar Appointment GRA
 i. Click Approve button if everything is in order
 ii. Download all document for HCM SSO submission
@@ -2490,24 +3072,18 @@ ii. Download all document for HCM SSO submission
 
 <!-- Page 64 -->
 
-
-
 RMS Manual
 
 iii. Click ‘Document has been updated in HR System’ to indicate payroll instruction has been updated
 
 f. Another option, use filter function can be used for query by clicking the Filters on top right screen and select the “Waiting for HCM Approval”
 
-5.6.3.2 End of Contract.
+5.6.3.2 End of Contract .
 In the list of termination users can view all terminations of research personnel.
 
 List of Termination
 
 Show 10 rows Excel PDF Print
-
-Filters New Applicant
-
-Search:
 
 | No | SAP ID | PL Name | Applicant Name | Post Applied | Action |
 |---|---|---|---|---|---|
@@ -2516,10 +3092,12 @@ Search:
 | 3 | MMUE/180026 | Sim Kok Swee | Ho Chin Wei | Research Assistant | Detail |
 | 4 | MMUE/180026 | Sim Kok Swee | Ashwin Patel AVL Harilal | Research Assistant | Detail |
 | 5 | MMUE/180024 | Goh Kah Ong Michael | Poh Li Zhen | Research Assistant | Detail |
-| 6 | MMUE/180020 | Tan Saw Chin | Arise Sarang | Research Assistant | Detail |
+| 6 | MMUE/180020 | Tan Saw Chin | Arise Saranathan | Research Assistant | Detail |
 | 7 | MMUE/180020 | Tan Saw Chin | Hannah Nabilah | Research Scholar | Detail |
 
-Showing 1 to 7 of 7 entries Previous 1 Next
+Showing 1 to 7 of 7 entries
+
+Previous 1 Next
 
 Back to table of content
 
@@ -2532,8 +3110,6 @@ Next
 ---
 
 <!-- Page 65 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -2568,24 +3144,18 @@ Extension request process flow
 
 Request List
 Show 10 rows Excel PDF Print
-
-| No | Project SAP ID | Funding Source | PL Name |
-| :--- | :--- | :--- | :--- |
-| 1 | MMUE | FRGS | |
-| 2 | MMUE | FRGS | |
-
+No Project SAP ID Funding Source PL Name
+1 MMUEF... FRGS ...
+2 MMUEF... FRGS ...
 Showing 1 to 2 of 2 entries
 
 2. Select project from the drop down menu then select Project Extension. Then click save.
 
 Filters Add New Request
 Search:
-
-| Change Request | Status | Submit Date | Action |
-| :--- | :--- | :--- | :--- |
-| Extension | Draft | | Detail Delete |
-| Extension | Approved | 2020-04-20 | Detail |
-
+Change Request Status Submit Date Action
+Extension Draft Detail Delete
+Extension Approved 2020-04-20 Detail
 Previous 1 Next
 
 26 Aug 2024 Page 65
@@ -2594,10 +3164,9 @@ Previous 1 Next
 
 <!-- Page 66 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Change Request / Add New
@@ -2627,18 +3196,18 @@ Project A
 
 REQUEST EXTENSION
 
+Submit to RMC
+
 Application Details
 Project Leader Name
 Funding Source MOTOROLA
 Start Date 2018-09-01
 Current End Date 2019-09-31
 New End Date 01/Sep/2019
-Proof Document Choose File REQ_Request_for...
+Proof Document Choose File BEQ_Request_for_...
 
 Justification
 Some of milestone yet achieve
-
-Submit to RMC
 
 1
 Draft
@@ -2665,7 +3234,8 @@ Compile Application
 
 <!-- Page 67 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
@@ -2690,15 +3260,15 @@ List Project
 New Approved Project
 Change Request
 
-Last Login: 19 Sep 2018
+Last Login : 19 Sep 2018
 
-Show 10 rows Excel PDF Print
+Filters Add New Request
+Search:
 
-No Project SAP ID Funding Source PL Name Start Date End Date Status Action
-1 2019-04-01 2021-03-31 Draft Detail
-2 2017-07-01 2019-06-30 Approved Detail
-3 2017-01-01 2018-12-31 Approved Detail
-4 2016-11-01 2019-11-01 Extend Detail
+Change Request Status Action
+Extension Approved Detail
+
+Previous 1 Next
 
 6. Update new Milestone and submit to RMC.
 
@@ -2720,28 +3290,28 @@ Submit to RMC
 
 <!-- Page 68 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 6.2 Change Project Leader (under Change Details) (*only one of the current PMs is allowed to be the new PL)
 6.2.1 Change Project Leader Flow
 
 1. Submission
-   - Action: PL prepare change request- -Click Change Details, Add New Request and Change Project Leader
-   - Timeline: 3 Working days
-   - Status: Draft
+   Action: PL prepare change request- -Click Change Details, Add New Request and Change Project Leader
+   Timeline: 3 Working days
+   Status: Draft
 
 2. RMC
-   - Action: RMC evaluation
-   - Status: Waiting for RMC Approval
+   Action: RMC evaluation
+   Timeline: 3 Working days
+   Status: Waiting for RMC Approval
 
 3. Completed
-   - Action: RMS will update
-   - Timeline: Immediately
-   - Status: Approved
+   Action: RMS will update
+   Timeline: Immediately
+   Status: Approved
 
 6.2.2 Steps as follow
 a. Click Change Request > Change Details
@@ -2757,7 +3327,8 @@ Virement
 
 Request List
 Show 10 rows Excel PDF Print
-Filters Add New Request
+Filters
+Add New Request
 Search:
 No Project SAP ID Funding Source
 Showing 0 to 0 of 0 entries
@@ -2771,14 +3342,14 @@ c. Select project . >Select Change Request type (change PL). Change Project Lead
 
 <!-- Page 69 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Welcome,
-[Redacted]
+Muhammad Syazwan
+
 Dashboard
 Grant Proposal
 Project Management
@@ -2793,16 +3364,17 @@ NEW REQUEST
 Note: * indicates a compulsory field
 
 *Project
--- Select project --
+- Select project -
 
 *Change Request
--- Select project --
+- Select project -
 
 Save
 
 d. Upload New PL resume >submit to RMC
 
-MMU EA [Redacted] - Project 1
+MMUEA Project 1
+
 Submit to RMC
 
 CHANGE PROJECT LEADER
@@ -2813,9 +3385,8 @@ Funding Source
 FRGS
 
 *New Project Leader
-[Redacted]
 
-*Resume
+'Resume
 Choose Files No file chosen
 My Perfect Resume.pdf
 
@@ -2831,39 +3402,36 @@ Back to table of content
 
 <!-- Page 70 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 6.3 Add/ Remove Member by Project Leader
 6.3.1 Add/Remove Member Flow
 
 1. CR Submission
-   Action: PL prepare change request- -Click Change Details, Add New Request and Add/Remove Member
-   Status: Draft
+   - PL prepare change request-
+   - Click Change Details, Add New Request and Add/Remove Member
+   - Draft
 
 2. RMC
-   Action: RMC evaluation
-   Timeline: 3 Working days
-   Status: Submit to RMC
+   - RMC evaluation
+   - 3 Working days
+   - Submit to RMC
 
 3. CR Completed
-   Action: RMS will update
-   Timeline: Immediately
-   Status: Approved
+   - RMS will update
+   - Immediately
+   - Approved
 
 4. Update Project Information
-   Action: PL to update Project Information (Project Management ) Add / Remove MMU Academic Staff
-   Status: Project Status - Approved
+   - PL to update Project Information (Project Management ) Add / Remove MMU Academic Staff
+   - Project Status - Approved
 
 6.3.2 Steps as follows
 a. Click Change Request > Click Change Details >Then click Add New Request
 
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome,
 Dashboard
 Grant Proposal
 Project Management
@@ -2873,11 +3441,12 @@ Virement
 Hiring
 Spending
 Conference Application
+
 Request List
-Last Login : 14 Sep 2018
+Show 10 rows Excel PDF Print
+Search:
 Filters
 Add New Request
-Search:
 No Project SAP ID Funding Source PL Name Change Request Status Action
 No data available in table
 Showing 0 to 0 of 0 entries
@@ -2889,85 +3458,87 @@ Previous Next
 
 <!-- Page 71 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
+
 b. Select project> select change project member add/remove >Save
+
 Change Request / Add New
+
 NEW REQUEST
-* indicates a compulsory field
+Note: * indicates a compulsory field
+
 *Project
 -- Select project --
+
 *Change Request
 -- Select project --
+
 Save
+
 c. Provide justification > Save >Submit to RMC for approval
+
 Change Request / Details
+
 MMUE
 Submit to RMC
+
 ADD/REMOVE MEMBER
+
 Application Details
 Project Leader Name
-Funding Source
-TM R&D
-Justification
-Justification
+Funding Source TM R&D
+Justification Justification
+
 Save
+
 26 Aug 2024 Page 71
 
 ---
 
 <!-- Page 72 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
 d. Check on the request list status. It should read 'Submit to RMC'
 
 Request List
-Show 10 rows Excel PDF Print
-No Project SAP ID Funding Source PL Name
-1 MMUE
-2 MMUE/300000
-3 MMUE/300000
-4 MMUE
-Showing 1 to 4 of 4 entries
 
-Filters Add New Request
-Search:
-Change Request Status Action
-Add/Remove member Submit to RMC Detail
-Change Project Leader Approved Detail
-Add/Remove member Approved Detail
-Extension Approved Detail
-Previous 1 Next
+Show 10 rows Excel PDF Print
+
+No Project SAP ID Funding Source PL Name Change Request Status Action
+1 MMUE TM R&D Add/Remove member Submit to RMC Detail
+2 MMUE/300000 FRGS Change Project Leader Approved Detail
+3 MMUE/300000 FRGS Add/Remove member Approved Detail
+4 MMUE TM R&D Extension Approved Detail
+
+Showing 1 to 4 of 4 entries
 
 e. Wait for RMC approval
 
 f. Get notification from RMS allowed to add/remove. Status change to 'Approved'
 
 Request List
+
 Show 10 rows Excel PDF Print
-No Project SAP ID Funding Source PL Name
-1 MMUE/ TM R&D
-2 MMUE/300000 FRGS
-3 MMUE/300000 FRGS
-4 MMUE/ TM R&D
+
+No Project SAP ID Funding Source PL Name Change Request Status Action
+1 MMUE TM R&D Add/Remove member Approved Detail
+2 MMUE/300000 FRGS Change Project Leader Approved Detail
+3 MMUE/300000 FRGS Add/Remove member Approved Detail
+4 MMUE TM R&D Extension Approved Detail
+
 Showing 1 to 4 of 4 entries
 
-Filters Add New Request
-Search:
-PL Name Change Request Status Action
-Add/Remove member Approved Detail
-Change Project Leader Approved Detail
-Add/Remove member Approved Detail
-Extension Approved Detail
 Previous 1 Next
 
-g. Go to the Project Information tab (under Project Management > List Project > Detail). Scroll down and click Assign MMU Researcher button and assign the new PMs
+g. Go to the Project Information tab (under Project Management > List Project > Detail).
+Scroll down and click Assign MMU Researcher button and assign the new PMs
 
 26 Aug 2024 Page 72
 
@@ -2975,18 +3546,19 @@ g. Go to the Project Information tab (under Project Management > List Project > 
 
 <!-- Page 73 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 List Project / Details
 
-Information Budget Plan Milestone Expenses
 Submit to RMC
 
+Information Budget Plan Milestone Expenses
+
 PROJECT INFORMATIONS Custom design
+
 Request-Add/Remove Member
 
 | Data | Description |
@@ -2994,6 +3566,7 @@ Request-Add/Remove Member
 | Project Title | Project1 |
 
 PROJECT MEMBERS Custom design
+
 Assign MMU Researcher
 
 MMU Researcher
@@ -3006,15 +3579,17 @@ MMU Researcher
 Assign Researcher
 
 Assign MMU Researcher
+
 Back
 
-Search:
 Show 10 rows
+
+Search:
 
 | Name | Cost Center | Branch | Email | Action |
 | :--- | :--- | :--- | :--- | :--- |
-| [Redacted] | [Redacted] | [Redacted] | [Redacted] | Assign |
-| [Redacted] | [Redacted] | [Redacted] | [Redacted] | Assign |
+| [Redacted] | | | | Assign |
+| [Redacted] | | | | Assign |
 | [Redacted] | FOM | Cyberjaya | [Redacted] | Assign |
 
 h. Click Save> Submit to RMC . Status in project list will change to “Approved”
@@ -3027,14 +3602,13 @@ Back to table of content
 
 <!-- Page 74 -->
 
-
-
 RMS Manual
 
 6.4 Partial Budget disbursement
 This is for partial budget disbursement from the grant provider. Project Leaders are able to update the information in budget plan, milestones and proof of budget disbursement in the RMS
 
 6.4.1 Partial Budget Disbursement Flow
+
 1. Apply Change Request-Partial Disbursement
 2. Submit to RMC
 3. AR verification
@@ -3073,16 +3647,14 @@ c. Upload proof of disbursement
 
 <!-- Page 75 -->
 
-
-
 RMS Manual
 
 Application Details
-Project Leader Name Hailul Azhar Bin Abdul Rashid
-Funding Source PPRN 2.0
-Partial Payment 10% (Alypz) - 31/1/2021
-Partial Payment Amount RM 14240.00
-Prove of Payment Upload attachment
+Project Leader Name: Hailul Azhar Bin Abdul Rashid
+Funding Source: PPRN 2.0
+Partial Payment: 10% (Alypz) - 31/1/2021
+Partial Payment Amount: RM 14240.00
+Prove of Payment: Upload attachment
 
 File requirement:
 • PDF Format
@@ -3096,9 +3668,9 @@ Instructions:
 1. Allocate budget by click on "Budget Allocation" green button. Please make sure your budget allocation is equal with budget approve before save the budget.
 2. Add at least 1 activity for each allocation using "Add New" button or import the bulk activity using "Import Budget" button by follow the excel format template in the link provided. Please make sure your budget activity for all type is not exceeded the budget allocation before upload the file.
 
-| Date | Description |
-|---|---|
-| | Partial Payment Amount (Please update for current budget supplement only.) |
+| Amount | Action |
+| :--- | :--- |
+| 14240.00 | Budget Allocation |
 
 e. Update milestones/ activities for the new disbursement (if any) and submit to RMC
 
@@ -3122,8 +3694,6 @@ a. Add a new Change Request. Selects the Project and Budget Re-plan from the cha
 ---
 
 <!-- Page 76 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -3149,26 +3719,23 @@ c. Update new budget plan within the same vot (eg. within budget of temporary & 
 | Date | Description | Amount (RM) |
 | :--- | :--- | :--- |
 | | Total Amount Approved | 310506.45 |
-| | R&D Equipment: Special Equipment and Minor Modifications and Repairs .01 | 0.00 |
-| | | Add New |
-| | Temporary & Contract Personnel .02 | 274262.55 |
-| | | Details Add New |
-| | | show/hide activity |
-| | R&D Material: Research Materials and Supplies .03 | 10299.00 |
-| | | Details Add New |
-| | R&D Incidental: Travel and Transportation .04 | 0.00 |
-| | | Details Add New |
-| | R&D Incidental: Special Services and Rentals.05 | 25944.90 |
-| | | Details Add New |
-| | R&D FAC: Facility Admin Cost.06 | 0.00 |
-| | | Add New |
+| | | 0.00 | Add New |
+| | R&D Equipment: Special Equipment and Minor Modifications and Repairs .01 | 274262.55 | Details | Add New |
+| | Temporary & Contract Personnel .02 | 10299.00 | Details | Add New |
+| | R&D Material: Research Materials and Supplies .03 | 0.00 | Details | Add New |
+| | R&D Incidental: Travel and Transportation .04 | 25944.90 | Details | Add New |
+| | R&D Incidental: Special Services and Rentals.05 | 0.00 | Add New |
+| | R&D FAC: Facility Admin Cost.06 | | |
+
+show/hide activity
 
 d. Submit to RMC for verification
-e. Status of the project will change to ‘Approved’ if the request is approved.
+e. Status of the project will change to 'Approved' if the request is approved.
 
 Back to table of content
 
 6.6 Virement (Inter code/vot budget transfer)
+
 This exercise is subject to the funder requirement. For MOHE (FRGS, PRGS) projects should get permission from the funder first before applying in the RMS.
 
 26 Aug 2024 Page 76
@@ -3177,45 +3744,52 @@ This exercise is subject to the funder requirement. For MOHE (FRGS, PRGS) projec
 
 <!-- Page 77 -->
 
+RMS Manual
 
+6.6.1 Virement Flow
+
+1. Draft Done
+2. Submitted to RMC Waiting for RMC approval
+3. Virement Approved Proceed to Project Management Menu to update budget activity
+4. Virement Completed Complete Application
+
+6.2.2 Steps
+
+a. Click the “Virement” function under the “Change Request” option, After that click “+New Application”.
+
+b. Select the particular project and provide reason to vire. Click “Save as Draft”.
+
+c. Click “Detail” to fill in the virement details or “Delete” the request.
+
+26 Aug 2024 Page 77
 
 ---
 
 <!-- Page 78 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
-Successful
-The Application has been save
-
-Detail
-Delete
-
-d. Adjust the amount . In the example below, RM 10,000.00 will be deducted from R&D Equipment (01) and transferred to R&D Labour(02). Click “Save”.
+d. Adjust the amount. In the example below, RM 10,000.00 will be deducted from R&D Equipment (01) and transferred to R&D Labour(02). Click “Save”.
 
 SECTION B : VIREMENT DETAILS
 **Remark: Please make sure the percentage of amount viewed follow term and condition given by grant provider
 
-| Account Chart Description | Allocated | (-) Deduction | (+) Addition | Allocation after virement |
+| Account Chart Description | Amount | | | Allocation after virement |
 | :--- | :--- | :--- | :--- | :--- |
-| R & D Equipments (.01) R&D Equipment: Special Equipment and Minor Modifications and Repairs | RM 144548.28 | RM 10000 | RM 0 | RM 134548.28 |
-| R & D Labour ( .02) Temporary & Contract Personnel | RM 692989.27 | RM 0 | RM 10000 | RM 702989.27 |
-| R & D Materials ( .03) R&D Material: Research Materials and Supplies | RM 1320.00 | RM 0 | RM 0 | RM 1320.00 |
-| R & D Incidental ( .04) R&D Incidental: Travel and Transportation | RM 0.00 | RM 0 | RM 0 | RM 0.00 |
-| R & D Special Services (.05) R&D Incidental: Special Services and Rentals | RM 0.00 | RM 0 | RM 0 | RM 0.00 |
-| Total | RM 838857.55 | | | |
+| | Allocated | (-) Deduction | (+) Addition | |
+| R & D Equipments (.01) | R&D Equipment: Special Equipment and Minor Modifications and Repairs | RM 144548.28 | RM 10000 | RM 0 | RM 134548.28 |
+| R & D Labour (.02) | Temporary & Contract Personnel | RM 692989.27 | RM 0 | RM 10000 | RM 702989.27 |
+| R & D Materials (.03) | R&D Material: Research Materials and Supplies | RM 1320.00 | RM 0 | RM 0 | RM 1320.00 |
+| R & D Incidental (.04) | R&D Incidental: Travel and Transportation | RM 0.00 | RM 0 | RM 0 | RM 0.00 |
+| R & D Special Services (.05) | R&D Incidental: Special Services and Rentals | RM 0.00 | RM 0 | RM 0 | RM 0.00 |
+| Total | | RM 838857.55 | | | RM 838857.55 |
 
 e. Click “Submit to RMC”
 
-Confirmation
-Are you sure you want to submit?
-Yes
-
 f. The status now shows “Submit to RMC”.
-
-Submit to RMC
 
 26 Aug 2024 Page 78
 
@@ -3223,10 +3797,9 @@ Submit to RMC
 
 <!-- Page 79 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 g. Once the virement is approved by RMC, project leaders need to update the budget plan. At this point Status will change to “Virement request”. All the purchasing request and other applications are temporarily disable during this status.
@@ -3239,15 +3812,19 @@ PROJECT INFORMATIONS
 
 i. Click details budget plan and update the budget as per grant provider approval.Submit to RMC once done
 
-R&D Equipment: Special Equipment and Minor Modifications and Repairs .01 27500.00 Details Add Plan Delete All
+R&D Equipment: Special Equipment and Minor Modifications and Repairs.01
+27500.00 Details Add Plan Delete All
 2020-04-30 Portable impulse generator 50% 137500.00 Edit Delete
 2020-09-30 Portable impulse generator 40% 110000.00 Edit Delete
 2021-02-28 Portable impulse generator 10% 27500.00 Edit Delete
-Temporary & Contract Personnel .02 216000.00 Details Add Plan Delete All
+
+Temporary & Contract Personnel .02
+216000.00 Details Add Plan Delete All
 2020-01-25 RS1 Jan 2020 3000.00 Edit Delete
 2020-02-25 RS1 Feb 2020 3000.00 Edit Delete
 
 Info : Project status now will change to Approved and applications such as purchasing and others will now be available.
+
 Back to table of content
 
 26 Aug 2024 Page 79
@@ -3256,22 +3833,62 @@ Back to table of content
 
 <!-- Page 80 -->
 
+RMS Manual
 
+7.0 Spending
+7.1 Purchasing using External Grant Flow (Call for Quotation and Sole Single Sourcing (SSS) formerly known as Direct Purchase)
+
+Action
+1. Identify item or Non-related.
+2. Get BCPRA Approval for IT Related item
+3. PM and Research Personnel applications will be submitted to PL
+4. RMC Admin checking the request and PR Creation
+Total Purchase Amount.
+Research Personnel / PM or PL get manual Quotation
+(<10k)
+RFQ for (>10k)
+Sole Single Sourcing
+
+Timeline
+Subject PL verification time
+Depend on submission
+3 Working days
+
+Status
+Draft or Submitted to PL
+Waiting for RMC Admin verification
+Submit to RMC
+
+7.2 Purchasing (Project Leader, Members and Research Personnel)(External Grant)
+7.2.1 Call for Quotation
+Project Leader needs to request quotations from vendors or suppliers. Other requirements can be refer to Purchasing Guideline for external grants. Purchase amount more than RM100K requires to follow the Internal purchasing procedure. Please contact procurement unit for further information (procurement@mmu.edu.my)
+
+Specific steps are given as follows :
+a. Go to the left menu panel and click on the Spending button. From the dropdown selection select the Purchasing menu. Click Add New
+
+Purchasing
+Show 10 rows Excel PDF Print
+No Ref ID Project ID
+1 PCH/MMU/2021/93301 MMU
+2 PCH/MMU/2021/92201 MMU
+
+Filters Add New
+Search:
+Project ID WBS Type Mode of Payment Total Amount Submission Date Status Action
+05 Pay & Claim Not Available RM 210 2021-02-02 11:42:25 Approved Detail
+05 Direct Purchase Normal Process RM 4135.5 2021-02-01 23:14:40 Submit to Procurement Detail
+
+26 Aug 2024 Page 80
 
 ---
 
 <!-- Page 81 -->
 
-
-
-MMU
-MULTIMEDIA UNIVERSITY
-
 RMS Manual
 
 b. Select Project from the drop down menu.
 
-*Project
+*Project ⓘ
 -- Select project --
 
 *Type
@@ -3280,7 +3897,7 @@ b. Select Project from the drop down menu.
 1 - Call For Quotation
 2 - Sole Single Sourcing
 
-c. Select Type of purchasing.
+c. Select Type of purchasing .
 i. Call for Quotation (with multiple quotations)
 ii. Sole Single Sourcing - Direct Purchase
 
@@ -3295,18 +3912,11 @@ Submit to Project Leader
 Type : Call for Quotation
 Budget Information
 
-Add Budget Information
-
 WBS Element
-(e.g MMUE/14/xx.xx)
+(e.g MMUE/14xxx.xx)
 MMUE/ ??
 
 Cost Element No.
-
-Budget Balance (including current request)
-??
-
-GL Account No. 73160102
 
 Purchasing / Details / Edit Budget Information
 
@@ -3314,9 +3924,17 @@ EDIT BUDGET INFORMATION
 
 *WBS Element
 -- Select WBS Element --
+-- Select WBS Element --
 01 - Special Equipment and minor modifications and Repairs
 03 - R&D Material: Research Materials and Supplies
 05 - Special Services
+
+Add Budget Information
+
+Budget Balance (including current request)
+??
+
+GL Account No. 73160102
 
 ii. Add New Item to be purchased and provide the details specification ( follow as mentioned in Quotation and Supporting Document.
 
@@ -3340,10 +3958,9 @@ Total : RM
 
 <!-- Page 82 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Purchasing / Details / New Item
@@ -3370,26 +3987,60 @@ Click Add Vendor
 Vendor and Quotations
 Example of Complete Quotation | Example of Complete Quotation Supporting Document | Download Quotation Supporting Document
 
-| No. | Name of Vendor | Price Offered | Vendor ID | Delivery Period | Comments | Quotation File | Supporting Document | Action |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| | | | | | | | | |
-
-No record available
 Total : RM
 
-Please make sure at least one of the quotations is from a registered vendor
+| No. | Name of Vendor | Price Offered | Vendor ID | Delivery Period | Comments | Quotation File | Supporting Document | Action |
+|---|---|---|---|---|---|---|---|---|
+| No record available | | | | | | | | |
+
+Please make sure at least one of the quotations is from a register vendor
 
 Choose Registered Vendor from the vendor list. In case of unregistered vendor, click the New Vendor button to add new vendor.
-Give justifications for
+Give justifications for choosing the vendor such as specs,warranty, delivery period, price and other commercial terms
+
+Purchasing / Details / Vendor List
+
+List of Registered Vendor
+
+Show 10 rows Excel PDF Print
+
++ New Vendor
+
+Search:
+
+| No | Vendor ID | Supplier Name | City | Category Description | Action |
+|---|---|---|---|---|---|
+| 1 | 2100313 | ALGORITHMIC INTELLIGENCE PTE. LTD. | SINGAPORE | SYSTEM DEVELOPMENT SERVICES | Detail |
+| 2 | 2100307 | ATEME SA | VÉLIZY-VILLACOUBLAY | AUDIO AND VIDEO SYSTEM | Detail |
+| 3 | 2100302 | PT. ALIANSI SAKTI | JAKARTA UTARA | AUDIO AND VIDEO SYSTEM | Detail |
+| 4 | 2100302 | PT. ALIANSI SAKTI | JAKARTA UTARA | AUDIO AND VISUAL EQUIPMENT | Detail |
+| 5 | 2100297 | SECURE LOGIC PTE. LTD. | SINGAPORE | SPECIALIZED SERVICES | Detail |
+| 6 | 2100290 | JOINT STOCK COMPANY PETER-SERVICE | SAINT PETERSBURG | COMPUTER EQUIPMENT | Detail |
+| 7 | 2100288 | SYNOPSYS INTERNATIONAL LIMITED | DUBLIN | SPECIALIZED SERVICES | Detail |
+
+Total : RM
+
++ Add Vendor
+
+Download Quotation Supporting Document
+
+| Period | Comments | Quotation File | Supporting Document | Action |
+|---|---|---|---|---|
+| No record available | | | | |
+
+iv. Upload Quotation and Supporting Document.(must use templates as provided by the Procurement Unit)
+Quotations shall be based on purchase types -Non-technical or Technical or Bill of Quantity (BOQ).
+Supporting Document is the declaration made by the vendor with the specification given from the requester.
+
+26 Aug 2024 Page 82
 
 ---
 
 <!-- Page 83 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 *Attachment (Quotation from vendor) - PDF format only
@@ -3401,14 +4052,15 @@ Choose File No file chosen
 v. Update Payment Mode (applicable for Call for Quotation and Direct Purchase only)
 
 Mode of Payment
+Mode of Payment
 No record available
 Select Mode of Payment
 
 i. Click on Edit Mode of Payment and select from the dropdown selection
-■ Normal process- payment will be made to vendor after good received
-■ Corporate Credit Card- not available currently
-■ Deposit Payment (10%)- upfront payment 10% and the balance after the delivery
-■ Partial Payment - more than one partial payment needed before the delivery
+- Normal process- payment will be made to vendor after good received
+- Corporate Credit Card- not available currently
+- Deposit Payment (10%)- upfront payment 10% and the balance after the delivery
+- Partial Payment - more than one partial payment needed before the delivery
 
 SELECT MODE OF PAYMENT
 -- Select mode of payment --
@@ -3427,19 +4079,99 @@ Submit to RMC
 
 <!-- Page 84 -->
 
+RMS Manual
 
+Sample of Purchasing request
+
+Budget Information
+1. Budget wbs element (01,03,0
+WBS Element (e.g MMUE/19xxxx.xx) MMUE/170401 .03 Budget Balance (including current request) RM 140408.05
+Cost Element No. G Account No. 73160102
+
+Purchase Description
+Example of Complete Purchasing Request
+Purchase Title :
+2. Purchase Title (purchase of goods or service)
+Temperature sensor - Research Material
+
+Item No. of Unit Price per Unit (RM) Total (RM) Action
+Microf-sma-30035 1 RM 1200 RM 1200 Delete Edit
+
+3. Item request in details follows as in Quotation
+
+Vendor and Quotations
+Example of Complete Quotation
+
+No. Name of Vendor Price Offered Vendor ID Delivery Period
+1 PTE LTD 1200 15 - 30 days
+2 SDN. BHD. 1280 30 - 45 days
+
+4. Upload quotation given by vendor (using Procurement forms)
+Preferred Vendor Comments Quotation File Supporting Document Action
+Yes Cheapest and fastest Download Download Delete Edit
+No Expensive Download Download Delete Edit
+
+5. Combine & Upload Supplier Declaration Form
+
+Link sample of for Quotations and Supporting Document
+
+Purchasing forms to be submitted
+
+Non Technical Purchase.
+• Non Technical Purchase sample
+• Non Technical Specification Form -required
+• Non Technical Price Schedule Form -required
+• Supplier Declaration -required
+
+Technical Purchase.
+• Technical Purchase sample
+• Technical Specification Form -required
+• Technical Compliance Form -required
+• Technical Questionnaire Form -required
+
+Bill of Quantity (BOQ)
+Bill of Quantity (BOQ)- Involve in construction/ renovation of building /room (Civil , Electrical and Mechanical ).
+• Bill of Quantity sample
+• Bill of Quantity (BOQ) Form -required
+
+26 Aug 2024 Page 84
 
 ---
 
 <!-- Page 85 -->
 
+RMS Manual
 
+| | Supplier Declaration -required | Supplier Declaration -required |
+| :--- | :--- | :--- |
+| Non Technical Purchase :- On the shelf item / supply and delivery in nature e.g. standard furniture, table, USB cable and etc. | Technical Purchase :- Purchasing that require specialization / off the shelves item e.g. custom made equipment, motherboard and etc. | |
+
+vii. Once approved , the procurement unit will upload the PO/COO into RMS.
+*(PO: Purchase Order, *COO: Confirmation of Order)
+
+Back to table of content
+
+7.2.2 Sole Single Sourcing (SSS) (formerly known as Direct Purchase)
+
+a. Follow the same steps as in Call for Quotation except select Direct Purchase for type of purchasing and give the reason choosing Sole Single Sourcing.
+b. Select Sole Single Sourcing criteria.
+i. Proprietary equipment / system /material /IPTV Content or Sole Agent/ Sole Supplier / Exclusive Appointment or recommendation by Principal of goods / services /works to be acquired
+ii. Services of the Government, Local Authorities, City Hall/Municipal councils, Statutory Bodies or other Government agencies and bodies
+iii. In the midst of establishing / strategizing a new contract via a sourcing exercise
+iv. Carve-out allocation to local companies to support development of local capability and sustainability of local vendors
+v. The need of engaging the same or specifically identified supplier with proven track record or performance in ensuring project continuity
+vi. Tenancy or rental of property and associated infrastructure from the land / building / premise / space / infrastructure owner.
+vii. Award to TM Group (including Non-wholly Owned Subsidiaries) following the ‘First Right of Refusal’ exercise
+viii. Procurement of goods/services/works that are determined by GUTSB’s client(s).
+c. Submit to RMC
+
+Submit to RMC
+
+26 Aug 2024 Page 85
 
 ---
 
 <!-- Page 86 -->
-
-
 
 RMS Manual
 
@@ -3448,49 +4180,51 @@ I hereby confirm that the information provided by me on my application form rega
 Submit
 
 d. Once approved , the procurement unit will upload the PO/COO into RMS.(*PO: Purchase Order, **COO: Confirmation of Order)
+
 Back to table of content
 
 7.3 Purchasing using External Grant process by Procurement Unit (PU) (Manual Quotation)
+
 7.3.1 Steps
-a. Click spending > Click Purchasing > Check for Status 'Submit Procurement Unit' > Click Details
 
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome.
-Dashboard
-Spending
-Purchasing
-Claim
+a. Click spending > Click Purchasing > Check for Status ‘Submit Procurement Unit’ > Click Details
 
 Purchasing
+
 Show 10 rows Excel PDF Print
-No Ref ID Project ID
-1 2018/410 MMUE/180010
-2 2018/310 MMUE/180018
-3 2018/210 MMUE/180011
+
+| No | Ref ID | Project ID |
+| :--- | :--- | :--- |
+| 1 | 2018/410 | MMUE/180010 |
+| 2 | 2018/310 | MMUE/180018 |
+| 3 | 2018/210 | MMUE/180011 |
+
 Showing 1 to 3 of 3 entries
 
 Last Login : 23 Oct 2018
+
 Add New
+
 Search:
-Type Status Action
-Call For Quotation Submit to Procurement Unit Detail
-Call For Quotation Submit to RMC Detail
-Call For Quotation Submit to Procurement Unit Detail
+
+| Type | Status | Action |
+| :--- | :--- | :--- |
+| Call For Quotation | Submit to Procurement Unit | Detail |
+| Call For Quotation | Submit to RMC | Detail |
+| Call For Quotation | Submit to Procurement Unit | Detail |
+
 Previous 1 Next
 
 b. Check on Application form
-• Check on quotation
-• Check on vendor
-• Check on PR number
+* Check on quotation
+* Check on vendor
+* Check on PR number
 
 26 Aug 2024 Page 86
 
 ---
 
 <!-- Page 87 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -3501,6 +4235,9 @@ Purchasing / Details
 
 Submission Date : 18 Oct 2018
 
+Download Form Verify This Record
+Submit to Procurement Unit
+
 PURCHASING REQUISITION USING EXTERNAL GRANT - CALL FOR QUOTATION
 
 A. AMOUNT OF PURCHASE :
@@ -3508,13 +4245,12 @@ A. AMOUNT OF PURCHASE :
 
 B. REQUEST INFORMATION :
 Cost Centre/Faculty FOE
-Grant Scheme TM R&D
 
 C. PURCHASE DESCRIPTION :
 
-| Item | No. of Unit | Price per Unit (RM) | Total (RM) |
-| :--- | :--- | :--- | :--- |
-| Computer Simulation Technology Limited Term License of CST Studio Suite 2018 "Educational License" | 1 | RM 43900 | RM 43900 |
+Item No. of Unit Price per Unit (RM) Total (RM)
+Computer Simulation Technology Limited Term License of CST Studio Suite 2018 1 RM 43900 RM 43900
+Educational License
 
 D. BUDGET INFORMATION :
 Total : RM 43900
@@ -3553,10 +4289,9 @@ i. Search https://gems.tm.com.my.
 
 <!-- Page 88 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 TM GEMS ENTERPRISE PORTAL
@@ -3566,25 +4301,28 @@ Password *
 Log On
 
 Copyright © SAP AG. All Rights Reserved.
-Life. Made Easier. TM
 
 Dear GEMS Users,
 If you have any queries, problems or have not received any ID and password for GEMS Enterprise Portal, please contact GIT Helpdesk for support. Please dial 1-800-88-9779 (press option 2). (FAQ)
-Attention:
-Please check your SAP authorization expiration dates via 'SAP Authorization' tab in GEMS Enterprise Portal. You will not be able to execute transaction for job function that has already expired. Please dial 1-800-88-9779 (press 1) for assistance.
 
-Welcome [Redacted]
-Advanced Search
+Attention:
+Please check your SAP authorization expiration dates via 'SAP Authorization' tab in GEMS Enterprise Portal. You will not be able to execute transaction for job function that has already expired. Extension of expiring job function is via Form A. Contact GEMS Careline at 1-800-88-9779 (press 1) for assistance.
+
+Welcome
 Search
-Home Employee Self-Service Bulk Payment SAP Authorization
+Advanced Search
+Home | Employee Self-Service | Bulk Payment | SAP Authorization
 Portal Information | SC / PR Status | Universal Worklist | Employee Lookup
-All
+Portal Information
 Portal Favorites
 Welcome
+
 To make life and business easier, for a better Malaysia.
-tm.com.my
+
 Help | Personalize | SAP Store | Log off SAP
 History Back Forward
+
+tm.com.my
 
 ii. Click button SC/PR status > Click Purchasing > Carry Out Sourcing > Enter SC Number > Click Search > Click Select All > Click Next > Select All > Click Create Draft > Click Purchase Oder > Transaction Type > Edit Selected Draf > Enter Vendor ID /Vendor Name > Click Search > Click Check > Click Oder
 
@@ -3598,10 +4336,9 @@ iii. Get approval from PU Manager
 
 <!-- Page 89 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Back to table of content
@@ -3626,14 +4363,14 @@ Items has to be granted by funder
 
 <!-- Page 90 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 1. Preparing
    Action: PL / PM survey/ get quotation below 1k from supplier and apply through RMS
+   Timeline:
    Status: Draft
 
 2. RMC
@@ -3653,13 +4390,13 @@ RMS Manual
 
 7.4.2 Steps
 a. Go to the left menu panel click on the Spending button. From the dropdown selection select the Purchasing menu. Click Add New.
-b. Select Project from the drop down menu
+b. Select Project from the drop down menu.
 c. Select Type of purchasing(Pay-and-Claim-Pre-Approval). Click Save.
 
 Purchasing / Add New
 
 ADD NEW PURCHASING
-Note: * indicates a compulsory field
+Note : * indicates a compulsory field
 
 *Project
 -- Select project --
@@ -3679,54 +4416,60 @@ d. Then go to the purchasing list menu, search for recent requests and click Det
 
 <!-- Page 91 -->
 
-
-
 RMS Manual
 
 Purchasing / Details
 
 MMUE/170401 - STRIVE FUND Strategies Research and Innovation Fund (Previously known as CRPP Admin Fund)®
+
 Submit to Project Leader
 
 Type : Pay & Claim Pre-Approval Form
+
 Add Budget Information
 
 Budget Information
+
 WBS Element
 (e.g MMUE/14xxx.xx)
-MMUE/170401. ???
+MMUE/170401. ??
+
 Budget Balance (including current request)
-???
+??
+
 Cost Element No.
 GL Account No. 73160102
 
 Purchase Description
+
 Add New Item
 
 | Item | No. of Unit | Price per Unit (RM) | Total (RM) |
 | :--- | :--- | :--- | :--- |
 | | | | |
 
-Action
-Approved in original proposal
-Remarks
-No record available
+| Action | Approved in original proposal | Remarks |
+| :--- | :--- | :--- |
+| No record available | | |
 
 Total : RM
 
 Upload
 
 Approved Proposal
+
 Approved Proposal (in PDF format)
+
 Choose File No file chosen
 
-e. Submit for RMC's approval. Once Approved, project leaders may proceed to purchase the item(s) and submit the receipt and proof of payments using the Claim module (see 7.2.1 Pre-Approval claim).
+e. Submit for RMC’s approval. Once Approved, project leaders may proceed to purchase the item(s) and submit the receipt and proof of payments using the Claim module (see 7.2.1 Pre-Approval claim).
 
 Back to table of content
 
 7.5 Goods Receipt and Asset Tagging (External Grant)
 
 Goods Receipt (GR) is the process of receiving an item ordered according to the request/ PO /COO. Upon receiving the item the project leader must confirm and sign on the receipt/ invoice. This proof of GR needs to be uploaded in RMS to enable payment to be made to the vendors or suppliers.
+
 Any purchase amounting to more than RM500 and is not a consumable item must register for asset tagging.
 
 7.5.1 GR Process Flow
@@ -3737,35 +4480,71 @@ Any purchase amounting to more than RM500 and is not a consumable item must regi
 
 <!-- Page 92 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
-1. Receiving Good
-   - Action: Upon receiving good, PL verify on the delivery, signed on the invoice * and upload it in the RMS *upload colour scanned copy
-   - Timeline: 14 Working days Or same month
-   - Status: GR status pending
+Receiving Good
+Asset Detail
+RMC
+Vendor
 
-2. Asset Detail
-   - Action: PL update asset if buying equipment.
-   - Status: GR status pending
+Action
+Upon receiving good, PL verify on the delivery, signed on the invoice * and upload it in the RMS *upload colour scanned copy
+PL update asset if buying equipment.
+RMC checking on the document
+• Vendor Name
+• Invoice details
+• Amount
+Submit for payment or asset registration
+Upload Approved invoice in SUS portal for payment
 
-3. RMC
-   - Action: RMC checking on the document
-     - Vendor Name
-     - Invoice details
-     - Amount
-     - Submit for payment or asset registration
-   - Timeline: 5 Working days
-   - Status: Waiting RMC Admin verification or Waiting for EDS
+Timeline
+14 Working days Or same month
+5 Working days
+3 Working days
+
+Status
+GR status pending
+GR status pending
+Waiting RMC Admin verification or Waiting for EDS Payment update (involving partial payment)
+Completed
+
+7.5.2 Project Leader update Goods Receipt steps
+
+a. Go to the Spending modules, Select Purchasing and search for Approved purchasing status in the Purchasing List. There is an indicator GR update require.
+
+Purchasing
+Show 10 rows Excel PDF Print
+No Ref ID Project ID WBS Type
+1 PCHMMUE 03 Call For Quotation
+2 PCHMMUE 03 Call For Quotation
+
+b. Click Detail then click Good Receive and Asset
+
+Purchasing / Details
+
+Purchasing Details Summary
+Funding Source : TM R&D
+Submission Date : 01 Dec 2020
+Project Leader : Mohd Redzuan Bin Mohd Nor
+Reference ID : PCHMMUE100003/2020/0312
+Status : Approved
+
+Download Purchase Order Download Form
+
+Good Receive and Asset Details Summary
+To update your good receive and asset, please click the button below :
+Good Receive and Asset
+
+c. Fill up the details. Upload invoice and DO. Update vendor, invoice no, DO no, Purchase Order Date (PO Date), Date of delivery, Description of Asset, Amount paid, room number , department and branch.
+
+26 Aug 2024 Page 92
 
 ---
 
 <!-- Page 93 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -3841,8 +4620,6 @@ Back to table of content
 
 <!-- Page 94 -->
 
-
-
 RMS Manual
 
 7.5.4 Finance Asset registering asset
@@ -3853,7 +4630,7 @@ b. Check the list the RMS search for “waiting asset approval” and click deta
 
 Good Receive and Asset
 List of Good Receive and Asset
-Show 10 rows Excel PDF Print Filters
+Show 10 rows Excel PDF Print
 No Good Receive and Asset Ref ID Project Leader Name Status Action
 1 GR/MMUE/170401/2019/3602 Taufik Bin A Waiting for Asset Approval Detail
 2 GR/MMUE/180020/2019/3002 Tan Saw Ch Waiting for Asset Approval Detail
@@ -3867,9 +4644,10 @@ c. Click add item to confirm whether it is an asset or not. Check items in the i
 d. Click ‘All items is not asset’ if all the purchase is not asset
 
 Good Receive and Asset / Details
+Search:
 All items is not asset Revert to Project Leader
 Add Item
-Item Name ED Asset No Action
+Item Name EDI Asset No Action
 Please add asset by clicking add item.
 
 e. Select item to be registered as an asset by clicking the add item button (highlighted with yellow). Then click the view button to verify the list asset has been updated accordingly.
@@ -3880,45 +4658,43 @@ e. Select item to be registered as an asset by clicking the add item button (hig
 
 <!-- Page 95 -->
 
-
-
 RMS Manual
 
 Good Receive and Asset / Details / Add Items
+
 Purchasing Item
+
 View
-Item Name
-HP Elite Desk 800G4
-Quantity
-1
-Action
-Add Item
+
+| Item Name | Quantity | Action |
+| :--- | :--- | :--- |
+| HP Elite Desk 800G4 | 1 | + Add Item |
 
 f. Check on asset details, proceed to download form if everything is in order and request the asset number from TMSSO.
 
 Good Receive and Asset / Details
+
 Item Name
 Installation, cabling, testing & commissioning for Projector and motorized screen #1
 Installation, cabling, testing & commissioning for Projector and motorized screen #2
-Add Item
-EDS
-Asset No
-Action
-EDS No.
-Asset No.
-Delete Item
-EDS No.
-Asset No.
-Delete Item
-Update Details
-Save & Complete
+
++ Add Item
+
+| EDS | Asset No | Action |
+| :--- | :--- | :--- |
+| EDS No. | Asset No. | Delete Item |
+| EDS No. | Asset No. | Delete Item |
+
+Update Details Save & Complete
 Download Form
 
 Sample Asset Declaration form downloaded (attachment is not included in the below sample)
 
 MULTIMEDIA UNIVERSITY
 Inquire, Inspire and Innovate
+
 ASSET DECLARATION FORM
+
 Private & Confidential
 Date : 23 September 2019
 Ref ID : GR/MMUE/180025/2019/4102
@@ -3935,15 +4711,12 @@ Ref ID : GR/MMUE/180025/2019/4102
 
 <!-- Page 96 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
 | Room No. | MLMR3003 |
-| --- | --- |
 | Project Owner | John Wick |
 | Date of Purchase/ Order | 2023-01-23 |
 | LO/ Contract No | |
@@ -3956,32 +4729,31 @@ RMS Manual
 g. Asset team to request asset number through EDS. Get EDS number and update it in RMS while waiting for the asset number to be generated by FINSSO. Then click update details (see in below picture with yellow highlighted)
 
 Good Receive and Asset / Details
+
 Revert to Project Leader
 Add Item
-Item Name | EDS
-HP Elite Desk 800G4 #1 | EDS1234567890
-Asset No | Action
-Asset No. | Delete Item
-Update Details | Save & Complete
+
+| Item Name | EDS | Asset No | Action |
+| HP Elite Desk 800G4 #1 | EDS1234567890 | Asset No. | Delete Item |
+
+Update Details
+Save & Complete
 
 h. Once get update from FINSSO, if everything is in order, update on the asset number then Save & Complete button .
 
 Good Receive and Asset / Details
-Revert to Project Leader
-Add Item
-Item Name | EDS
-HP Elite Desk 800G4 #1 | EDS1234567890
-Asset No | Action
-Asset No. | Delete Item
-Update Details | Save & Complete
+
+| Item Name | EDS | Asset No | Action |
+| HP Elite Desk 800G4 #1 | EDS1234567890 | Asset No. | Delete Item |
+
+Update Details
+Save & Complete
 
 26 Aug 2024 Page 96
 
 ---
 
 <!-- Page 97 -->
-
-
 
 RMS Manual
 
@@ -3993,6 +4765,7 @@ Next
 
 7.6 Claim
 7.6.1 Pre Approved Claim
+
 Prior approval must be obtained first before submitting the claim. For example, a claim for expenses attending a conference which has been approved.
 
 1. Pre-Approved
@@ -4006,7 +4779,7 @@ Prior approval must be obtained first before submitting the claim. For example, 
    - Status: Waiting for RMC Admin verification
 
 3. RMC Verification
-   - Action: RMC Admin checking the RMS and in the SAP)
+   - Action: RMC Admin checking the RMS and in the SAP
    - Timeline: 3 Working days
    - Status: Waiting for Manager Approval
 
@@ -4039,8 +4812,6 @@ a. Go to the Claim module (under spending module) .
 
 <!-- Page 98 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
 
@@ -4052,13 +4823,13 @@ ADD NEW CLAIM
 Note: * indicates a compulsory field
 
 *Project
--- Select project --
+- Select project -
 
 *Category
 Pre-Approved
 
 *Claim Type
--- Select claim Type --
+- Select claim Type -
 Training/ Conference
 Honorarium/Consultation/Professional Fee -External
 Stipend Allowance
@@ -4070,7 +4841,7 @@ ADD NEW CLAIM
 Note: * indicates a compulsory field
 
 *Project
-MMU/ST0010 - ST0010 FUND (Strategic Research and Innovation Fund (SRIF)) Innovat...
+MMU/2024/01 - STAVE FUND (Strategic Research and Innovation Fund (SRIF)) Innovate
 
 *Category
 Pre-Approved
@@ -4082,12 +4853,13 @@ c. Key in the Approval Letter Reference (Check approval reference e.g in Trainin
 
 *Approval Letter Reference
 Approval Letter Reference
+
 Approval Letter Reference is required
 
-| Item | Rate (per day/km) | No of days | Sub Total | GST |
-| :--- | :--- | :--- | :--- | :--- |
-| Meal Allowance | 0.00 | No of days | 0.00 | 0.00 |
-| Mileages | 0.00 | No of days | 0.00 | 0.00 |
+| Item | Rate (per day/km) | No of days | Distance (km) | Sub Total | GST |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Meal Allowance | 0.00 | No of days | | 0.00 | 0.00 |
+| Mileages | 0.00 | No of days | Distance(km) | 0.00 | 0.00 |
 
 Others (please itemize)
 
@@ -4095,8 +4867,8 @@ Others (please itemize)
 | :--- | :--- |
 | Registration fee/Air Ticket/Accomodation etc | Receipt No |
 
-Sub Total 0.00
-GST(RM) 0.00
+Sub Total: 0.00
+GST(RM): 0.00
 +
 
 Save as Draft
@@ -4109,8 +4881,6 @@ d. Honorarium
 
 <!-- Page 99 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
 
@@ -4119,18 +4889,51 @@ RMS Manual
 *Claim Type
 Honorarium/Consultation/Professional Fee - External
 
-| Item | Rate (per day/km) | No of days | Distance (km) | Sub Total | GST |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Meal Allowance | 0.00 | No of days | Distance(km) | 0.00 | 0.00
+Item Rate (per day/km) No of days Distance (km) Sub Total GST
+Meal Allowance 0.00 No of days Distance(km) 0.00 0.00
+Mileages 0.00 No of days Distance(km) 0.00 0.00
+
+Others (please itemize)
+Item Receipt No Sub Total GST(RM)
+Registration fee/Air Ticket/Accomodation etc Receipt No 0.00 0.00 +
+
+Save as Draft
+
+e. Stipend Allowance
+
+*Claim Type
+Stipend Allowance
+
+Others (please itemize)
+Item Receipt No Sub Total GST(RM)
+Registration fee/Air Ticket/Accomodation etc Receipt No 0.00 0.00 +
+
+Save as Draft
+
+f. Fill in Claim Requestor Information
+
+i) Claim Request Details
+
+Claim Request Details
+*Approval Letter Reference Approval Letter Reference
+*Bank Account No Bank Account No
+*Bank Name e.g CIMB, BSN etc
+*Bank Branch e.g Cyberjaya, Jalan TAR etc
+*Bank Country e.g Malaysia, Singapore etc
+* Payment Method TT - Local
+* Payment Currency MYR
+
+ii) Budget Information
+
+26 Aug 2024 Page 99
 
 ---
 
 <!-- Page 100 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 • Budget Code :73160102
@@ -4140,8 +4943,7 @@ Budget Info
 * Budget Code
 Internal Order (if applicable)
 * WBS Element
--- SELECT--
-Choose Files No file chosen
+Upload Original Receipt(Advance payment not required)
 Justification
 
 Filename
@@ -4152,10 +4954,14 @@ Action
 iii) Save and Submit
 
 SECTION B : CLAIM DETAILS
-Item Receipt No Sub Total GST Total Action
-Visa paymnet 1222 RM 1000.00 RM 0.00 RM 1000.00
-Add New Item
+
+| Item | Receipt No | Sub Total | GST | Total | Action |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Visa paymnet | 1222 | RM 1000.00 | RM 0.00 | RM 1000.00 | |
+
++ Add New Item
 Total : RM 1000.00
+
 Save
 
 Back to table of content
@@ -4169,42 +4975,43 @@ Back to table of content
 
 <!-- Page 101 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
 1. Claim Submission
-   - Action: PM and Research Personnel applications will be submitted to PL
-   - Timeline: Depend on submission. Before project and appointment end date
-   - Status: Draft or Submitted to PL
+Action: PM and Research Personnel applications will be submitted to PL
+Timeline: Depend on submission. Before project and appointment end date
+Status: Draft or Submitted to PL
 
 2. RMC Verification
-   - Action: PM and Research Personnel applications will be submitted to PL
-   - Timeline: Depend on submission. Before project and appointment end date
-   - Status: Draft or Submitted to PL
+Action: PM and Research Personnel applications will be submitted to PL
+Timeline: Depend on submission. Before project and appointment end date
+Status: Draft or Submitted to PL
 
 3. Manager
-   - Action: RMC Admin checking the request in the RMS and in the SAP)
-   - Timeline: 3 Working days
-   - Status: Waiting for RMC Admin verification
+Action: RMC Admin checking the request in the RMS and in the SAP)
+Timeline: 3 Working days
+Status: Waiting for RMC Admin verification
 
 4. EDS Submission
-   - Action: Manager/ Deputy Director verification
-   - Timeline: 3 Working days
-   - Status: Waiting for Manager Approval
+Action: Manager/ Deputy Director verification
+Timeline: 3 Working days
+Status: Waiting for Manager Approval
 
 5. EDS verifier
-   - Action: RMC Admin preparing EDS entry
-   - Timeline: 3 Working days
-   - Status: Approved by RMC
+Action: RMC Admin preparing EDS entry
+Timeline: 3 Working days
+Status: Approved by RMC
 
 6. EDS TM SSO
-   - Action: RMC Manager or AM verify EDS entry
-   - Timeline: 2-14 working days
-   - Status: TM SSO - Payment
+Action: RMC Manager or AM verify EDS entry
+Timeline: 3 Working days
+
+7. TM SSO - Payment
+Action: TM SSO - Payment
+Timeline: 2-14 working days
 
 7.6.3.1 Steps
 a. Go to the Claim module (under Spending module). Click Add New button, select project and claim category Require Approval. Then choose TNT or Claim below RM200 (type of claim) in the dropdown menu. Fill up the details and then click Save as Draft
@@ -4215,10 +5022,9 @@ a. Go to the Claim module (under Spending module). Click Add New button, select 
 
 <!-- Page 102 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 *Claim Type
@@ -4231,14 +5037,14 @@ TNT – Grant-related
 
 Others (please itemize)
 
-| Item | Receipt No | Sub Total | GST(RM) |
-| :--- | :--- | :--- | :--- |
-| Registration fee/Air Ticket/Accomodatio | Receipt No | 0.00 | 0.00 | +
+| Item | Receipt No | Sub Total | GST(RM) | |
+| :--- | :--- | :--- | :--- | :--- |
+| Registration fee/Air Ticket/Accomodatio | Receipt No | 0.00 | 0.00 | + |
 
 Save as Draft
 
-b. Update claim request details (e.g. item, receipt no, amount (RM), etc) . Click ‘+’ button to add new item
-c. Upload proof /receipt with signed and official stamp (staff) .
+b. Update claim request details (e.g. item, receipt no, amount (RM), etc). Click ‘+’ button to add new item
+c. Upload proof /receipt with signed and official stamp (staff).
 d. Submit to RMC
 
 Back to table of content
@@ -4253,8 +5059,6 @@ Back to table of content
 ---
 
 <!-- Page 103 -->
-
-
 
 RMS Manual
 
@@ -4288,7 +5092,7 @@ This application is for fees payment requests using research grants and is not a
    - Timeline: 3 Working days
    - Status: Waiting FM Approval
 
-5. AR/CM
+5. AR /CM
    - Action: Finance(AR/CM) update the student ledger
    - Timeline: 3 Working days
    - Status: Waiting AR/CM Approval
@@ -4304,10 +5108,9 @@ This application is for fees payment requests using research grants and is not a
 
 <!-- Page 104 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 7.7.2 Post Graduate (PG) students
@@ -4315,12 +5118,17 @@ a. Login to rms.mmu.edu.my/research-personnel click Details
 
 MMU
 MULTIMEDIA UNIVERSITY
+
 Welcome,
+
 Dashboard
+
 Application Completed
+
 MMUE
 Project Leader
 Post : Research Scholar
+
 Details
 
 b. Click Spending and search for PG Fees Application module.
@@ -4334,12 +5142,12 @@ PG Fees Application
 c. Click Add New
 
 Dashboard / Project Details / PG Fees Application
+
 MMUE
+
 Show 10 rows Excel PDF Print
-Add New
-Search:
+
 No Ref Id
-Status Action
 
 d. Fill in all details (refer to IPS for fees amount (https://ips.mmu.edu.my/)), Upload support document (student id-IPS offer letter) and click Submit button.
 
@@ -4349,39 +5157,49 @@ d. Fill in all details (refer to IPS for fees amount (https://ips.mmu.edu.my/)),
 
 <!-- Page 105 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
+
 Dashboard / Project Details / PG Fees Application / New Application
+
 PG Fees Application Form
+
 * Faculty
 -- Select Faculty --
+
 * Programme
 -- Select Programme --
+
 * Tuition Fees For
 1/2/3 year
+
 Copy of Deposit Payment Receipt
 Choose File No file chosen
 • Not more than 10mb
 • PDF Format
+
 Fees Covered Using External Grant
-Registration Fee RM 00000
-Smartcard RM 00000
-Entrepreneurship Course Fee RM 00000
-Research Methodology Course Fee RM 00000
-Tuition Fee (per year) RM 00000
-University Resource Fee (per year) RM 00000
-International Student Service Fee RM 00000
+
+| Registration Fee | RM | 00000 |
+| Smartcard | RM | 00000 |
+| Entrepreneurship Course Fee | RM | 00000 |
+| Research Methodology Course Fee | RM | 00000 |
+| Tuition Fee (per year) | RM | 00000 |
+| University Resource Fee (per year) | RM | 00000 |
+| International Student Service Fee | RM | 00000 |
+
 Back to table of content
+
 26 Aug 2024 Page 105
 
 ---
 
 <!-- Page 106 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
@@ -4392,30 +5210,45 @@ RMS Manual
 a. Upon receiving email notification from RMS log in to the PG Fees Application module. Search for Waiting for Project Leader Approval and click Detail.
 
 PG Fees Application
+
 List of PG Fees Application
+
 Show 10 rows Excel PDF Print
+
 Filters
+
 Search:
-No Reference ID Requester Name Status Action
+
+No Reference ID Requestor Name Status Action
 1 PG/MMUE/180021/2019/3502 Waiting for Project Leader Approval Detail
+
 Showing 1 to 1 of 1 entries
+
+Previous 1 Next
 
 b. Check on the application and approve or revert the application.
 
 PG Fees Application / Details
+
 SECTION A : PG Fees Details
+
 Ref ID PG/MMUE/180021/2019/3502
+
 Submit to RMC
+
 I certify that all information is correct.
+
 Comment
 Please Approve
+
 No Yes
+
 Download Form Revert to Requestor Submit to RMC
-Previous 1 Next
 
 Submit to RMC
 
 c. Status of the application will be changed to Waiting for RMC approval
+
 Back to table of content
 
 26 Aug 2024 Page 106
@@ -4424,41 +5257,53 @@ Back to table of content
 
 <!-- Page 107 -->
 
-
-
 RMS Manual
+
 7.7.4 RMC Department
 7.7.5 Steps
 a. Search for the “Waiting for RMC Approval” status, click detail button
+
 PG Fees Application
+
 List of PG Fees Application
+
 Show 10 rows Excel PDF Print
-No Reference ID Requestor Name Status Action
-1 PG/MMUE/180021/2019/3502 Waiting for RMC Approval Detail
-Showing 1 to 1 of 1 entries Previous 1 Next
+
+| No | Reference ID | Requestor Name | Status | Action |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | PG/MMUE/180021/2019/3502 | [Redacted] | Waiting for RMC Approval | Detail |
+
+Showing 1 to 1 of 1 entries
+Previous 1 Next
+
 b. Check the application details, as example project balance budget (wbs 05), Funder (Government Grant (FRGS,PRGS and etc) not Allowed) , and student (only RS allowed). Upon verification completed, decision to approve (click submit to FM button) or to revert the application (revert to requester).
+
 PG Fees Application / Details
+
+Download Form Revert to Requester Submit to FM
+
 SECTION A : PG Fees Details
+
 Ref ID PG/MMUE/180021/2019/3502
-Research Scholar Name
+Research Scholar Name [Redacted]
 Faculty Faculty Of Management - ( FOM )
 Course / PG Programme Master of Philosophy (Management)
 Funder TM R&D
-Project Title
+Project Title [Redacted]
 SAP Network No. 1000000326
 Tuition Fees For Year : 2
 Total Amount Request RM 1111
 Copy of Deposit Payment Download
-Download Form Revert to Requestor Submit to FM
+
 c. Log in to CJ20N in SAP make note in 05 for PG Fees Payment. Make a comment and click submit to FM for budget transfer.
+
 Back to table of content
+
 26 Aug 2024 Page 107
 
 ---
 
 <!-- Page 108 -->
-
-
 
 RMS Manual
 
@@ -4467,29 +5312,39 @@ RMS Manual
 a. Search for status “Waiting FM Approval”, click the details button.
 
 PG Fees Application
+
 List of PG Fees Application
+
 Show 10 rows Excel PDF Print
-No Reference ID Requestor Name Status Action
-1 PG/MMUE/180021/2019/3502 Waiting for FM Approval Detail
-Showing 1 to 1 of 1 entries Previous 1 Next
+
+| No | Reference ID | Requestor Name | Status | Action |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | PGM/MUE/180021/2019/3502 | [Redacted] | Waiting for FM Approval | Detail |
+
+Showing 1 to 1 of 1 entries
 
 b. Check on the amount requested and make a decision to revert or approve.
 
 PG Fees Application / Details
+
 SECTION A : PG Fees Details
-Ref ID PG/MMUE/180021/2019/3502
-Research Scholar Name
-Faculty Faculty Of Management - ( FOM )
-Course / PG Programme Master of Philosophy (Management)
-Funder TM R&D
-Project Title
-SAP Network No. 1000000326
-Tuition Fees For Year : 2
-Total Amount Request RM 111
-Copy of Deposit Payment Receipt Download
+
+| Ref ID | PGM/MUE/180021/2019/3502 |
+| :--- | :--- |
+| Research Scholar Name | [Redacted] |
+| Faculty | Faculty Of Management - ( FOM ) |
+| Course / PG Programme | Master of Philosophy (Management) |
+| Funder | TM R&D |
+| Project Title | [Redacted] |
+| SAP Network No. | 1000000326 |
+| Tuition Fees For | Year : 2 |
+| Total Amount Request | RM 111 |
+| Copy of Deposit Payment Receipt | Download |
+
 Download Form Revert to RMC Submit to Bursary
 
 c. Made journal instruction (do in SAP), key in journal reference number and write comment and click submit to AR/CM .
+
 d. Status will change to waiting for AR/CM Approval
 
 26 Aug 2024 Page 108
@@ -4497,8 +5352,6 @@ d. Status will change to waiting for AR/CM Approval
 ---
 
 <!-- Page 109 -->
-
-
 
 MMU
 MULTIMEDIA UNIVERSITY
@@ -4509,7 +5362,8 @@ Journal Reference No.
 Comment
 Comment
 
-No Yes
+No
+Yes
 
 Back to table of content
 
@@ -4519,12 +5373,12 @@ Back to table of content
 
 <!-- Page 110 -->
 
-
-
 RMS Manual
+
 7.7.6 Account Receivable (AR)/ Credit Management(CM) Department (AR/CM)
 7.7.6.1 Steps
 a. Check for the status “Waiting for AR/CM Approval” (use filter to search)
+
 Filters
 Mode
 All
@@ -4534,26 +5388,27 @@ Waiting for RMC Approval
 Waiting for FM Approval
 Waiting for AR/CM Approval
 Approved
+
 b. Click detail button
 PG Fees Application
+
 List of PG Fees Application
 Show 10 rows Excel PDF Print
-Filters
-Search:
 No Reference ID Requestor Name Amount Date Submission Status Action
 1 PG/MMUE/... RM 250 Waiting for AR/CM Approval Detail IP5 Registration
 2 PG/MMUE/... RM 4750 Waiting for AR/CM Approval Detail IP5 Registration
+
 c. If everything is completed, click approve the application in the RMS and Student Billing system. Updated group post reference number, proof of disbursement and made comment.
+
 26 Aug 2024 Page 110
 
 ---
 
 <!-- Page 111 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Approve this application
@@ -4578,12 +5433,12 @@ Back to table of content
 
 <!-- Page 112 -->
 
-
-
 RMS Manual
+
 7.7.7 Institute For Post Graduate Studies (IPS) Department
 7.7.7.1 Steps
 a. IPS personnel shall view all the PG fees application by using a filter function.
+
 Filters
 Mode
 All
@@ -4593,10 +5448,12 @@ Waiting for RMC Approval
 Waiting for FM Approval
 Waiting for AR/CM Approval
 Approved
+
 b. IPS need to check / verify on application with “waiting for AR/CM Approval with “IPS registration” indicator in action column.
 c. Further verification shall be carried out through the existing IPS system (CamSys or else).
 d. If Status indicates “Approved”, it means PG fees payment has been made using an external grant and IPS shall proceed as necessary.
 e. Application details shall be viewed by clicking the detail button.
+
 List of PG Fees Application
 Show 100 rows Excel PDF Print
 No Reference ID Requestor Name Status Action
@@ -4604,7 +5461,7 @@ No Reference ID Requestor Name Status Action
 IPS Registration
 2 PG/MMUE/180018/2019/1051 SHAARVATHANAN A/P THURAISAMY Waiting for AR/CM Approval Detail
 IPS Registration
-3 PG/MMUE/180020/2019/4249 Siew Hong Wei Waiting for AR/CM Approval Detail
+3 PG/MMUE/180020/2019/4249 Siew Hong Waiting for AR/CM Approval Detail
 IPS Registration
 4 PG/MMUE/180025/2019/37248 KHAING ZAR AUNG Waiting for AR/CM Approval Detail
 IPS Registration
@@ -4614,6 +5471,7 @@ IPS Registration
 IPS Registration
 7 PG/MMUE/190020/2019/41741 Tan Yong Xuan Waiting for AR/CM Approval Detail
 IPS Registration
+
 Back to table of content
 26 Aug 2024 Page 112
 
@@ -4621,71 +5479,69 @@ Back to table of content
 
 <!-- Page 113 -->
 
-
-
 RMS Manual
 
 7.8 Page Charges (Applicable for MMU Staff only)
-Refer to : page charges guideline in research.mmu.edu.my > research support > Journal Publication.
+Refer to :page charges guideline in research.mmu.edu.my > research support > Journal Publication.
 
 MMU Pays Direct to vendor Flow
 
 1. Submission
-   - Action: PL submit the Page Charge application
-   - Timeline: Depend on submission
-   - Status: Draft
+Action: PL submit the Page Charge application
+Timeline: Depend on submission
+Status: Draft
 
 2. Payment Selection
-   - Action: PL select the MMU PaysDirect To vendor
-   - Timeline: 3 Working days
-   - Status: Submit to RMC
+Action: PL select the MMU PaysDirect To vendor
+Timeline: 3 Working days
+Status: Submit to RMC
 
 3. RMC Verify
-   - Action: RMC Admin checking the request in the RMS and in the SAP
-   - Timeline: 3 Working days
-   - Status: Submit to RMC
+Action: RMC Admin checking the request in the RMS and in the SAP
+Timeline: 3 Working days
+Status: Submit to RMC
 
 4. Manager Approver
-   - Action: RMC Manager / Deputy Director signature approval.
-   - Timeline: 3 Working days
-   - Status: Payment Process
+Action: RMC Manager / Deputy Director signature approval.
+Timeline: 3 Working days
+Status: Payment Process
 
 5. EDS
-   - Action: RMC Admin key in the EDS. EDS verifier approve in EDS
-   - Timeline: 3 Working days 2-14Working days for payment
-   - Status: Application Completed
+Action: RMC Admin key in the EDS. EDS verifier approve in EDS
+Timeline: 3 Working days 2- 14Working days for payment
+Status: Application Completed
 
 PL Pay and claim flow
 
 1. Submission
-   - Action: PL submit the Page Charge application
-   - Timeline: Depend on submission
-   - Status: Draft
+Action: PL submit the Page Charge application
+Timeline: Depend on submission
+Status: Draft
 
 2. Payment Selection
-   - Action: PL select the PL Pays & Claim
-   - Timeline: 3 Working days
-   - Status: Submit to RMC
+Action: PL select the PL Pays & Claim
+Timeline: 3 Working days
+Status: Submit to RMC
 
 3. RMC Verify
-   - Action: RMC Admin checking the request in the RMS and in the SAP
-   - Timeline: 3 Working days
-   - Status: Submit to RMC
+Action: RMC Admin checking the request in the RMS and in the SAP
+Timeline: 3 Working days
+Status: Submit to RMC
 
 4. Claim
-   - Action: Upon received approval in RMS, PL will made payment and submit claim
-   - Timeline: Depend on submission
-   - Status: Claim through RMC
+Action: Upon received approval in RMS, PL will made payment and submit claim
+Timeline: Depend on submission
+Status: Claim through RMC
 
 5. Manager Approver
-   - Action: RMC Manager / Deputy Director signature approval.
-   - Timeline: 3 Working days
-   - Status: Payment Process
+Action: RMC Manager / Deputy Director signature approval.
+Timeline: 3 Working days
+Status: Payment Process
 
 6. EDS
-   - Action: RMC Admin key in the EDS. EDS verifier approve in EDS
-   - Timeline: 3 Working days 2- 14 Working days for payment
-   - Status: Application Completed
+Action: RMC Admin key in the EDS. EDS verifier approve in EDS
+Timeline: 3 Working days 2- 14 Working days for payment
+Status: Application Completed
 
 Requirements :
 • Ensure budget is sufficient if using external grant (vot 05 Special services).
@@ -4695,8 +5551,6 @@ Requirements :
 ---
 
 <!-- Page 114 -->
-
-
 
 RMS Manual
 
@@ -4718,8 +5572,9 @@ g. Once approved, the Project Leader can proceed to make payment to the vendor.
 h. Update claim details (Status : “Claim Through RMC”) with invoice or receipt. Submit claim request (green button in the picture below) through RMS
 
 Page Charges / Details
-Claim Request Form
 Download Success Letter
+
+Claim Request Form
 
 | Item | File | Action |
 | :--- | :--- | :--- |
@@ -4731,13 +5586,15 @@ Submit Claim Request
 i. After submitting the request, the claim status will change to “Payment Process”.
 
 Back to table of content
+
 26 Aug 2024 Page 114
 
 ---
 
 <!-- Page 115 -->
 
-
+MMU
+MULTIMEDIA UNIVERSITY
 
 RMS Manual
 
@@ -4755,9 +5612,10 @@ Show 10 rows Excel PDF Print
 Filters Add New
 Search:
 
-No Ref ID Requestor PD Number Date Submission Amount (RM) Status Action
-1 MMU/RMC/PC/2021/... 2021-08-18 1912.50 Submit to RMC Detail
-2 MMU/RMC/PC/2021/... 2021-08-18 1912.50 Submit to RMC Detail
+| No | Ref ID | Requestor | PD Number | Date Submission | Amount (RM) | Status | Action |
+|---|---|---|---|---|---|---|---|
+| 1 | MMU/RMC/PC/2021/... | [Redacted] | [Redacted] | 2021-08-18 | 1912.50 | Submit to RMC | Detail |
+| 2 | MMU/RMC/PC/2021/... | [Redacted] | [Redacted] | 2021-08-18 | 1912.50 | Submit to RMC | Detail |
 
 • Check on the application such as amount request, budget from which internal/ external, Quartile, The letter of acceptance from the editorial board, Copy of the invoice/document from editorial board on page charges publication fee, A copy of the paper to be submitted to the publisher and Supporting documents to indicate the journal is indexed in SCOPUS or WoS
 • Click approved button if everything in order
@@ -4770,8 +5628,6 @@ b. Submit the Page Charge claim through EDS
 
 <!-- Page 116 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
 
@@ -4779,13 +5635,14 @@ RMS Manual
 
 Page Charges / Details
 
-Reference No. : MMU/RMC/PC/2021/
+Reference No. : MMU/RMC/PC/2021
 
 Download Success Letter Process Payment Revert to Project Leader
 
 Claim Request Form Details
 
 Attachment
+
 Receipt Download
 Bank Statement (Payment) Download
 Comment Uploaded Invoice and receipt payment.
@@ -4805,10 +5662,10 @@ Sponsorship Requirement
 
 Total Sponsorship : RM 2193.60
 
-*   Verify on claim submit not more than approved amount
-*   Download and verify the proof of payment
-*   Get Manager signature for claim
-*   Submit the claim in EDS. Update EDS number in RMS
+* Verify on claim submit not more than approved amount
+* Download and verify the proof of payment
+* Get Manager signature for claim
+* Submit the claim in EDS. Update EDS number in RMS
 
 Back to table of content
 
@@ -4818,77 +5675,99 @@ Back to table of content
 
 <!-- Page 117 -->
 
-
-
 RMS Manual
 
 7.9 Language Editing
 
 Refer to : Language Editing Guideline in research.mmu.edu.my > research support > Journal Publication
 
-1. Submission
-   - Action: PL submit the Language application
-   - Timeline: 3 Working days
-   - Status: Draft
+Submission
+RMC Verify
+Claim
+Approval
+EDS
 
-2. RMC Verify
-   - Action: RMC Admin checking the request in the RMS and in the SAP
-   - Timeline: 3 Working days
-   - Status: Submit to RMC
+Action
+PL submit the Language application
+RMC Admin checking the request in the RMS and in the SAP
+Upon received approval in RMS, PL will made payment and submit claim
+RMC Manager / Deputy Director signature approval.
+RMC Admin key in the EDS. EDS verifier approve in EDS
 
-3. Claim
-   - Action: Upon received approval in RMS, PL will made payment and submit claim
-   - Timeline: 3 Working days
-   - Status: Claim through RMC
+Timeline
+3 Working days
+3 Working days
+3 Working days
+3 Working days 2- 14 Working days for payment
 
-4. Approval
-   - Action: RMC Manager / Deputy Director signature approval.
-   - Timeline: 3 Working days
-   - Status: Payment Process
-
-5. EDS
-   - Action: RMC Admin key in the EDS. EDS verifier approve in EDS
-   - Timeline: 2- 14 Working days for payment
-   - Status: Application Completed
+Status
+Draft
+Submit to RMC
+Claim through RMC
+Payment Process
+Application Completed
 
 7.9.1 Project Leader/ Project Member submission
+
 a. Go to Spending, select Language Editing and click Add New
+
 Filters
 Add New
+
+b. Update Paper Title and Journal Name
+
+c. Upload the language editing services acceptance , quotation and the first page of the paper
+
+Attachment
+
+| Item | File | Action |
+| :--- | :--- | :--- |
+| Letter/Document of acceptance of the journal paper from the editorial board | Not available | Upload |
+| Language revision requirement of the journal paper from the editorial board | Not available | Upload |
+| Copy of the paper to be submitted to the Language Editing Service company/published in the journal | Not available | Upload |
+| Quotations from the Language Editing Service company on Language Editing Service fee | Not available | Upload |
+| Supporting documents to indicate the journal is indexed in SCOPUS or WoS | Not available | Upload |
+
+26 Aug 2024 Page 117
 
 ---
 
 <!-- Page 118 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 d. Add External R&D Grant (if applicable)
 
 Sponsorship Requirement
+
 Show 10 rows Excel PDF Print
-Search:
+
 + Add External R&D Grant
+
+Search:
+
 No Project Leader Project ID Amount Status Action
+
 No data available in table
 
 e. Update Journal Quartile
 
 Journal Quartile
+
 Index -- Select Index --
 Quartile -- Select Quartile --
 
 f. Update amount requested in Malaysia ringgit and currency if overseas publisher.
 
 Language Editing Fee
+
 Currency -- Select Currency --
-Amount in
-Amount in Ringgit - MYR
-Amount in other currency
-Amount in MYR
+Amount in Amount in other currency
+Amount in Ringgit - MYR Amount in MYR
+
 Save Save & Submit to RMC
 
 g. Submit to RMC for approval
@@ -4903,19 +5782,19 @@ i. Update claim details (Status : “Claim Through RMC”) with invoice or recei
 
 <!-- Page 119 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
-Claim Request Form
 Download Success Letter
 
-| File | Action |
-| :--- | :--- |
-| Download | Upload |
-| Download | Upload |
+Claim Request Form
+
+| Item | File | Action |
+| :--- | :--- | :--- |
+| Receipt | Download | Upload |
+| Bank Statement (Payment) | Download | Upload |
 
 Submit Claim Request
 
@@ -4943,8 +5822,6 @@ Back to table of content
 
 <!-- Page 120 -->
 
-
-
 RMS Manual
 
 9.0 Conference, Training, Meeting Exhibition and Travel
@@ -4955,32 +5832,32 @@ RMS Manual
 9.1.1 PG Student Conference Application flow in RMS
 
 1. Preparing
-   - Action: PG Student update in RMS. Use this url rms.mmu.edu.my
-   - Timeline: Depend on submission
-   - Status: Draft
+Action: PG Student update in RMS. Use this url rms.mmu.edu.my
+Timeline: Depend on submission
+Status: Draft
 
 2. PL Review
-   - Action: PL recommend
-   - Timeline: 3 Working days
-   - Status: Submit to PL
+Action: PL recommend
+Timeline: 3 Working days
+Status: Submit to PL
 
 3. Candidate Verification
-   - Action: IPS Admin checking the candidature status
-   - Timeline: 3 Working days
-   - Status: Submit to IPS
+Action: IPS Admin checking the candidature status
+Timeline: 3 Working days
+Status: Submit to IPS
 
 4. Budget Review
-   - Action: RMC checking on budget availability and Approved.
-   - Timeline: 3 Working days
-   - Status: Submit to RMC
+Action: RMC checking on budget availability and Approved.
+Timeline: 3 Working days
+Status: Submit to RMC
 
 5. Transfer Budget
-   - Action: Finance (FM) transferring budget to faculty
-   - Timeline: 3 Working days
-   - Status: Transfer Budget
+Action: Finance (FM) transferring budget to faculty
+Timeline: 3 Working days
+Status: Transfer Budget
 
 6. Claim
-   - Action: PG student fill up manual form and submit claim to faculty
+Action: PG student fill up manual form and submit claim to faculty
 
 9.1.2 Post Graduate (PG) Students
 a. Applications must be applied by Post Graduate (PG) students via rms.mmu.edu.my
@@ -4998,17 +5875,19 @@ Save
 
 <!-- Page 121 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 c. Click Create New
 
 Dashboard
+
 PG Conference Sponsorship Application Quotation (Project Leader must apply PD in PD System before proceed application)
+
 Create New
+
 Successful
 Your email address has been updated
 
@@ -5018,7 +5897,7 @@ d. Key In Paper Title and Conference name
 Venue
 
 *Expenditure Requirement
-The maximum ceiling amount of sponsorship will be RM3,300.00 for international conference held in peninsular Malaysia or RM2,900.00 for international conference held in East Malaysia.
+The maximum ceiling amount of sponsorship will be RM3,300.00 for international conference held in peninsular Malaysia or RM3900.00 for international conference held in East Malaysia.
 
 Registration Fee
 RM 0.00
@@ -5036,7 +5915,6 @@ Local Transport
 RM 0.00
 
 Other
-RM 0.00
 
 Amount Request
 RM 0.00
@@ -5049,10 +5927,9 @@ Save to Draft
 
 <!-- Page 122 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Application
@@ -5064,9 +5941,8 @@ Please select of programme
 Conference Title
 
 *Index
-SCOPUS
-Web of Science (ISI)
-
+☐ SCOPUS
+☐ Web of Science (ISI)
 *Type of Conference
 Please select type of conference
 
@@ -5097,10 +5973,10 @@ Supporting Documents
 
 | Item | File | Action |
 | :--- | :--- | :--- |
-| Conference Acceptance Letter (with date, fees amount) REQUIRED | Not available | Upload |
-| Accomodation Quotations | Not available | Upload |
-| Other amount (local TNT and etc.) | Not available | Upload |
-| Flight Quotation | Not available | Upload |
+| Conference Acceptance Letter (with date, fees amount) REQUIRED | ✖ Not available | Upload |
+| Accomodation Quotations | ✖ Not available | Upload |
+| Other amount (local TNT and etc.) | ✖ Not available | Upload |
+| Flight Quotation | ✖ Not available | Upload |
 
 26 Aug 2024 Page 122
 
@@ -5108,35 +5984,37 @@ Supporting Documents
 
 <!-- Page 123 -->
 
-
-
 MMU
 MULTIMEDIA UNIVERSITY
+
 RMS Manual
 
 Dashboard / Details / Supporting Document
 
 Conference Acceptance Letter (with date, fees amount)
 
-Upload a clear pdf of your conference acceptance letter (with date, fees amount):
+Upload a clear pdf of your conference acceptance letter (with date, fees amount)
 
 Attachment (can attach more than one):
 Choose Files Shahirad Re...dology.pdf
 Save
 
-g. Continue to edit or click 'Submit to Verifier' button (Submit to Project Leader)
+g. Continue to edit or click ‘Submit to Verifier’ button (Submit to Project Leader)
 
 Confirmation
+
 I hereby confirm that the information provided by me on my application form regarding my details is to the best of my knowledge true.
+
 Yes Close
 
-Confirm and submit (click yes). Status will change to 'Verification Process'
+Confirm and submit (click yes). Status will change to ‘Verification Process’
 
-*The application will be submitted to PG Supervisor/PL, then to IPS for candidature verification and later to RMC for Approval.
+*The application will be submitted to PG Supervisor/PL ,then to IPS for candidature verification and later to RMC for Approval.
 
 h. Upon approval by RMC, status application of the will change to Approved
 
 Approved
+
 PD
 PL :
 Test Conference
@@ -5148,30 +6026,41 @@ Details
 
 <!-- Page 124 -->
 
-
-
 RMS Manual
+
 i. Click Detail to view the PG Conference Sponsorship Success Letter
-MULTIMEDIA UNIVERSITY
+
+MULTIMEDIA UNIVERSITY®
+
 Inquire,
 Inspire
 and
 Innovate
+
 RESEARCH MANAGEMENT CENTRE
+
 Date : 20 Dec 2018
 Ref. No: MMU/RMC PG 2018
+
 master
 Dear ,
+
 Application to Attend Test Conference
+
 I am pleased to inform you that your application to attend the above-mentioned conference is successful.
+
 The followings are the details of the conference and sponsorship:
-Date : 2018-12-31 - 2019-01-01
-Venue : Penang
-Title of Paper : Test Conference
-Budget :
-Cost Centre :
-PG Supervisor :
+
+| Date | 2018-12-31 - 2019-01-01 |
+| :--- | :--- |
+| Venue | : Penang |
+| Title of Paper | : Test Conference |
+| Budget | : |
+| Cost Centre | : |
+| PG Supervisor | : |
+
 Sponsorship approved for the Post Graduate student only:
+
 (a) * Registration Fee: RM 1000.00
 (b) Accommodation : RM 233.00
 (c) Meal Allowance : RM 70.00
@@ -5179,10 +6068,14 @@ Sponsorship approved for the Post Graduate student only:
 (e) Local Transport : RM 50.00
 (f) Other : RM 1000.00
 Total : RM 2476.00 *Claim with Original Receipt
+
 *The maximum ceiling amount of sponsorship will be RM 3,300 for International conference held in peninsular
+
 j. Download the success letter and make a claim (with all supporting documents such receipts and proof of payment) when returning from the conference. Submit a claim to your faculty admin for the claiming process.
 k. All claims must be submitted within one month to ensure a smooth reimbursement process.
+
 Back to table of content
+
 26 Aug 2024 Page 124
 
 ---
@@ -5191,98 +6084,11 @@ Back to table of content
 
 
 
-RMS Manual
-9.1.3 Project Leader / Supervisor evaluation for PG Conference Application
-a) Upon receiving email notification from RMS. Go to Conference Application and search PG Student Application with “Submit to PL status and click the Details button
-
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome,
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-PG Student Applicant
-
-Application List
-Show 10 rows Excel PDF Print
-Last Login : 14 Sep 2018
-Filters
-Search:
-No Student ID Student Name PD Number Status Action
-1 Submit to PL Detail
-Showing 1 to 1 of 1 entries
-Previous 1 Next
-
-b) Evaluate the application
-
-Information Expenditure Requirement
-Evaluate this records
-Submit to PL
-Expenditure Requirements
-Item Amount Request
-Registration Fee RM 1234.00
-Accomodation RM 1000.00
-Meal Allowance RM 66.00
-Flight(Economy Class & with shortest direct routes) RM 123.00
-Local Transport RM 555.00
-Other RM 0.00
-Total Expenditure RM 2978.00
-
-26 Aug 2024 Page 125
-
 ---
 
 <!-- Page 126 -->
 
 
-
-MMU
-MULTIMEDIA UNIVERSITY
-RMS Manual
-
-c) State decision and submit
-
-Evaluation
-
-Decision :
-Please select your decision
-Decision is required
-Evaluator Comment
-Comment
-
-Submit
-
-Back to table of content
-
-9.1.4 Institute For Post Graduate Studies (IPS) Department
-9.1.4.1 Steps
-a. Select “PG Student Application”, search for application with the “Submit to IPS” status.
-b. Click the detail button for verification.
-
-Please review the applicant information
-• You needs to fill in the “IPS Confirmation” info before submit to RMC.
-
-Information IPS Confirmation Expenditure Requirement Submit to IPS
-
-STUDENT INFORMATIONS
-
-Application Details
-PD Number PD20190557
-Student ID 1102700789
-Name ANDRIEA BASTIAMPILLAI
-Programme master
-Email 1102700789@student.mmu.edu.my
-PL Name Hanna Binti Ambaras Khan
-COnference Title International Conference on the Future of Law & Legal Practice (ICFLP 2019)
-Index Scopus
-Conference Type International
-Start Date 2019-10-15
-
-26 Aug 2024 Page 126
 
 ---
 
@@ -5290,86 +6096,11 @@ Start Date 2019-10-15
 
 
 
-RMS Manual
-c. IPS to confirm students' information in IPS Confirmation section before submitting to RMC. Click save.
-
-• You need to fill in the "IPS Confirmation" info before submit to RMC.
-
-Information IPS Confirmation Expenditure Requirement
-Submit to IPS
-
-Confirmation by IPS Personnel
-
-| Item | Action | Remark |
-| :--- | :--- | :--- |
-| Registration Date | dd/mm/yyyy | Remark |
-| Candidature End Date | dd/mm/yyyy | Remark |
-| Candidature is Active / Period of Employment is valid | YES NO | Remark |
-| All pre-requisite courses have been completed and passed | YES NO | Remark |
-| Proposal Defense carried out and passed (within 6/9 months for Masters / PhD respectively) | YES NO | Remark |
-| Progress Monitoring Outcome is Satisfactory | YES NO | Remark |
-| Work Completion Defense carried out and passed(final year only) | YES NO | Remark |
-
-Save
-
-Back to table of content
-
-9.1.5 RMC Approval for PG Conference Sponsorship
-9.1.5.1 Steps
-a. Go to Conference Application, select the PG Student Application. Search for “Submit to RMC” status, click detail to evaluate the application.
-b. Verify on conference detail
-c. PG Conference only applicable once during the period of candidature. Candidates may go one time during the Master Programme and one time during PhD programme.
-
-26 Aug 2024 Page 127
-
 ---
 
 <!-- Page 128 -->
 
 
-
-MMU
-MULTIMEDIA UNIVERSITY
-RMS Manual
-
-Information IPS Confirmation Expenditure Requirement
-Submit to RMC
-
-STUDENT INFORMATIONS
-
-Application Details
-PD Number PD20160140
-Student ID 1001033579
-Name
-Programme phd
-Email
-PL Name Shaista
-COnference Title Conference Test2
-Index Web of Science (ISI)
-Conference Type International
-
-d. Check and approve on expenditure
-
-Information Expenditure Requirement
-Evaluate this records
-Submit to PL
-
-Expenditure Requirements
-
-Item Amount Request
-Registration Fee RM 1234.00
-Accomodation RM 1000.00
-Meal Allowance RM 66.00
-Flight(Economy Class & with shortest direct routes) RM 123.00
-Local Transport RM 555.00
-Other RM 0.00
-Total Expenditure RM 2978.00
-
-e. Click the Evaluate This Records button. State decision and submit. Update budget balance in PG Conference
-
-f. Select the decision in the decision dropdown (Approved,Revert To Student, Reject, Submit To Director(special approval needed).
-
-26 Aug 2024 Page 128
 
 ---
 
@@ -5377,61 +6108,11 @@ f. Select the decision in the decision dropdown (Approved,Revert To Student, Rej
 
 
 
-MMU
-MULTIMEDIA UNIVERSITY
-RMS Manual
-
-Evaluation
-
-Decision :
-Please select your decision
-Decision is required
-Evaluator Comment
-Comment
-
-Submit
-
-g. PG Conference Application is completed. Students will download the PG Conference Success Letter and continue claiming after coming back from the conference. Submit to applicant's faculty for claiming process
-
-Back to table of content
-
-9.1.2 Finance Management (FM) Budget Update (Status : Waiting FM Approval)
-9.1.6.1 Steps
-a. Check status 'PG Student Application' in the Application List. Check in the list with Approved status. Click details button
-
-26 Aug 2024 Page 129
-
 ---
 
 <!-- Page 130 -->
 
 
-
-RMS Manual
-Last Login : 30 Nov 2018
-Filters
-Application List
-Show 10 rows Excel PDF Print
-No Student ID Student Name
-1
-Showing 1 to 1 of 1 entries
-Dashboard
-Spending
-PG Student Applicant
-Finance
-b. Check in Information Budget Virement Information.
-Information IPS Confirmation Expenditure Requirement
-Update records
-Approved
-BUDGET VIREMENT INFORMATIONS
-From
-Account Code Description
-73160101 PG Conference (ACARS000012) UTRCM0
-STUDENT INFORMATIONS
-Application Details
-PD Number PD20160140
-c. Click Update record button
-26 Aug 2024 Page 130
 
 ---
 
@@ -5439,80 +6120,11 @@ c. Click Update record button
 
 
 
-RMS Manual
-
-Information IPS Confirmation Expenditure Requirement
-
-BUDGET VIREMENT INFORMATIONS
-
-From
-Account Code Description
-73160101 PG Conference (ACARS000012) UTCRM0
-
-STUDENT INFORMATIONS
-
-Application Details
-PD Number PD20160140
-
-Update records
-Approved
-
-To
-Balance Amount Account Code Description
-30000.00 2476.00 73160101 UTCTM10
-
-d. Do virement in FM (SAP) and update SAP Code (reference code) in RMS (transfer budget to requester faculties).
-e. Budget virement for PG Conference is completed
-
-Back to table of content
-
-9.2 Travel & Conference for Staff and Project Member (Using External Grant) (Training, Conference and Exhibition)
-
-Applications can be made by project leader , project member or research personnel.
-Guideline is available at : http://research.mmu.edu.my/index.php?req=160
-
-26 Aug 2024 Page 131
-
 ---
 
 <!-- Page 132 -->
 
 
-
-RMS Manual
-
-9.2.1 Travel & Conference and Exhibition using external grant flow
-
-1. Preparing
-   - Action: PG Student* /Project Member update in RMS. *appointed to the project
-   - Timeline: Depend on submission
-   - Status: Draft
-
-2. PL Review
-   - Action: PL recommend
-   - Timeline: 3 Working days
-   - Status: Submit to Project Leader
-
-3. Faculty Approval
-   - Action: Faculty Dean /Deputy Dean approves on PL's /PM's mobility record
-   - Timeline: 3 Working days
-   - Status: Submit to IPS
-
-4. RMC Approval
-   - Action: RMC checks the grant provider allowable, on budget availability and Approved.
-   - Timeline: 3 Working days
-   - Status: Submit to RMC
-
-5. HCM
-   - Action: Update training and the conference record
-   - Status: Submit to HCM
-
-6. Claim
-   - Action: Application approved. Requester made claim through claim module
-
-9.2.2 For project leader and project member (staff) using external grant budget.
-9.2.1.1 Steps for the application are
-a
 
 ---
 
@@ -5520,102 +6132,11 @@ a
 
 
 
-MMU
-MULTIMEDIA UNIVERSITY
-RMS Manual
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome,
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-PG Student Applicant
-Project Progress Report
-Conference Application
-Last Login : 17 Sep 2018
-Show 10 rows Excel PDF Print
-No Ref ID Project ID
-1 2018/209 MMUE/140063
-2 2018/109 MMUE/150038
-Showing 1 to 2 of 2 entries
-Add New
-d. Provide the paper title and journal name
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome,
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-Project Progress Report
-Conference Application / Add New
-*Travel Type
-Seminar/Exhibition/Workshop
-*Project
-MMUE/120122 - Investigation of Stimulated Brillouin Scattering in Optical Nanofibers
-Next
-e. Choose “Travel Type and Project” and click “Next”
-f. Fill in all the details
-26 Aug 2024 Page 133
-
 ---
 
 <!-- Page 134 -->
 
 
-
-RMS Manual
-Conference Application / Add New
-Application
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-Project Progress Report
-*Title
-Title of Conference/Training/Seminar
-*Index
-SCOPUS
-Web of Science (ISI)
-*Type of Conference/Training/Seminar
-Please select type of conference
-*Start Date
-dd/mm/yyyy
-*End Date
-dd/mm/yyyy
-*Venue
-Venue
-g. And click “Save to Draft”
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-Project Progress Report
-Meal Allowance
-RM 500
-Flight (Economy Class & with shortest direct route)
-RM 500
-Local Transport
-RM 500
-Other
-RM 3000
-Amount Request
-Save to Draft
-Gentelella - Bootstrap Admin Template by Colorlib
-26 Aug 2024 Page 134
 
 ---
 
@@ -5623,152 +6144,11 @@ Gentelella - Bootstrap Admin Template by Colorlib
 
 
 
-RMS Manual
-
-h. The message Successful will appear. Click on “Detail”
-
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome.
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-PG Student Applicant
-Staff / Personnel Applicant
-Project Progress Report
-
-Conference Application
-Show 10 rows Excel PDF Print
-Search:
-No Ref ID Project ID Type Status Action
-1 2018/309 MMUE/120122 Seminar/Exhibition/Workshop Draft Detail
-2 2018/209 MMUE/140063 Seminar/Exhibition/Workshop Submit to Project Leader Detail
-3 2018/109 MMUE/150038 Seminar/Exhibition/Workshop Draft Detail
-Showing 1 to 3 of 3 entries
-Previous 1 Next
-
-Successful
-Your conferences application has been save to draft
-Add New
-
-i. All the details are editable before submission. Upload Conference, Training, Seminar, Exhibition, or Workshop acceptance/offer in PNG or JPEG format by clicking on “Upload”
-
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome.
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-Project Progress Report
-
-Application
-Details
-Title Conference
-Index Scopus
-Type of Conference International
-Start Date 2018-01-01
-End Date 2018-02-01
-Venue Venue
-
-Submit to Deputy Dean
-Edit
-
-Expenditure Requirement
-*The maximum ceiling amount of sponsorship will be RM3, 300.00 for international conference held in peninsular Malaysia or RM3600.00 for international conference held in East Malaysia.
-Registration Fee RM 500.00
-Accommodation (Hotel proposed by organizer and with reasonable rate) RM 500.00
-Meal Allowance RM 500.00
-Flight (Economy Class & with shortest direct routes) RM 500.00
-Local Transport RM 500.00
-Other RM 500.00
-Amount Request RM 3000.00
-
-26 Aug 2024 Page 135
-
 ---
 
 <!-- Page 136 -->
 
 
-
-RMS Manual
-
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Conference Application
-Project Progress Report
-
-Flight (Economy Class & with shortest direct routes)
-Local Transport
-Other
-RM 500.00
-RM 500.00
-RM 500.00
-Amount Request RM 3000.00
-
-Attachment
-Conference,Training,Seminar,Exhibition or Workshop acceptance/offered
-File Not upload yet
-Upload
-
-Comment Details
-Project Leader No record available
-Dean / Deputy Dean No record available
-Research Management Centre (RMC) No record available
-Human Capital Management (HCM) No record available
-
-j) Choose file and click on "Save"
-
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Conference Application
-Project Progress Report
-
-Conference Application / Details / Upload
-Attachment
-Upload a clear photo of conference,trainin...
-Choose File No file chosen
-Image file format only
-All details must be readable
-Maximum file size is 2MB
-Save
-
-Open
-Last Login : 17 Sep 2018
-Hariz Downloads
-Search Downloads
-Organize New folder
-Favorites
-Desktop
-Downloads
-Recent Places
-Libraries
-Documents
-Music
-Pictures
-Videos
-Computer
-Local Disk (C:)
-Untitled
-File name:
-All Files
-Open Cancel
-
-26 Aug 2024 Page 13
 
 ---
 
@@ -5776,167 +6156,13 @@ Open Cancel
 
 
 
-MMU
-MULTIMEDIA UNIVERSITY
-RMS Manual
-
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome.
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-Project Progress Report
-
-Last Login : 17 Sep 2018 9
-Conference Application / Details / Upload Attachment
-
-Attachment
-Upload a clear photo of conference,training,seminar,exhibition or workshop acceptance/offered :
-Choose File Untitled.png
-• Image file format only
-• All details must be readable
-• Maximum file size is 2MB
-Save
-
-Gentelella - Bootstrap Admin Template by Colorlib
-
-k) The Successful message will appear.Click on “Submit”
-
-MMU
-MULTIMEDIA UNIVERSITY
-Welcome.
-Dashboard
-Grant Proposal
-Project Management
-Change Request
-Hiring
-Spending
-Conference Application
-Project Progress Report
-
-Last Login : 17 Sep 2018 9
-Conference Application / Details
-
-Successful
-Your file has been uploaded
-Submit to Deputy Dean
-
-Application
-
-Details
-Title Conference
-Index Scopus
-Type of Conference International
-Start Date 2018-01-01
-End Date 2018-02-01
-Venue Venue
-
-Expenditure Requirement
-*The maximum ceiling amount of sponsorship will be RM3,000.00 for international conference held in peninsular Malaysia or RM3600.00 for international conference held in East Malaysia.
-Registration Fee
-Accommodation (Hotel proposed by organizer and with reasonable rate)
-Meal Allowance
-RM 500.00
-RM 500.00
-RM 500.00
-
-Edit
-
-26 Aug 2024 Page 137
-
 ---
 
 <!-- Page 138 -->
 
 
 
-RMS Manual
-Back to table of content
-
-9.2.3 For research personnel (RO,RA,SW and personnel appointed through grant) using external grant budgets.
-a) Login as research personnel. https://rms.mmu.edu.my/research-personnel
-
-MMU
-MULTIMEDIA UNIVERSITY
-Login Form
-Username
-Email
-Password
-Password
-Log in
-Lost your password ?
-Research Management System (RMS)
-Please upgrade to the latest version of your browser
-Best viewed in Chrome & Firefox
-© 2020 All Rights Reserved. Multimedia University
-
-Enter Username : email registered in RMS
-Enter Password : password
-b) Click Conference Application under Spending module
-c) Then follow steps in 8.2.1.1 (c)
-
-Back to table of content
-
-9.2.4 RMC verification on Training/ Conference / Meeting
-a. Click on conference application, Choose staff/personal applicant
-b. Select application with “Submit to RMC” status
-
-26 Aug 2024 Page 138
-
 ---
 
 <!-- Page 139 -->
 
-
-
-MMU
-MULTIMEDIA UNIVERSITY
-RMS Manual
-
-Conference Application
-
-Show 10 rows Excel PDF Print
-Filters Add New
-Search:
-No Ref ID Project Leader Project ID Type
-1 MMU/RMC/CTAF/2021... MMUE/... Seminar/...
-2 MMU/RMC/CTAF/2021... MMUE Conferen...
-Showing 1 to 2 of 2 entries (filtered from 415 total entries)
-Previous 1 Next
-
-c. Evaluate
-i. Verify budget
-ii. Date of Event
-iii. Attachment
-
-d. Make decision to approve, revert or reject the application
-
-Back to table of content
-
-9.2.5 Human Capital Management (HCM) Travel verification
-a. Go to travel application, select the application with “Submit to HCM” status
-b. Click detail
-i. Check on travel application information.
-ii. Confirm on number of leave date
-iii. Update on training
-
-Conference Application
-
-Show 10 rows Excel PDF Print
-Add New
-Search:
-No Ref ID Project ID Type Status Action
-No data available in table
-Showing 0 to 0 of 0 entries
-Previous Next
-
-c. Click save and approve
-
-Back to table of content
-
-26 Aug 2024 Page 139

@@ -2,33 +2,53 @@
 Builds a searchable vector index over the manual's chunks using free,
 locally-run models (no API cost, no external calls needed for this part).
 
-Retrieval is two-stage:
-  1. Bi-encoder (MiniLM) + FAISS -> fast, coarse candidate search over ALL
-     chunks. Cheap because chunk embeddings are precomputed once at startup;
-     only the query needs encoding at search time.
-  2. Cross-encoder -> re-scores just the candidates from stage 1 by feeding
-     (query, chunk) pairs jointly into the model, which lets it actually
-     weigh how the two texts interact instead of comparing two independently-
-     computed vectors. Slower per-pair, but only runs on a small candidate
-     set, so it's affordable — and it's the step that fixes cases where the
-     bi-encoder's top result is topically similar but not the actual best
-     answer.
+Retrieval is two-stage, with two independent ways of finding stage-1
+candidates:
+  1a. Bi-encoder (BGE-small) + FAISS -> fast, coarse semantic search over ALL
+      chunks. Cheap because chunk embeddings are precomputed once at
+      startup; only the query needs encoding at search time. Good at
+      matching meaning/paraphrase, weak at matching exact numbers/codes
+      (e.g. "RM500", "3.1.1") since those don't carry much semantic signal.
+  1b. BM25 (keyword/lexical search) -> catches exact-term matches that the
+      bi-encoder can miss, e.g. a query naming a specific amount, threshold,
+      or section number that appears verbatim in the manual but isn't
+      semantically "close" to how the question phrases it.
+  2.  Cross-encoder -> re-scores the UNION of both candidate sets by feeding
+      (query, chunk) pairs jointly into the model, which lets it actually
+      weigh how the two texts interact instead of comparing two independently-
+      computed vectors. Slower per-pair, but only runs on a small candidate
+      set, so it's affordable — and it's the step that fixes cases where the
+      bi-encoder's top result is topically similar but not the actual best
+      answer.
 """
+import re
 import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer, CrossEncoder
+from rank_bm25 import BM25Okapi
 from chunking import load_and_chunk_knowledge_folder, KNOWLEDGE_DIR
 
-EMBED_MODEL_NAME = "all-MiniLM-L6-v2"  # small, free, fast bi-encoder for stage 1
+# BGE outperforms the older MiniLM bi-encoder on retrieval benchmarks at a
+# similar size/speed. BGE models are trained to expect a fixed instruction
+# prefix on the QUERY side only (not on the documents/chunks being indexed)
+# for asymmetric search tasks like this one.
+EMBED_MODEL_NAME = "BAAI/bge-small-en-v1.5"
+QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
 RERANK_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"  # free cross-encoder for stage 2
 
-# How many candidates stage 1 hands to the cross-encoder. Wider than the
-# final top_k on purpose: the bi-encoder is a coarse filter, so the true best
-# match sometimes sits at rank 8-15 rather than rank 1-3 — the cross-encoder
-# needs those candidates present to be able to promote them.
+# How many candidates each of stage 1a/1b hands to the cross-encoder. Wider
+# than the final top_k on purpose: the bi-encoder is a coarse filter, so the
+# true best match sometimes sits at rank 8-15 rather than rank 1-3 — the
+# cross-encoder needs those candidates present to be able to promote them.
 # The manual has a small number of chunks. Re-ranking all of them avoids
 # losing the precise section during the coarse semantic-search stage.
 CANDIDATE_POOL_SIZE = 80
+
+_TOKEN_RE = re.compile(r"[a-z0-9]+")
+
+
+def _tokenize(text):
+    return _TOKEN_RE.findall(text.lower())
 
 
 def _sigmoid(x):
@@ -53,13 +73,20 @@ class ManualRetriever:
         self.index = faiss.IndexFlatIP(self.embeddings.shape[1])  # cosine similarity via inner product on normalized vectors
         self.index.add(self.embeddings)
 
+        # BM25 keyword index over the same title+text strings, so an exact
+        # amount/threshold/section-number mentioned verbatim in the manual
+        # can be found even when the query's wording doesn't paraphrase
+        # closely enough for the bi-encoder to rank it highly.
+        self.bm25 = BM25Okapi([_tokenize(t) for t in texts])
+
     def search(self, query, top_k=3, min_score=0.20, candidate_pool_size=CANDIDATE_POOL_SIZE):
         """
-        Stage 1: FAISS returns candidate_pool_size candidates by cosine
-        similarity (fast, coarse).
+        Stage 1: FAISS (semantic) and BM25 (keyword) each independently
+        return up to candidate_pool_size candidates, and their results are
+        unioned together.
         Stage 2: the cross-encoder re-scores each (query, chunk) pair
         jointly and re-sorts by that score — this is the actual ranking
-        used for top_k / min_score below, not the stage-1 cosine score.
+        used for top_k / min_score below, not the stage-1 scores.
 
         min_score filters on the cross-encoder's score (passed through a
         sigmoid, so ~0-1 like a probability rather than the model's raw
@@ -82,9 +109,28 @@ class ManualRetriever:
         the noisy tail (ranks 2+), which is where it actually helps.
         """
         pool = min(candidate_pool_size, len(self.chunks))
-        query_vec = self.embed_model.encode([query], normalize_embeddings=True).astype("float32")
+        query_vec = self.embed_model.encode(
+            [QUERY_INSTRUCTION + query], normalize_embeddings=True
+        ).astype("float32")
         _, indices = self.index.search(query_vec, pool)
-        candidate_indices = [int(i) for i in indices[0] if i != -1]
+        semantic_candidates = [int(i) for i in indices[0] if i != -1]
+
+        # BM25 candidates are pulled independently and unioned with the
+        # semantic ones (not intersected) — the two methods fail on
+        # different kinds of queries, so a chunk only needs to be found by
+        # ONE of them to reach the cross-encoder, which then judges all
+        # candidates on equal footing regardless of which stage-1 method
+        # surfaced them.
+        bm25_scores = self.bm25.get_scores(_tokenize(query))
+        bm25_ranked = np.argsort(bm25_scores)[::-1][:pool]
+        keyword_candidates = [int(i) for i in bm25_ranked if bm25_scores[i] > 0]
+
+        seen = set()
+        candidate_indices = []
+        for i in semantic_candidates + keyword_candidates:
+            if i not in seen:
+                seen.add(i)
+                candidate_indices.append(i)
         if not candidate_indices:
             return []
 

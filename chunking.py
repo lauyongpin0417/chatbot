@@ -384,22 +384,30 @@ def _extract_chunk_title(chunk_text, source_name):
 
 
 def _split_text_into_chunks(text, source_name, max_chunk_chars=6000, overlap_chars=300):
-    # Split on "<!-- Page N -->" markers first (inserted by transcribe_full_pdf.py)
-    # — these are reliable, code-generated boundaries. Without this, a
-    # vision-transcribed document with no real "#" headers (just bold
-    # pseudo-headers) gets treated as ONE giant section spanning the whole
-    # file, which then gets blindly sliced every max_chunk_chars characters
-    # with no regard for page or section boundaries at all.
-    page_sections = PAGE_MARKER_RE.split(text)
-    page_sections = [s.strip() for s in page_sections if s.strip()]
-    if not page_sections:
-        page_sections = [text]
+    # Split on numbered section headings across the WHOLE document first, not
+    # per-page. A table or flow-diagram enumeration that continues onto the
+    # next page has no heading of its own on that second page, so splitting
+    # by "<!-- Page N -->" markers before splitting by heading used to tear
+    # it into two chunks — retrieval would then only surface half of it.
+    all_sections = SECTION_SPLIT_RE.split(text)
+    all_sections = [s.strip() for s in all_sections if s.strip()]
+    if not all_sections:
+        all_sections = [text]
 
-    all_sections = []
-    for page_text in page_sections:
-        sub_sections = SECTION_SPLIT_RE.split(page_text)
-        sub_sections = [s.strip() for s in sub_sections if s.strip()]
-        all_sections.extend(sub_sections if sub_sections else [page_text])
+    # A section with no numbered heading of its own (e.g. unnumbered front
+    # matter/TOC spanning many pages) can still come out huge with nothing
+    # to split on internally. For those — and only those — fall back to
+    # "<!-- Page N -->" markers (inserted by transcribe_full_pdf.py) as a
+    # secondary boundary, before resorting to blind character-slicing.
+    refined_sections = []
+    for section in all_sections:
+        if len(section) <= max_chunk_chars:
+            refined_sections.append(section)
+            continue
+        page_pieces = PAGE_MARKER_RE.split(section)
+        page_pieces = [p.strip() for p in page_pieces if p.strip()]
+        refined_sections.extend(page_pieces if len(page_pieces) > 1 else [section])
+    all_sections = refined_sections
 
     # A whole section (a page, or a "#"-delimited region within a page) stays
     # as ONE chunk regardless of length, as long as it's under the safety

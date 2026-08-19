@@ -2,8 +2,10 @@ streamlit
 groq
 sentence-transformers
 faiss-cpu
+rank_bm25
 numpy
 python-docx
 pymupdf
 pytesseract
 Pillow
+requests

@@ -32,12 +32,14 @@ Once it's fully done and you've spot-checked the .md file:
        conflicting content in the knowledge base)
     3. Push to GitHub
 """
+import sys
 import argparse
 import os
 import json
 import time
 import base64
 import re
+import shutil
 import pymupdf
 from groq import Groq
 
@@ -123,10 +125,16 @@ def main():
         description="Transcribe a PDF, optionally replacing specific pages in an existing checkpoint."
     )
     parser.add_argument("pdf_path", help="Path to the source PDF")
-    parser.add_argument(
+    redo_group = parser.add_mutually_exclusive_group()
+    redo_group.add_argument(
         "--redo-pages",
         metavar="PAGES",
         help="Comma-separated 1-indexed pages to transcribe again, e.g. 7,80",
+    )
+    redo_group.add_argument(
+        "--redo-all",
+        action="store_true",
+        help="Re-transcribe every page and back up the existing checkpoint first",
     )
     args = parser.parse_args()
 
@@ -156,16 +164,26 @@ def main():
     if invalid_pages:
         parser.error(f"--redo-pages contains page(s) outside 1..{total_pages}: {invalid_pages}")
 
-    data = _load_checkpoint(checkpoint_path)
+    if args.redo_all:
+        backup_path = f"{base_name}_checkpoint.before_full_retranscription.json"
+        if os.path.exists(checkpoint_path) and not os.path.exists(backup_path):
+            shutil.copy2(checkpoint_path, backup_path)
+            print(f"Backed up existing checkpoint to {backup_path}")
+        data = {}
+    else:
+        data = _load_checkpoint(checkpoint_path)
     already_done = sum(1 for v in data.values() if v.strip())
     print(f"{pdf_path}: {total_pages} pages total, {already_done} already done (resuming from checkpoint).")
     if redo_pages:
         print(f"Re-transcribing page(s): {', '.join(map(str, sorted(redo_pages)))}")
+    elif args.redo_all:
+        print("Re-transcribing all pages from scratch.")
     print(f"Using {len(api_keys)} API key(s).\n")
 
     key_index = 0
     client = Groq(api_key=api_keys[key_index])
 
+    failed_pages = []
     for i in range(total_pages):
         page_num = i + 1
         # With --redo-pages, do exactly the requested repair.  Do not also
@@ -209,12 +227,17 @@ def main():
                     # Preserve a previous transcript if a targeted redo fails;
                     # a transient network error must never erase usable data.
                     print(f"failed ({e}) — preserving the previous page text.")
+                    failed_pages.append(page_num)
                     break
 
         time.sleep(1)  # be gentle on rate limits between pages
 
     doc.close()
     _write_markdown(out_path, data, total_pages)
+    if failed_pages:
+        print(f"\nIncomplete: {len(failed_pages)} page(s) failed: {failed_pages}")
+        print(f"Progress was saved to {checkpoint_path}. Re-run the same command to retry them.")
+        sys.exit(1)
     print(f"\nAll {total_pages} pages done. Saved to {out_path}")
     print("Please skim through the file to spot-check accuracy before using it.")
 
