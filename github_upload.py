@@ -10,6 +10,17 @@ setup, so "let a user upload a file" only works if the upload ends as a
 real commit there — which is also what makes Streamlit Cloud's existing
 auto-redeploy-on-push behavior pick it up for everyone automatically.
 
+A .pdf upload is never committed as-is. It's run through
+chunking._transcribe_pdf_auto() first (tier 1 native text / tier 2 local
+OCR / tier 3 vision, auto-escalated per page — see that function's
+docstring) and the resulting transcript is committed as a .md file. This is
+what makes the upload fully self-contained: no one needs the project's code
+locally, and no one needs to curate VISION_PAGES or re-run anything by
+hand afterward. The trade-off is that decision is now made by a heuristic
+with no human reviewing the result before it becomes live chatbot content —
+see the page/vision-count caps in chunking.py for the guardrails that
+imposes.
+
 Setup (Streamlit Cloud Secrets):
     GITHUB_TOKEN = a token with write access to ONLY this repo's contents.
                    Create a fine-grained PAT (github.com/settings/tokens)
@@ -18,6 +29,8 @@ Setup (Streamlit Cloud Secrets):
                    + repo-scoped means a leaked/misused token can only ever
                    touch this one repo's files, not your whole account.
     GITHUB_REPO  = "yourusername/your-repo-name"
+    GROQ_API_KEY = already required for the chatbot itself; reused here for
+                   the vision-tier calls a PDF upload may trigger.
 """
 import base64
 import os
@@ -26,14 +39,12 @@ import time
 
 import requests
 
+from chunking import _transcribe_pdf_auto
+
 # PDFs get a much larger cap than text formats since they're naturally
-# bigger (embedded images/scans) — the existing manual alone is ~12 MB.
-# Deliberately no vision-model tier for uploads (see module docstring on
-# .pdf below): only chunking.py's free tier-1/2 (native text layer / local
-# Tesseract OCR) will ever run on an uploaded PDF, so a diagram-heavy page
-# still needs the same manual transcribe_full_pdf.py + VISION_PAGES
-# follow-up the main manual already goes through — this upload path can't
-# fix that automatically, it only gets the file into the repo.
+# bigger (embedded images/scans) — the existing manual alone is ~12 MB. This
+# is a cap on the UPLOADED file's size, not the resulting .md, which is
+# committed instead of the raw PDF (see module docstring).
 MAX_UPLOAD_BYTES_BY_EXT = {
     ".md": 5 * 1024 * 1024,
     ".txt": 5 * 1024 * 1024,
@@ -72,10 +83,17 @@ def _github_file_exists(repo, path, token):
     return resp.status_code == 200
 
 
-def upload_knowledge_file(filename, content_bytes, token, repo):
-    """Validates and commits one file into knowledge_docs/ on the `main`
-    branch. Returns (ok: bool, message: str) — message is either the final
-    filename used (on success) or a human-readable error (on failure).
+def upload_knowledge_file(filename, content_bytes, token, repo, groq_api_key=None, progress_callback=None):
+    """Validates an upload, transcribes it if it's a PDF, and commits the
+    result into knowledge_docs/ on the `main` branch.
+
+    progress_callback(page_num, total_pages, tier_used), if given, is
+    forwarded to chunking._transcribe_pdf_auto for PDF uploads — ignored
+    for every other file type, which commit immediately.
+
+    Returns (ok: bool, message: str) — message is the final filename (with
+    a short processing summary for PDFs) on success, or a human-readable
+    error on failure.
     """
     if not token or not repo:
         return False, "Upload is not configured (missing GITHUB_TOKEN/GITHUB_REPO in Secrets)."
@@ -94,7 +112,28 @@ def upload_knowledge_file(filename, content_bytes, token, repo):
     if not content_bytes.strip():
         return False, "File is empty."
 
-    safe_name = _safe_filename(filename)
+    commit_note = ""
+    if ext == ".pdf":
+        try:
+            markdown_text, stats = _transcribe_pdf_auto(
+                content_bytes, groq_api_key, progress_callback=progress_callback
+            )
+        except ValueError as e:
+            return False, str(e)
+        if not markdown_text.strip():
+            return False, "Transcription produced no readable text from this PDF."
+
+        stem = os.path.splitext(_safe_filename(filename))[0]
+        safe_name = f"{stem}_transcribed.md"
+        content_bytes = markdown_text.encode("utf-8")
+        commit_note = (
+            f" — {stats['total_pages']} pages "
+            f"({stats['native_text_pages']} text layer, {stats['ocr_pages']} local OCR, "
+            f"{stats['vision_pages_used']} vision-transcribed)"
+        )
+    else:
+        safe_name = _safe_filename(filename)
+
     path = f"{UPLOAD_TARGET_DIR}/{safe_name}"
 
     # Anyone with the link can use this uploader, and uploads are committed
@@ -102,8 +141,8 @@ def upload_knowledge_file(filename, content_bytes, token, repo):
     # collision gets a unique suffix instead of silently overwriting
     # existing (possibly manually-verified) content.
     if _github_file_exists(repo, path, token):
-        stem, ext = os.path.splitext(safe_name)
-        safe_name = f"{stem}_{int(time.time())}{ext}"
+        stem, ext2 = os.path.splitext(safe_name)
+        safe_name = f"{stem}_{int(time.time())}{ext2}"
         path = f"{UPLOAD_TARGET_DIR}/{safe_name}"
 
     resp = requests.put(
@@ -117,5 +156,5 @@ def upload_knowledge_file(filename, content_bytes, token, repo):
         timeout=GITHUB_API_TIMEOUT,
     )
     if resp.status_code in (200, 201):
-        return True, safe_name
+        return True, safe_name + commit_note
     return False, f"GitHub API error {resp.status_code}: {resp.text[:300]}"

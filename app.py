@@ -85,9 +85,11 @@ def render_upload_section():
             "Uploads are committed straight to the `knowledge_docs/` folder on GitHub, "
             "which triggers Streamlit Cloud to auto-redeploy (usually within a minute or "
             "two) — this session's chatbot won't see it until that redeploy finishes. "
-            "PDFs are only read with the free tiers (embedded text layer / local OCR) — "
-            "diagram or table pages that come out garbled need the vision-transcription "
-            "pipeline (`transcribe_full_pdf.py`) run locally afterward, same as the main manual."
+            "A PDF is fully processed automatically here (no local script needed): pages "
+            "with real text are read directly, image-only pages use local OCR, and pages "
+            "that look like flow diagrams/tables (detected automatically) are transcribed "
+            "with a vision model — up to a page budget per upload, since this happens with "
+            "no one reviewing the result first. Large PDFs can take several minutes."
         )
         uploaded = st.file_uploader(
             "Choose a file", type=["md", "txt", "docx", "pdf"], key="kb_uploader",
@@ -100,12 +102,30 @@ def render_upload_section():
                 st.warning(f"Please wait {wait_left:.0f}s before submitting another file.")
                 return
 
-            ok, result = upload_knowledge_file(
-                uploaded.name,
-                uploaded.getvalue(),
-                token=st.secrets.get("GITHUB_TOKEN"),
-                repo=st.secrets.get("GITHUB_REPO"),
-            )
+            progress_bar = None
+            progress_text = st.empty()
+
+            def _on_progress(page_num, total_pages, tier_used):
+                nonlocal progress_bar
+                if progress_bar is None:
+                    progress_bar = st.progress(0)
+                tier_label = {1: "text layer", 2: "local OCR", 3: "vision model"}[tier_used]
+                progress_text.text(f"Page {page_num}/{total_pages} ({tier_label})...")
+                progress_bar.progress(page_num / total_pages)
+
+            with st.spinner("Processing upload..."):
+                ok, result = upload_knowledge_file(
+                    uploaded.name,
+                    uploaded.getvalue(),
+                    token=st.secrets.get("GITHUB_TOKEN"),
+                    repo=st.secrets.get("GITHUB_REPO"),
+                    groq_api_key=st.secrets.get("GROQ_API_KEY"),
+                    progress_callback=_on_progress,
+                )
+            progress_text.empty()
+            if progress_bar is not None:
+                progress_bar.empty()
+
             st.session_state["last_kb_upload_at"] = time.time()
             if ok:
                 st.success(f"Committed as knowledge_docs/{result}. Waiting for auto-redeploy to take effect.")

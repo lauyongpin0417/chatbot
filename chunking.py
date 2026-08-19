@@ -93,6 +93,8 @@ def _ocr_page(page, min_gap_px=15, bin_px=5, line_tol=12):
     diagrams with narrow gutters or busy borders. If a page still comes out
     wrong after this, add its page number to VISION_PAGES instead of tuning
     these parameters further.
+
+    Returns (text, column_count).
     """
     pix = page.get_pixmap(dpi=250)
     img_bytes = pix.tobytes("png")
@@ -108,7 +110,7 @@ def _ocr_page(page, min_gap_px=15, bin_px=5, line_tol=12):
         words.append({"text": text, "left": left, "top": top, "right": left + w})
 
     if not words:
-        return ""
+        return "", 0
 
     min_left = min(w["left"] for w in words)
     max_right = max(w["right"] for w in words)
@@ -136,11 +138,10 @@ def _ocr_page(page, min_gap_px=15, bin_px=5, line_tol=12):
             if boundaries[ci] <= w["left"] < boundaries[ci + 1]:
                 columns[ci].append(w)
                 break
+    columns = [col for col in columns if col]  # drop the empty gaps themselves
 
     page_lines = []
     for col in columns:
-        if not col:
-            continue
         col_sorted = sorted(col, key=lambda w: w["top"])
         line_groups = []
         for w in col_sorted:
@@ -157,7 +158,12 @@ def _ocr_page(page, min_gap_px=15, bin_px=5, line_tol=12):
             page_lines.append(" ".join(w["text"] for w in g_sorted))
         page_lines.append("")
 
-    return "\n".join(page_lines).strip()
+    # column_count is returned alongside the text so callers can use it as an
+    # automatic signal for "this page likely needs vision-tier transcription"
+    # (a real multi-column gap is exactly the layout Tesseract garbles) —
+    # see _transcribe_pdf_auto, which escalates on this instead of requiring
+    # a human to hand-curate VISION_PAGES.
+    return "\n".join(page_lines).strip(), len(columns)
 
 
 def _vision_ocr_page(page, client, dpi=200, max_retries=3):
@@ -242,12 +248,164 @@ def _read_pdf(filepath, groq_api_key=None):
             text = _vision_ocr_page(page, client)
         else:
             print(f"  {filename} page {page_num}: no text layer, using local OCR...")
-            text = _ocr_page(page)
+            text, _ = _ocr_page(page)
 
         pages_text.append(text)
 
     doc.close()
     return strip_thinking_content("\n\n".join(pages_text))
+
+
+# Hard ceilings for the fully-automatic upload pipeline (see
+# _transcribe_pdf_auto). Unlike _read_pdf above — which relies on a human
+# manually curating VISION_PAGES ahead of time — this path decides for
+# itself, per page, whether vision transcription is warranted, with no
+# human reviewing the outcome before it becomes live chatbot content. These
+# caps exist because that combination (auto-decide + no review + public,
+# ungated upload) has no other backstop against runaway Groq usage or
+# multi-minute uploads: a single huge or adversarial PDF must not be able
+# to exhaust the shared daily vision-token budget or hang the request
+# indefinitely by itself.
+AUTO_UPLOAD_MAX_TOTAL_PAGES = 150  # keeps worst-case (all-OCR) processing time bounded
+AUTO_UPLOAD_MAX_VISION_PAGES = 30  # ~30 * 4,500 tokens =~ 135K of the 200K/day vision budget
+
+# A page with a diagram/table pasted in as a picture can still have PLENTY
+# of native text (headings, footers, step labels sitting around the image)
+# — enough to sail past MIN_NATIVE_TEXT_CHARS while the actual diagram
+# content itself is invisible to page.get_text() entirely, since it lives
+# only inside the image. On this project's own manual, the known diagram
+# pages (e.g. "4.4.1 EOP Flow", "6.6.1 Virement Flow") have 300-800+ chars
+# of surrounding native text — well past that threshold — so gating
+# escalation on native-text length alone would silently never trigger on
+# exactly the pages this feature exists for. A large embedded image is
+# checked FIRST and independently, regardless of how much native text is
+# also on the page.
+SIGNIFICANT_IMAGE_AREA_FRACTION = 0.15
+
+
+def _page_has_significant_image(page, area_fraction=SIGNIFICANT_IMAGE_AREA_FRACTION):
+    """True if an embedded image covers at least `area_fraction` of the
+    page — a small logo/icon stays well under this (tested at ~6% on this
+    project's own manual), while a pasted-in diagram/table/screenshot is
+    typically 30%+."""
+    page_area = page.rect.width * page.rect.height
+    if not page_area:
+        return False
+    total = 0.0
+    for img in page.get_images(full=True):
+        try:
+            for rect in page.get_image_rects(img[0]):
+                total += rect.width * rect.height
+        except Exception:
+            continue  # a malformed/inline image reference shouldn't crash the page
+        if total / page_area >= area_fraction:
+            return True
+    return False
+
+
+def _transcribe_pdf_auto(
+    pdf_bytes,
+    groq_api_key,
+    max_total_pages=AUTO_UPLOAD_MAX_TOTAL_PAGES,
+    max_vision_pages=AUTO_UPLOAD_MAX_VISION_PAGES,
+    progress_callback=None,
+):
+    """
+    Fully-automatic version of the PDF tier system for uploads that will
+    never get a human curating VISION_PAGES or spot-checking the output
+    afterward — the tier-3 (vision) escalation decision is made BY THE CODE
+    per page instead of by a human, using two independent signals:
+
+      - A large embedded image (see _page_has_significant_image) — checked
+        first, regardless of native text length, since a diagram pasted in
+        as a picture can coexist with plenty of unrelated native text.
+      - Failing that, a page with no native text layer that Tesseract's own
+        column-gap detection finds genuinely multi-column (see _ocr_page) —
+        catches scanned (not text-layer) diagram pages the same way.
+
+    Either signal escalates the page to vision, up to max_vision_pages for
+    this document. A plain single-column scanned paragraph page (the case
+    tier 2 already handles fine) is deliberately NOT escalated — vision
+    calls are reserved for pages that actually need them, so the budget
+    isn't spent before it reaches genuinely hard pages later in the file.
+
+    progress_callback(page_num, total_pages, tier_used: 1|2|3), if given, is
+    invoked after each page — used by the caller to render a progress bar,
+    since a large PDF can take several minutes end to end.
+
+    Returns (markdown_text, stats) where stats is a dict with
+    total_pages / vision_pages_used / ocr_pages, so the caller can tell the
+    user what actually happened.
+    """
+    doc = pymupdf.open(stream=pdf_bytes, filetype="pdf")
+    total_pages = len(doc)
+    if total_pages > max_total_pages:
+        doc.close()
+        raise ValueError(
+            f"PDF has {total_pages} pages, over the {max_total_pages}-page limit for "
+            "automatic in-app processing. Split it into smaller files, or transcribe it "
+            "locally with transcribe_full_pdf.py and upload the resulting .md instead."
+        )
+
+    client = None  # created lazily, only if a page is actually escalated to vision
+    vision_pages_used = 0
+    ocr_pages = 0
+    pages_text = []
+
+    for i, page in enumerate(doc):
+        page_num = i + 1
+        native_text = page.get_text().strip()
+        wants_vision = _page_has_significant_image(page)
+
+        if not wants_vision and len(native_text) >= MIN_NATIVE_TEXT_CHARS:
+            pages_text.append(native_text)
+            tier_used = 1
+        else:
+            if not wants_vision:
+                # No big image, but also no usable native text (e.g. a
+                # scanned page) — check whether it's genuinely multi-column
+                # before deciding this needs vision too.
+                ocr_text, column_count = _ocr_page(page)
+                wants_vision = column_count >= 2
+            else:
+                ocr_text = None  # only computed lazily below if vision isn't available/fails
+
+            if wants_vision and vision_pages_used < max_vision_pages and groq_api_key:
+                if client is None:
+                    client = Groq(api_key=groq_api_key)
+                vision_text = _vision_ocr_page(page, client)
+            else:
+                vision_text = None
+
+            if vision_text:
+                pages_text.append(vision_text)
+                vision_pages_used += 1
+                tier_used = 3
+            else:
+                # No vision (unavailable, over budget, or the call failed
+                # after its own retries) — fall back to the best text we
+                # can still get: local OCR, or native text if that's all
+                # there is.
+                if ocr_text is None:
+                    ocr_text, _ = _ocr_page(page)
+                pages_text.append(ocr_text or native_text)
+                ocr_pages += 1
+                tier_used = 2
+
+        if progress_callback:
+            progress_callback(page_num, total_pages, tier_used)
+
+    doc.close()
+
+    parts = [f"<!-- Page {n} -->\n\n{strip_thinking_content(text)}" for n, text in enumerate(pages_text, start=1)]
+    markdown_text = "\n\n---\n\n".join(parts)
+    stats = {
+        "total_pages": total_pages,
+        "vision_pages_used": vision_pages_used,
+        "ocr_pages": ocr_pages,
+        "native_text_pages": total_pages - vision_pages_used - ocr_pages,
+    }
+    return markdown_text, stats
 
 
 def _read_docx(filepath):
