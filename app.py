@@ -1,9 +1,12 @@
+import os
 import time
+from datetime import datetime, timezone
 
 import streamlit as st
 from groq import Groq
 from retriever import ManualRetriever
 from github_upload import upload_knowledge_file
+from chunking import KNOWLEDGE_DIR
 
 # Minimum seconds between two upload submissions from the SAME browser
 # session. Doesn't stop a determined abuser running multiple sessions, but
@@ -79,11 +82,38 @@ Student question: {question}
 Answer the question using only the context above."""
 
 
+def get_knowledge_base_last_updated():
+    """Latest mtime among knowledge_docs/ files, read fresh (uncached) on
+    every call. There's no way for a running app to be told when ITS OWN
+    Streamlit Cloud redeploy finishes — the old process that showed the
+    "upload succeeded" message is simply replaced by a new one, so it can
+    never learn what happened after it stopped existing. This is the
+    practical workaround: Streamlit Cloud's deploy does a fresh git checkout
+    of the repo into the container, and a plain checkout stamps every file
+    it writes with the checkout time (git doesn't store per-file mtimes) —
+    so this timestamp jumping forward on a reload IS the redeploy finishing.
+    """
+    try:
+        entries = os.listdir(KNOWLEDGE_DIR)
+    except FileNotFoundError:
+        return None
+    mtimes = [os.path.getmtime(os.path.join(KNOWLEDGE_DIR, name)) for name in entries]
+    return datetime.fromtimestamp(max(mtimes), tz=timezone.utc) if mtimes else None
+
+
 def render_upload_section():
     # st.sidebar (not an inline expander) so this stays pinned to the
     # top-left, independent of how far the chat transcript scrolls — a
     # plain in-flow element would scroll away with the rest of the page.
     with st.sidebar:
+        last_updated = get_knowledge_base_last_updated()
+        if last_updated:
+            st.caption(
+                f"📚 Knowledge base as of **{last_updated:%Y-%m-%d %H:%M UTC}** — "
+                "reload this page after an upload; once this time moves forward, "
+                "the redeploy has finished."
+            )
+
         st.subheader("📤 Add a knowledge base file")
         st.caption("(.md / .txt / .docx / .pdf)")
         st.caption(
