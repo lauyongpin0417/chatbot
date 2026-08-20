@@ -66,6 +66,29 @@ def build_search_query(question, history):
     return question
 
 
+# The model occasionally refuses even when the retrieved context clearly
+# supports an answer — confirmed live: a strongly-matched chunk (score
+# ~0.99) got a flat "I don't know" on one call and a complete, correct
+# answer on an identical retry with the same context. temperature=0.2 still
+# allows some sampling variance, and the system prompt deliberately biases
+# the model toward caution, so this isn't a retrieval bug — it's the
+# generation step occasionally landing on the cautious branch anyway. A
+# genuine "this really isn't in the manual" case wouldn't have scored this
+# well in retrieval to begin with, so gating the retry on retrieval
+# confidence keeps this from masking real gaps in the knowledge base.
+REFUSAL_PHRASE = "i don't know based on the provided sources"
+REFUSAL_RETRY_MIN_SCORE = 0.5
+
+
+def generate_answer(client, messages):
+    response = client.chat.completions.create(
+        model=ANSWER_MODEL,
+        messages=messages,
+        temperature=0.2,
+    )
+    return response.choices[0].message.content
+
+
 def build_prompt(question, retrieved_chunks):
     context = "\n\n---\n\n".join(
         f"[Source {i}: {c['title']}]\n{c['text']}"
@@ -207,16 +230,22 @@ def main():
                 retrieved = retriever.search(search_query, top_k=3)
                 prompt = build_prompt(question, retrieved)
 
-                response = client.chat.completions.create(
-                    model=ANSWER_MODEL,
-                    messages=[
-                        {"role": "system", "content": SYSTEM_PROMPT},
-                        *history,
-                        {"role": "user", "content": prompt},
-                    ],
-                    temperature=0.2,
-                )
-                answer = response.choices[0].message.content
+                messages = [
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    *history,
+                    {"role": "user", "content": prompt},
+                ]
+                answer = generate_answer(client, messages)
+
+                # See REFUSAL_PHRASE above: retry once, silently, rather
+                # than making the student re-ask the same question.
+                if (
+                    REFUSAL_PHRASE in answer.lower()
+                    and retrieved
+                    and retrieved[0]["score"] >= REFUSAL_RETRY_MIN_SCORE
+                ):
+                    answer = generate_answer(client, messages)
+
                 st.markdown(answer)
 
                 with st.expander("Sources used"):
