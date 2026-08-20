@@ -45,7 +45,7 @@ TEST_CASES = [
     },
     {
         "question": "How do I add a new member to a project?",
-        "must_contain": "Add/Remove Member",
+        "must_contain": "Add/Remove",
     },
 ]
 

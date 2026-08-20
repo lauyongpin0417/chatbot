@@ -472,27 +472,30 @@ SECTION_SPLIT_RE = re.compile(
 )
 BOLD_HEADER_RE = re.compile(r"^\*\*([^*]{3,80})\*\*", re.MULTILINE)
 
-# FAQ files (e.g. "Frequently Asked Questions - RMS.txt") are typically a flat
-# numbered list of "N. Q: ... A: ..." pairs with no markdown "#" headers at
-# all. Without this, the generic splitter below treats the whole file as ONE
-# section (or blindly character-slices it if it's long), which means dozens
-# of unrelated Q&A pairs get embedded together as a single vector — the
-# retriever can find "the FAQ file" but not "this specific question", and the
-# model then has to guess which of the many answers buried in that blob is
-# the right one. Splitting on the "N. Q:" boundary gives each Q&A pair its
-# own chunk, titled with the question text itself, so retrieval can match
-# the actual question being asked.
-FAQ_QA_SPLIT_RE = re.compile(r"(?=^\s*\d+\.\s+\**Q\s*:)", re.MULTILINE)
-# DOTALL + non-greedy so this captures the full question text even when it
-# wraps across multiple lines in the source file, stopping right before the
-# "A:" line rather than at the first newline within the question itself.
-FAQ_Q_LINE_RE = re.compile(r"^\s*\d+\.\s+\**Q\s*:\s*(.+?)\s*\n\s*\**A\s*:", re.MULTILINE | re.DOTALL)
+# FAQ files (e.g. "Frequently Asked Questions - RMS.txt") are a flat numbered
+# list of "N. <question ending in ?>" followed by an (unlabeled) answer —
+# confirmed against the actual files in knowledge_docs/, neither of which
+# uses literal "Q:"/"A:" labels at all (an earlier version of this pattern
+# required them, so it never matched either real file — the whole FAQ file
+# silently fell through to the generic splitter/character-slicer below
+# instead, undetected because nothing errored). Without this, dozens of
+# unrelated Q&A pairs get embedded together as a single vector (or worse,
+# blindly sliced mid-answer) — the retriever can find "the FAQ file" but not
+# "this specific question", and the model then has to guess which of the
+# many answers buried in that blob is the right one. Splitting on the "N.
+# <question>?" boundary gives each Q&A pair its own chunk, titled with the
+# question text itself, so retrieval can match the actual question being asked.
+FAQ_QA_SPLIT_RE = re.compile(r"(?=^\s*\d+\.\s+.+\?\s*$)", re.MULTILINE)
+# Non-greedy up to the first "?" so this stops at the end of the question
+# even if the answer that follows contains further numbered/punctuated text.
+FAQ_Q_LINE_RE = re.compile(r"^\s*\d+\.\s+(.+?\?)", re.MULTILINE | re.DOTALL)
 
 
 def _looks_like_faq(text):
-    """At least 3 numbered 'Q:' entries is a reasonable bar for 'this file is
-    a FAQ list', low enough to catch short files but high enough to not
-    misfire on a manual that happens to mention 'Q:' once or twice."""
+    """At least 3 numbered '<question>?' entries is a reasonable bar for
+    'this file is a FAQ list', low enough to catch short files but high
+    enough to not misfire on a manual that happens to number a couple of
+    unrelated questions."""
     return len(FAQ_QA_SPLIT_RE.findall(text)) >= 3
 
 

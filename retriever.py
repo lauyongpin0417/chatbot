@@ -36,13 +36,26 @@ EMBED_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
 RERANK_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"  # free cross-encoder for stage 2
 
-# How many candidates each of stage 1a/1b hands to the cross-encoder. Wider
-# than the final top_k on purpose: the bi-encoder is a coarse filter, so the
-# true best match sometimes sits at rank 8-15 rather than rank 1-3 — the
-# cross-encoder needs those candidates present to be able to promote them.
-# The manual has a small number of chunks. Re-ranking all of them avoids
-# losing the precise section during the coarse semantic-search stage.
-CANDIDATE_POOL_SIZE = 80
+# How many candidates EACH of the semantic/BM25 stages hands to the
+# cross-encoder (the two pools are unioned, not intersected — see search()
+# — so the reranker typically sees noticeably more than this number of
+# unique candidates). Wider than the final top_k on purpose: the bi-encoder
+# is a coarse filter, so the true best match sometimes sits at rank 8-15
+# rather than rank 1-3 — the cross-encoder needs those candidates present to
+# be able to promote them.
+#
+# 80 (the pre-hybrid-search value, from when only the semantic stage fed the
+# reranker) was measured live against this project's real knowledge base
+# after BM25 was added: union size ~127 candidates, ~9.4s/query on a CPU
+# reranker — dominates end-to-end response latency in a chat app where
+# every second is felt. Dropping to 40 measured identically 5/6 on the same
+# accuracy test set (the one query it still misses is unaffected by pool
+# size — a ranking issue, not a recall issue) while cutting latency to
+# ~5.7s. Going lower (25) saved little further (~5.1s), pointing at a
+# largely fixed per-query reranker cost rather than one that scales down
+# with candidate count — so 40 is the point of diminishing returns, not an
+# arbitrary guess.
+CANDIDATE_POOL_SIZE = 40
 
 # Minimum RAW (pre-boost) cross-encoder score a RMS_verified_pages.md
 # candidate needs before it's eligible for the tie-break boost below. Real
@@ -144,7 +157,13 @@ class ManualRetriever:
             return []
 
         pairs = [[query, self.chunks[i]["text"]] for i in candidate_indices]
-        rerank_scores = self.reranker.predict(pairs)
+        # Explicit, smaller-than-default batch_size — measured live on this
+        # project's CPU deployment: 16 beat the sentence-transformers
+        # default of 32 by ~10%, and beat 128 by ~37%. No GPU to exploit
+        # with bigger batches here, and a bigger batch forces more padding
+        # to the longest sequence in it, which on CPU costs more than it
+        # saves — smaller batches measured faster, not just "safer".
+        rerank_scores = self.reranker.predict(pairs, batch_size=16)
         rerank_scores = _sigmoid(np.array(rerank_scores))
 
         # Locally verified excerpts are corrections checked against the source

@@ -80,7 +80,12 @@ Answer the question using only the context above."""
 
 
 def render_upload_section():
-    with st.expander("📤 Add a knowledge base file (.md / .txt / .docx / .pdf)"):
+    # st.sidebar (not an inline expander) so this stays pinned to the
+    # top-left, independent of how far the chat transcript scrolls — a
+    # plain in-flow element would scroll away with the rest of the page.
+    with st.sidebar:
+        st.subheader("📤 Add a knowledge base file")
+        st.caption("(.md / .txt / .docx / .pdf)")
         st.caption(
             "Uploads are committed straight to the `knowledge_docs/` folder on GitHub, "
             "which triggers Streamlit Cloud to auto-redeploy (usually within a minute or "
