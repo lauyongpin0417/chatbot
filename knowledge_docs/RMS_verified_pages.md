@@ -10,31 +10,32 @@ Source: RMS User Manual, page 7.
 1. Grant Opening
    - Action: RMC announce Grant opening in RMS.
    - Timeline: Submission duration is set.
-   - Status: Draft.
+   - Status: -.
 
 2. Submission
    - Action: PL prepare and submit research grant proposal.
    - Timeline: Depend on submission; before project and appointment end date.
-   - Status: Submit to Faculty Deputy Dean / Dean.
+   - Status: Draft.
 
 3. Faculty Recommend
    - Action: Faculty Deputy Dean or Dean review and suggest evaluation panel.
    - Timeline: 3–10 working days.
-   - Status: RMC verification.
+   - Status: Submit to Faculty Deputy Dean / Dean.
 
 4. RMC
    - Action: Select panel for evaluation.
    - Timeline: 3 working days.
-   - Status: MMU Panel Reviewer.
+   - Status: RMC verification.
 
 5. Evaluation
    - Action: Selected panel will review the proposal.
    - Timeline: 3–10 working days.
-   - Status: RMC Director Approval.
+   - Status: MMU Panel Reviewer.
 
 6. RMC Director
    - Action: RMC Director approved the proposal.
    - Timeline: 3–10 working days.
+   - Status: RMC Director Approval.
 
 ## 7.2.1 Call for Quotation (External Grant)
 
