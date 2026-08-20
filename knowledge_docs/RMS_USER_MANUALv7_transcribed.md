@@ -324,17 +324,17 @@ RMC will make an announcement on the opening of the grant proposal submission. P
 1. Grant Opening
    Action: RMC announce Grant opening In RMS
    Timeline: Submission duration is set
-   Status: Draft
+   Status: -
 
 2. Submission
    Action: PL prepare and submit research grant proposal
    Timeline: Depend on submission. Before project and appointment end date
-   Status: Submit to Faculty Deputy Dean / Dean
+   Status: Draft
 
 3. Faculty Recommend
    Action: Faculty Deputy Dean or Dean review and suggest evaluation panel
    Timeline: 3 Working days
-   Status: RMC verification
+   Status: Submit to Faculty Deputy Dean / Dean
 
 4. RMC
    Action: Select panel for evaluation
