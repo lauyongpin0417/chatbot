@@ -55,11 +55,38 @@ def get_retriever(api_key):
     return ManualRetriever(groq_api_key=api_key)
 
 
+# Words that suggest a question is leaning on unstated context from
+# whatever was just asked ("what about step 2?", "and then?", "how about
+# the next stage?") rather than standing on its own.
+_FOLLOWUP_CUE_WORDS = {"it", "that", "this", "next", "then", "also", "too", "again", "and"}
+
+
+def _looks_like_incomplete_followup(question):
+    """A short question, or one opening with a follow-up cue word, likely
+    has no topic anchor of its own and needs the previous question's topic
+    to make sense of. A longer, fully-formed question is self-contained and
+    should be searched on its own terms — prepending an unrelated previous
+    question doesn't just dilute the search, it can actively hijack it:
+    confirmed live, "In the Internal Fund flow, which stage(s) have the
+    longest Timeline?" retrieves its correct chunk at only 0.04 alone (a
+    weak but genuine match — the source lists timelines without literally
+    saying "longest"), yet scores 0.71+ toward a COMPLETELY unrelated
+    chunk once the previous question's more specific vocabulary
+    ("Pre Approved Claim", "EDS TM SSO") got prepended to it — the new
+    question's own topic never had a chance to win."""
+    words = question.strip().split()
+    if len(words) <= 6:
+        return True
+    return words[0].strip("?.,!").lower() in _FOLLOWUP_CUE_WORDS
+
+
 def build_search_query(question, history):
-    """Prepend the previous user question so a short follow-up (which on its
-    own often has no topic word for the retriever to match against) still
-    retrieves the right chunk. Only the immediately previous question is
-    used, to avoid dragging an unrelated earlier topic into a fresh one."""
+    """Prepend the previous user question only when the current one looks
+    like it can't stand alone (see _looks_like_incomplete_followup) — doing
+    this unconditionally used to help short follow-ups but actively hurt
+    self-contained topic-switch questions, which are the more common case."""
+    if not _looks_like_incomplete_followup(question):
+        return question
     prior_user_questions = [m["content"] for m in history if m["role"] == "user"]
     if prior_user_questions:
         return f"{prior_user_questions[-1]}\n{question}"
