@@ -9,3 +9,4 @@ pymupdf
 pytesseract
 Pillow
 requests
+streamlit-local-storage

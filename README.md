@@ -96,6 +96,14 @@ Once deployed, Streamlit gives you a URL like:
 Share this with your supervisor/classmates. Anyone with the link can use it —
 no login required.
 
+## Chat history
+Each student's past conversations show up in the sidebar and can be
+reopened or deleted — but they're saved only in that student's own browser
+(via localStorage), not on a server. There's no login system, so there's no
+other way to know "whose" history is whose; this also means history doesn't
+follow a student across devices/browsers, and clearing browser site data
+erases it.
+
 ## Optional: add a simple password
 If you don't want it fully public, add this near the top of `app.py`:
 ```python

@@ -1,12 +1,15 @@
 import os
 import time
+import uuid
 from datetime import datetime, timezone
 
 import streamlit as st
 from groq import Groq
+from streamlit_local_storage import LocalStorage
 from retriever import ManualRetriever
 from github_upload import upload_knowledge_file
 from chunking import KNOWLEDGE_DIR
+from chat_history import make_title, load_conversations, save_conversations
 
 # Minimum seconds between two upload submissions from the SAME browser
 # session. Doesn't stop a determined abuser running multiple sessions, but
@@ -151,6 +154,43 @@ def get_knowledge_base_last_updated():
     return datetime.fromtimestamp(max(mtimes), tz=timezone.utc) if mtimes else None
 
 
+def render_chat_history_section(storage):
+    with st.sidebar:
+        st.subheader("💬 Chats")
+
+        if st.button("➕ New chat", use_container_width=True):
+            st.session_state.current_conversation_id = str(uuid.uuid4())
+            st.session_state.messages = []
+            st.rerun()
+
+        conversations = st.session_state.conversations
+        if not conversations:
+            st.caption("No saved chats yet — stored only in this browser.")
+        # Newest-created conversation first.
+        for conv_id in reversed(list(conversations.keys())):
+            conv = conversations[conv_id]
+            is_current = conv_id == st.session_state.current_conversation_id
+            col_select, col_delete = st.columns([5, 1])
+            with col_select:
+                if st.button(
+                    conv.get("title") or "New chat",
+                    key=f"conv_select_{conv_id}",
+                    use_container_width=True,
+                    type="primary" if is_current else "secondary",
+                ):
+                    st.session_state.current_conversation_id = conv_id
+                    st.session_state.messages = conv["messages"]
+                    st.rerun()
+            with col_delete:
+                if st.button("🗑", key=f"conv_delete_{conv_id}"):
+                    del st.session_state.conversations[conv_id]
+                    st.session_state.conversations = save_conversations(storage, st.session_state.conversations)
+                    if is_current:
+                        st.session_state.current_conversation_id = str(uuid.uuid4())
+                        st.session_state.messages = []
+                    st.rerun()
+
+
 def render_upload_section():
     # st.sidebar (not an inline expander) so this stays pinned to the
     # top-left, independent of how far the chat transcript scrolls — a
@@ -222,6 +262,20 @@ def main():
     st.title("📘 Grant Procedure Guide")
     st.caption("Ask questions about MMU research grant procedures (RMS). Answers are grounded in the official RMS User Manual.")
 
+    # LocalStorage() does a one-time round trip to the browser on first load
+    # of a session (subsequent reruns reuse the cached result), so this is
+    # cheap after the very first page load.
+    storage = LocalStorage()
+    if "conversations" not in st.session_state:
+        st.session_state.conversations = load_conversations(storage)
+    if "current_conversation_id" not in st.session_state:
+        # Always opens on a fresh, empty chat rather than auto-resuming the
+        # last one — same default as most chat apps; past chats are one
+        # click away in the sidebar for whoever wants to continue one.
+        st.session_state.current_conversation_id = str(uuid.uuid4())
+        st.session_state.messages = []
+
+    render_chat_history_section(storage)
     render_upload_section()
 
     api_key = st.secrets.get("GROQ_API_KEY", None)
@@ -231,9 +285,6 @@ def main():
 
     client = Groq(api_key=api_key)
     retriever = get_retriever(api_key)
-
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
 
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
@@ -280,6 +331,13 @@ def main():
                         st.markdown(f"**{c['title']}** (relevance: {c['score']:.2f})")
 
         st.session_state.messages.append({"role": "assistant", "content": answer})
+
+        conv_id = st.session_state.current_conversation_id
+        st.session_state.conversations[conv_id] = {
+            "title": make_title(st.session_state.messages),
+            "messages": st.session_state.messages,
+        }
+        st.session_state.conversations = save_conversations(storage, st.session_state.conversations)
 
 
 if __name__ == "__main__":
