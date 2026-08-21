@@ -462,15 +462,62 @@ HEADER_LINE_RE = re.compile(r"^#{1,4}\s+(.+)$", re.MULTILINE)
 # belong to mid-row. Confirmed on a real uploaded spec table: this is what
 # silently broke "Water tank capacity" (label) from its own value.
 SECTION_LINE_RE = re.compile(r"^\d+\.\d+(?:\.\d+)?\s+[A-Z][a-z].{1,69}$")
-# Generated manuals do not consistently use Markdown headings, but their
-# numbered RMS section headings are reliable boundaries. Split these before
-# the size fallback so Purchasing cannot share an embedding with the
-# neighbouring Pay-and-Claim (<RM1K) section.
-SECTION_SPLIT_RE = re.compile(
-    r"(?=^(?:#{1,4}\s+)?\d+\.\d+(?:\.\d+)?\s+[A-Z][a-z][^\n]{1,119}$)",
-    re.MULTILINE,
-)
 BOLD_HEADER_RE = re.compile(r"^\*\*([^*]{3,80})\*\*", re.MULTILINE)
+
+# Standalone ALL-CAPS lines are how this manual's vision-transcribed
+# screenshots title their forms/screens ("ASSET DECLARATION FORM", "BUDGET
+# VIREMENT INFORMATIONS", "CHECKLIST - END OF PROJECT (EOP)") — a second,
+# equally reliable heading shape alongside numbered "N.N Title" sections,
+# but one that went unrecognized entirely until now, so a whole form's
+# content just merged into whichever numbered section happened to precede
+# it on the page. Confirmed live: this is why "EOP Checklist header fields"
+# kept returning the wrong (nearby, but different) content instead — the
+# checklist had no heading of its own to split on.
+#
+# Requires >=2 whitespace-delimited tokens that are purely alphabetic and
+# >=3 letters long, specifically to reject standalone reference codes,
+# dotted-line form fields, and RM amounts that are ALSO all-caps/digits
+# shaped ("RM 45000.00", "SAP ID MMUE/180018", "PD20160140", a row of dots)
+# but aren't real titles — those must NOT become split points, since unlike
+# a missed split, a false one actively tears content apart at an arbitrary
+# value line (see the "1.8 L (approx. 12 cups)" table-tearing bug this
+# session already fixed once, for the numbered-heading equivalent of this
+# same mistake).
+ALLCAPS_TITLE_RE = re.compile(r"^[A-Z][A-Z0-9 &/()',.\-]{7,}$")
+
+
+def _looks_like_form_title(line):
+    if line.lower() in _TITLE_BOILERPLATE_LINES:
+        return False
+    if not ALLCAPS_TITLE_RE.match(line):
+        return False
+    tokens = line.split()
+    qualifying = sum(1 for t in tokens if re.fullmatch(r"[A-Z]{3,}", t))
+    return qualifying >= 2
+
+
+def _split_on_headings(text):
+    """Splits text right before every line that looks like a heading —
+    either a numbered "N.N Title" section (SECTION_LINE_RE) or a standalone
+    ALL-CAPS form title (_looks_like_form_title). A plain regex lookahead
+    (what SECTION_SPLIT_RE used to be used for alone) can't express the
+    word-boundary counting _looks_like_form_title needs, so this scans
+    lines directly instead — same net effect, wider heading recognition."""
+    lines = text.split("\n")
+    sections = []
+    current = []
+    for line in lines:
+        stripped = line.strip()
+        candidate = re.sub(r"^#{1,4}\s+", "", stripped)
+        is_heading = bool(SECTION_LINE_RE.match(candidate)) or _looks_like_form_title(candidate)
+        if is_heading and current:
+            sections.append("\n".join(current))
+            current = [line]
+        else:
+            current.append(line)
+    if current:
+        sections.append("\n".join(current))
+    return sections
 
 # FAQ files (e.g. "Frequently Asked Questions - RMS.txt") are a flat numbered
 # list of "N. <question ending in ?>" followed by an (unlabeled) answer —
@@ -584,7 +631,7 @@ def _split_text_into_chunks(text, source_name, max_chunk_chars=6000, overlap_cha
     # next page has no heading of its own on that second page, so splitting
     # by "<!-- Page N -->" markers before splitting by heading used to tear
     # it into two chunks — retrieval would then only surface half of it.
-    all_sections = SECTION_SPLIT_RE.split(text)
+    all_sections = _split_on_headings(text)
     all_sections = [s.strip() for s in all_sections if s.strip()]
     if not all_sections:
         all_sections = [text]
@@ -594,7 +641,7 @@ def _split_text_into_chunks(text, source_name, max_chunk_chars=6000, overlap_cha
     # _transcribe_pdf_auto) as a secondary boundary — regardless of size, not
     # only when oversized. This matters for any document that isn't numbered
     # in the RMS manual's "N.N"/"N.N.N" style at all (plenty of real uploads
-    # use plain "1. Title" headings instead, which SECTION_SPLIT_RE can't
+    # use plain "1. Title" headings instead, which _split_on_headings can't
     # safely match — that pattern collides with ordinary numbered list items
     # like "1. Unbox the machine..." inside a procedure). Without this, such
     # a document has NO heading-level split points anywhere, so as long as
