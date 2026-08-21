@@ -25,7 +25,7 @@ import pymupdf
 import pytesseract
 from PIL import Image
 import io
-from groq import Groq
+from groq import Groq, RateLimitError
 
 KNOWLEDGE_DIR = "knowledge_docs"
 
@@ -175,6 +175,15 @@ def _vision_ocr_page(page, client, dpi=200, max_retries=3):
     model — running it on every page of a large PDF will exhaust that
     budget well before the document is done (each page costs roughly
     3,500-4,700 tokens; the free tier is 200,000 tokens/day for this model).
+
+    Returns (text, quota_exhausted). quota_exhausted is True only when every
+    retry failed AND the last failure was specifically a 429 RateLimitError
+    — the existing retry loop (3 attempts, 10s/20s/30s backoff) already
+    absorbs an ordinary short burst limit, so a 429 that STILL hasn't
+    cleared after all of that is a much stronger signal of "today's quota
+    is actually gone" than trying to parse Groq's error text/headers for an
+    exact reason. Other failure types (network, auth, ...) return
+    quota_exhausted=False — retrying tomorrow wouldn't fix those anyway.
     """
     pix = page.get_pixmap(dpi=dpi)
     png_bytes = pix.tobytes("png")
@@ -201,11 +210,11 @@ def _vision_ocr_page(page, client, dpi=200, max_retries=3):
                 reasoning_format="hidden",
                 max_completion_tokens=4096,
             )
-            return strip_thinking_content(response.choices[0].message.content).strip()
+            return strip_thinking_content(response.choices[0].message.content).strip(), False
         except Exception as e:
             if attempt == max_retries - 1:
                 print(f"  Warning: vision transcription failed for a page after {max_retries} attempts: {e}")
-                return ""
+                return "", isinstance(e, RateLimitError)
             wait_s = 10 * (attempt + 1)
             print(f"  Vision API call failed ({e}), retrying in {wait_s}s...")
             time.sleep(wait_s)
@@ -245,7 +254,7 @@ def _read_pdf(filepath, groq_api_key=None):
                     )
                 client = Groq(api_key=groq_api_key)
             print(f"  {filename} page {page_num}: no text layer, using vision model (configured)...")
-            text = _vision_ocr_page(page, client)
+            text, _ = _vision_ocr_page(page, client)
         else:
             print(f"  {filename} page {page_num}: no text layer, using local OCR...")
             text, _ = _ocr_page(page)
@@ -260,14 +269,20 @@ def _read_pdf(filepath, groq_api_key=None):
 # _transcribe_pdf_auto). Unlike _read_pdf above — which relies on a human
 # manually curating VISION_PAGES ahead of time — this path decides for
 # itself, per page, whether vision transcription is warranted, with no
-# human reviewing the outcome before it becomes live chatbot content. These
-# caps exist because that combination (auto-decide + no review + public,
-# ungated upload) has no other backstop against runaway Groq usage or
-# multi-minute uploads: a single huge or adversarial PDF must not be able
-# to exhaust the shared daily vision-token budget or hang the request
-# indefinitely by itself.
+# human reviewing the outcome before it becomes live chatbot content.
+#
+# Raised from a much stricter original default (30) once this uploader
+# became trusted-users-only rather than a publicly-shared, ungated link —
+# the "a stranger could deliberately drain the account" risk this was
+# guarding against no longer applies. What DOESN'T go away with trust: the
+# 200K/day vision budget is still shared and finite, and 60 pages * ~4,500
+# tokens =~ 270K can exceed a full day's budget by itself even from a
+# well-intentioned upload (an honest mistake — the wrong huge file — costs
+# the same as a malicious one). If that happens mid-upload, pages beyond
+# whatever quota remains that day fall back to local OCR automatically
+# (see the vision_text-is-None branch below) rather than failing outright.
 AUTO_UPLOAD_MAX_TOTAL_PAGES = 150  # keeps worst-case (all-OCR) processing time bounded
-AUTO_UPLOAD_MAX_VISION_PAGES = 30  # ~30 * 4,500 tokens =~ 135K of the 200K/day vision budget
+AUTO_UPLOAD_MAX_VISION_PAGES = 60
 
 # A page with a diagram/table pasted in as a picture can still have PLENTY
 # of native text (headings, footers, step labels sitting around the image)
@@ -303,12 +318,35 @@ def _page_has_significant_image(page, area_fraction=SIGNIFICANT_IMAGE_AREA_FRACT
     return False
 
 
+class VisionQuotaExhausted(Exception):
+    """Raised by _transcribe_pdf_auto when on_quota_exhausted="pause" and a
+    vision call fails with a sustained 429 — see _vision_ocr_page's
+    docstring for how that's distinguished from an ordinary transient
+    error. A checkpoint was saved (covering every page completed so far)
+    immediately before this was raised, so the caller can tell the user to
+    either re-upload the same file later (resumes automatically) or
+    re-upload it now with on_quota_exhausted="degrade" to finish
+    immediately using local OCR for whatever's left."""
+
+    def __init__(self, pages_done, total_pages, vision_pages_used):
+        super().__init__(
+            f"Groq vision quota appears exhausted after {vision_pages_used} vision pages "
+            f"— {pages_done}/{total_pages} pages completed and checkpointed."
+        )
+        self.pages_done = pages_done
+        self.total_pages = total_pages
+        self.vision_pages_used = vision_pages_used
+
+
 def _transcribe_pdf_auto(
     pdf_bytes,
     groq_api_key,
     max_total_pages=AUTO_UPLOAD_MAX_TOTAL_PAGES,
     max_vision_pages=AUTO_UPLOAD_MAX_VISION_PAGES,
     progress_callback=None,
+    resume_pages=None,
+    checkpoint_callback=None,
+    on_quota_exhausted="pause",
 ):
     """
     Fully-automatic version of the PDF tier system for uploads that will
@@ -333,6 +371,30 @@ def _transcribe_pdf_auto(
     invoked after each page — used by the caller to render a progress bar,
     since a large PDF can take several minutes end to end.
 
+    resume_pages / checkpoint_callback implement resumability across
+    SEPARATE calls (e.g. separate web requests, if the connection drops
+    mid-upload): resume_pages is a {page_num_str: {"text", "tier"}} dict
+    from a previous, interrupted run — pages already in it are reused
+    as-is instead of being re-processed (skipping native/OCR re-extraction
+    and, critically, not re-spending vision calls). checkpoint_callback(dict),
+    if given, is invoked with the accumulated resume_pages-shaped state after
+    every vision page and every 10th page otherwise, so the caller can
+    persist it somewhere durable (this function itself has no persistence —
+    a Streamlit web request's local state doesn't survive the connection
+    dropping, so the caller must actually write the checkpoint out, e.g. to
+    GitHub, for resumability to mean anything).
+
+    on_quota_exhausted controls what happens the first time a vision call
+    fails with a sustained 429 (see _vision_ocr_page): "pause" (default)
+    checkpoints immediately and raises VisionQuotaExhausted rather than
+    silently degrading — appropriate when a human is available to choose
+    between waiting for the quota to reset (do nothing, re-upload later)
+    or finishing now at lower quality (re-upload with "degrade"). "degrade"
+    does the latter itself: falls back to local OCR for the page that just
+    failed AND every remaining page that would have wanted vision (without
+    even attempting them — pointless to re-hit an already-exhausted quota
+    page after page) and runs to completion.
+
     Returns (markdown_text, stats) where stats is a dict with
     total_pages / vision_pages_used / ocr_pages, so the caller can tell the
     user what actually happened.
@@ -350,10 +412,28 @@ def _transcribe_pdf_auto(
     client = None  # created lazily, only if a page is actually escalated to vision
     vision_pages_used = 0
     ocr_pages = 0
+    quota_exhausted = False
     pages_text = []
+    checkpoint_state = {"pages": dict(resume_pages)} if resume_pages else {"pages": {}}
 
     for i, page in enumerate(doc):
         page_num = i + 1
+
+        resumed = checkpoint_state["pages"].get(str(page_num))
+        if resumed is not None:
+            # Already transcribed in an earlier, interrupted run — reuse it
+            # rather than re-processing (in particular, never re-spend a
+            # vision call on a page that already succeeded).
+            pages_text.append(resumed["text"])
+            tier_used = resumed["tier"]
+            if tier_used == 3:
+                vision_pages_used += 1
+            elif tier_used == 2:
+                ocr_pages += 1
+            if progress_callback:
+                progress_callback(page_num, total_pages, tier_used)
+            continue
+
         native_text = page.get_text().strip()
         wants_vision = _page_has_significant_image(page)
 
@@ -370,10 +450,23 @@ def _transcribe_pdf_auto(
             else:
                 ocr_text = None  # only computed lazily below if vision isn't available/fails
 
-            if wants_vision and vision_pages_used < max_vision_pages and groq_api_key:
+            if wants_vision and vision_pages_used < max_vision_pages and groq_api_key and not quota_exhausted:
                 if client is None:
                     client = Groq(api_key=groq_api_key)
-                vision_text = _vision_ocr_page(page, client)
+                vision_text, hit_quota_limit = _vision_ocr_page(page, client)
+                if hit_quota_limit:
+                    quota_exhausted = True
+                    if on_quota_exhausted == "pause":
+                        if checkpoint_callback:
+                            checkpoint_callback(checkpoint_state)
+                        pages_done = len(checkpoint_state["pages"])
+                        doc.close()
+                        raise VisionQuotaExhausted(pages_done, total_pages, vision_pages_used)
+                    # on_quota_exhausted == "degrade": fall through to this
+                    # page's own OCR fallback below, and every later page
+                    # skips straight past the `if wants_vision and ...` check
+                    # above (quota_exhausted is now True) instead of
+                    # re-attempting an already-exhausted quota.
             else:
                 vision_text = None
 
@@ -391,6 +484,14 @@ def _transcribe_pdf_auto(
                 pages_text.append(ocr_text or native_text)
                 ocr_pages += 1
                 tier_used = 2
+
+        checkpoint_state["pages"][str(page_num)] = {"text": pages_text[-1], "tier": tier_used}
+        if checkpoint_callback and (tier_used == 3 or page_num % 10 == 0):
+            # Vision pages checkpoint immediately (slow + the exact work a
+            # resume must not repeat); other tiers batch every 10 pages so
+            # a fast, all-native-text document isn't dominated by
+            # checkpoint-commit overhead instead of actual transcription.
+            checkpoint_callback(checkpoint_state)
 
         if progress_callback:
             progress_callback(page_num, total_pages, tier_used)

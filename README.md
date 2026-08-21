@@ -117,11 +117,14 @@ Groq key.
 ## Letting other users add knowledge files from the app itself
 The chat page has a "📤 Add a knowledge base file" section
 (`.md`/`.txt`/`.docx`/`.pdf`, 5 MB limit for the text formats, 25 MB for
-PDF) that anyone using the app can upload through. **There is no access
-gate on it by design** — the same public link that lets anyone chat also
-lets anyone commit a new file into `knowledge_docs/`. Only turn this on if
-you're comfortable with that, or wrap the whole app in the access-code
-check above first.
+PDF) that anyone using the app can upload through. **There is still no
+literal login/access gate on it in the code** — the same link that lets
+anyone chat also lets anyone commit a new file into `knowledge_docs/`. The
+caps below (page limits, no submission cooldown) are tuned on the
+assumption that whoever has the link is a trusted person you shared it
+with, not the general public — if you instead expect to hand this link out
+widely, add the access-code check above first and/or tighten those caps
+back down.
 
 To enable it, add two more Secrets in Streamlit Cloud:
 ```
@@ -141,16 +144,30 @@ step below, just triggered from the chat page), which then auto-redeploys
 like any other push. It won't overwrite a same-named existing file — it
 adds a unique suffix instead.
 
-**An uploaded PDF is deliberately never sent to the vision model** — it
-only gets the free tier-1/2 treatment (embedded text layer, or local
-Tesseract OCR for scanned pages) described above, same as any PDF dropped
-into `knowledge_docs/` manually. This is intentional: since there's no
-access gate on this uploader, letting an upload trigger vision-model calls
-would let anyone burn through your shared Groq vision quota (200,000
-tokens/day) just by uploading PDFs. If an uploaded PDF has flow-diagram or
-table pages that come out garbled, download it, run
-`transcribe_full_pdf.py` locally as usual, and replace it with the
-resulting `.md` (see "Adding or updating knowledge files" above).
+**An uploaded PDF is processed automatically, page by page** — most pages
+use the free tiers (embedded text layer, or local Tesseract OCR), and a page
+is only sent to the vision model if it's auto-detected as likely needing it
+(a large embedded image, or OCR finding a genuinely multi-column layout).
+That auto-escalation is capped at 60 vision pages and 150 total pages per
+upload — this repo assumes uploaders are trusted people, not the general
+public, so the cap isn't about stopping deliberate abuse; it's just a
+backstop against an honest mistake (the wrong huge file) draining the whole
+day's shared Groq vision quota (200,000 tokens/day) by itself — 60 pages
+alone can already exceed it (~270K tokens worst case). If the quota runs
+out mid-upload, remaining pages fall back to local OCR automatically rather
+than failing. If a page still comes out garbled despite this, download the
+PDF, run `transcribe_full_pdf.py` locally (no cap there, just your daily
+quota and patience), and replace it with the resulting `.md` (see "Adding
+or updating knowledge files" above).
+
+**Large PDFs resume automatically if interrupted.** A dropped connection,
+closed browser tab, or app redeploy mid-upload has no way to clean up after
+itself — progress is checkpointed to GitHub as it goes (a separate
+`kb-checkpoints` branch, never `main`, so a checkpoint commit doesn't
+trigger a redeploy mid-transcription) keyed by the PDF's own content hash.
+Re-uploading the *exact same file* picks up where it left off instead of
+re-processing pages (and re-spending vision calls) that already succeeded.
+The checkpoint is deleted once the upload finishes.
 
 ## Updating the knowledge base later
 If your supervisor gives you an updated manual:

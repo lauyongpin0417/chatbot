@@ -3,6 +3,29 @@
 The excerpts below were manually checked against the local `RMS_USER_MANUALv7.pdf`.
 They supersede incomplete or inaccurate AI transcription for the stated manual pages.
 
+## 4.4.1 End of Project (EOP) Flow stages
+
+Source: RMS User Manual, page 44. The AI transcription cuts off after stage 3
+(output was truncated), silently dropping the final stage — re-read directly
+from the page image to confirm the complete flow.
+
+1. EOP
+   - One month before Project End date RMS
+   - RMS auto notify Project Leader for output reporting
+   - RMS auto notify for reconciliation
+
+2. Reconcile
+   - FM to prepare on final reconciliation
+   - Upload approved by project leader report into RMS
+
+3. Achievement Report
+   - Project leader update project achievement
+   - Verified on the finance reconciliation in the RMS
+   - Email to RMC EOP required by funder
+
+4. RMC
+   - **Approved and submit to funder**
+
 ## 3.1.1 Application Flow for Internal Fund
 
 Source: RMS User Manual, page 7.

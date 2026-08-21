@@ -1,5 +1,4 @@
 import os
-import time
 import uuid
 from datetime import datetime, timezone
 
@@ -10,12 +9,6 @@ from retriever import ManualRetriever
 from github_upload import upload_knowledge_file
 from chunking import KNOWLEDGE_DIR
 from chat_history import make_title, load_conversations, save_conversations
-
-# Minimum seconds between two upload submissions from the SAME browser
-# session. Doesn't stop a determined abuser running multiple sessions, but
-# blunts accidental double-submits and simple single-session spam loops —
-# a reasonable floor given uploads here have no access gate at all.
-UPLOAD_COOLDOWN_SECONDS = 30
 
 st.set_page_config(page_title="Grant Procedure Guide", page_icon="📘")
 
@@ -214,48 +207,73 @@ def render_upload_section():
             "with real text are read directly, image-only pages use local OCR, and pages "
             "that look like flow diagrams/tables (detected automatically) are transcribed "
             "with a vision model — up to a page budget per upload, since this happens with "
-            "no one reviewing the result first. Large PDFs can take several minutes."
+            "no one reviewing the result first. Large PDFs can take several minutes — if "
+            "your connection drops partway, just re-upload the same file and it resumes "
+            "from where it left off instead of starting over."
         )
+        # A previous attempt paused because the vision quota looked
+        # exhausted (see _run_upload) — show the choice instead of a fresh
+        # uploader, since finishing now needs the EXACT same bytes
+        # resubmitted (same content hash = same checkpoint found).
+        pending = st.session_state.get("pending_pdf_upload")
+        if pending:
+            st.warning(pending["message"])
+            col_finish, col_wait = st.columns(2)
+            with col_finish:
+                finish_now = st.button("Finish now (local OCR)", use_container_width=True)
+            with col_wait:
+                wait_instead = st.button("I'll re-upload later", use_container_width=True)
+            if wait_instead:
+                del st.session_state["pending_pdf_upload"]
+                st.rerun()
+            if finish_now:
+                _run_upload(pending["name"], pending["bytes"], on_quota_exhausted="degrade")
+                del st.session_state["pending_pdf_upload"]
+            return
+
         uploaded = st.file_uploader(
             "Choose a file", type=["md", "txt", "docx", "pdf"], key="kb_uploader",
             label_visibility="collapsed",
         )
         if uploaded is not None and st.button("Submit to knowledge base"):
-            last_upload_at = st.session_state.get("last_kb_upload_at", 0)
-            wait_left = UPLOAD_COOLDOWN_SECONDS - (time.time() - last_upload_at)
-            if wait_left > 0:
-                st.warning(f"Please wait {wait_left:.0f}s before submitting another file.")
-                return
+            _run_upload(uploaded.name, uploaded.getvalue(), on_quota_exhausted="pause")
 
-            progress_bar = None
-            progress_text = st.empty()
 
-            def _on_progress(page_num, total_pages, tier_used):
-                nonlocal progress_bar
-                if progress_bar is None:
-                    progress_bar = st.progress(0)
-                tier_label = {1: "text layer", 2: "local OCR", 3: "vision model"}[tier_used]
-                progress_text.text(f"Page {page_num}/{total_pages} ({tier_label})...")
-                progress_bar.progress(page_num / total_pages)
+def _run_upload(name, content_bytes, on_quota_exhausted):
+    progress_bar = None
+    progress_text = st.empty()
 
-            with st.spinner("Processing upload..."):
-                ok, result = upload_knowledge_file(
-                    uploaded.name,
-                    uploaded.getvalue(),
-                    token=st.secrets.get("GITHUB_TOKEN"),
-                    repo=st.secrets.get("GITHUB_REPO"),
-                    groq_api_key=st.secrets.get("GROQ_API_KEY"),
-                    progress_callback=_on_progress,
-                )
-            progress_text.empty()
-            if progress_bar is not None:
-                progress_bar.empty()
+    def _on_progress(page_num, total_pages, tier_used):
+        nonlocal progress_bar
+        if progress_bar is None:
+            progress_bar = st.progress(0)
+        tier_label = {1: "text layer", 2: "local OCR", 3: "vision model"}[tier_used]
+        progress_text.text(f"Page {page_num}/{total_pages} ({tier_label})...")
+        progress_bar.progress(page_num / total_pages)
 
-            st.session_state["last_kb_upload_at"] = time.time()
-            if ok:
-                st.success(f"Committed as knowledge_docs/{result}. Waiting for auto-redeploy to take effect.")
-            else:
-                st.error(result)
+    with st.spinner("Processing upload..."):
+        ok, result, needs_decision = upload_knowledge_file(
+            name,
+            content_bytes,
+            token=st.secrets.get("GITHUB_TOKEN"),
+            repo=st.secrets.get("GITHUB_REPO"),
+            groq_api_key=st.secrets.get("GROQ_API_KEY"),
+            progress_callback=_on_progress,
+            on_quota_exhausted=on_quota_exhausted,
+        )
+    progress_text.empty()
+    if progress_bar is not None:
+        progress_bar.empty()
+
+    if needs_decision:
+        # Stash the exact bytes — "Finish now" must resubmit them unchanged
+        # for chunking.py to find the checkpoint this run just saved.
+        st.session_state["pending_pdf_upload"] = {"name": name, "bytes": content_bytes, "message": result}
+        st.rerun()
+    elif ok:
+        st.success(f"Committed as knowledge_docs/{result}. Waiting for auto-redeploy to take effect.")
+    else:
+        st.error(result)
 
 
 def main():

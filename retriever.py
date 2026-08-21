@@ -167,23 +167,32 @@ class ManualRetriever:
         rerank_scores = _sigmoid(np.array(rerank_scores))
 
         # Locally verified excerpts are corrections checked against the source
-        # PDF. Give them a small tie-break boost over older AI transcription
-        # — but ONLY when their own raw score already shows genuine topical
-        # relevance (>= VERIFIED_BOOST_MIN_RAW_SCORE). A flat, unconditional
-        # +0.10 add is enormous relative to how tiny raw cross-encoder scores
-        # get for a query that doesn't match ANYTHING well (confirmed live:
-        # 0.0000-0.0005 for an unrelated document's questions once the
-        # knowledge base held more than one topic) — without this gate, that
-        # +0.10 alone was enough to promote an objectively irrelevant
-        # verified excerpt to 1st place over the genuinely correct chunk,
-        # since raw scores that low leave essentially no real margin to
-        # overcome. Gating on the candidate's OWN raw score (not a
-        # comparison to others) keeps the boost doing what it was meant to —
-        # a tie-break among already-plausible matches — without being able
-        # to resurrect a candidate from actual noise.
+        # PDF. When one is ALREADY the naturally best-scoring candidate (by
+        # raw, unboosted score), give it a small tie-break confidence bump —
+        # but the boost must never be allowed to change WHO ranks first.
+        # Confirmed live: a verified excerpt raw-ranked #6 (0.97) got boosted
+        # to the 1.0 sigmoid ceiling, tying a genuinely better, unboosted,
+        # naturally-#1 chunk (also 1.0) — the tie-break happened to favor
+        # the boosted one, and the truncation rule below then discarded the
+        # actually-best answer entirely. Gating on "the top raw scorer is
+        # already a verified chunk" makes that structurally impossible: the
+        # boost can only reinforce a lead that already exists, never
+        # manufacture one by pulling a lower-ranked candidate up to a tie.
+        #
+        # The raw-score floor (>= VERIFIED_BOOST_MIN_RAW_SCORE) still matters
+        # on top of this: without it, a query that doesn't match ANYTHING
+        # well (confirmed live: 0.0000-0.0005 once the knowledge base held
+        # more than one topic) would let a verified excerpt "lead" on pure
+        # noise and still get boosted+trusted off that noise.
+        best_idx = max(range(len(candidate_indices)), key=lambda i: rerank_scores[i])
+        verified_leads = (
+            self.chunks[candidate_indices[best_idx]]["source"] == "RMS_verified_pages.md"
+            and rerank_scores[best_idx] >= VERIFIED_BOOST_MIN_RAW_SCORE
+        )
+
         adjusted_scores = []
         for idx, score in zip(candidate_indices, rerank_scores):
-            if self.chunks[idx]["source"] == "RMS_verified_pages.md" and score >= VERIFIED_BOOST_MIN_RAW_SCORE:
+            if verified_leads and self.chunks[idx]["source"] == "RMS_verified_pages.md":
                 score = min(1.0, score + 0.10)
             adjusted_scores.append(score)
         ranked = sorted(zip(candidate_indices, adjusted_scores), key=lambda p: p[1], reverse=True)
