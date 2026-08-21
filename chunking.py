@@ -526,6 +526,13 @@ def _find_section_heading_line(chunk_text):
     return None
 
 
+# Repeated letterhead lines that appear at the top of most pages in this
+# manual's vision transcription — never a real title, so the title-fallback
+# below skips past them looking for the first line that actually says
+# something distinctive.
+_TITLE_BOILERPLATE_LINES = {"mmu", "multimedia university", "rms manual"}
+
+
 def _extract_chunk_title(chunk_text, source_name):
     m = HEADER_LINE_RE.search(chunk_text)
     if m:
@@ -544,12 +551,31 @@ def _extract_chunk_title(chunk_text, source_name):
     m = BOLD_HEADER_RE.search(chunk_text)
     if m:
         return m.group(1).strip().rstrip(":").strip()
+    # Last resort: first non-empty line. Many pages open with the same
+    # letterhead boilerplate ("MMU" / "MULTIMEDIA UNIVERSITY" / "RMS
+    # Manual") before their actual content, which — with no better title
+    # candidate above — made this fallback hand out the literal string
+    # "MMU" as the title for 20 different, unrelated chunks. Useless in the
+    # "Sources used" UI (tells the reader nothing) and hides which of
+    # several same-titled chunks actually has the answer. Skip boilerplate
+    # lines so this lands on the first line that actually says something.
     for line in chunk_text.split("\n"):
         line = line.strip()
-        if line and not PAGE_MARKER_RE.match(line):
-            return re.sub(r"^#+\s*", "", line)[:80]
+        if not line or PAGE_MARKER_RE.match(line) or line.lower() in _TITLE_BOILERPLATE_LINES:
+            continue
+        return re.sub(r"^#+\s*", "", line)[:80]
     return source_name
 
+
+
+# Minimum characters of BODY text a chunk needs beyond its own first line
+# (usually its heading) to count as real, answerable content rather than a
+# heading-only fragment (a Table of Contents entry, mainly — see the filter
+# in _split_text_into_chunks). Deliberately small: real content in this
+# project's documents is consistently much longer than this in practice, so
+# this only needs to catch the "nothing at all follows the heading" case,
+# not judge how much content is "enough".
+MIN_CHUNK_BODY_CHARS = 10
 
 
 def _split_text_into_chunks(text, source_name, max_chunk_chars=6000, overlap_chars=300):
@@ -619,6 +645,21 @@ def _split_text_into_chunks(text, source_name, max_chunk_chars=6000, overlap_cha
     for chunk, forced_title in chunks:
         stripped = chunk.strip()
         if not stripped:
+            continue
+        # A chunk that's nothing but its own heading line — a Table of
+        # Contents entry like "6.6.1 Virement Flow 77" (heading text + page
+        # number, no body) is exactly this shape — provides zero answerable
+        # content, yet still competes as a candidate in every retrieval
+        # query. Worse, it can actively WIN: BM25 scores a heading-only
+        # chunk higher than the real, complete chunk for that same
+        # section, since almost all of its (very short) text IS the
+        # matching terms — no body text dilutes that ratio. Confirmed
+        # live: the TOC's "Virement Flow" line outranked the real 4-stage
+        # chunk in production, so the model only ever saw the empty one.
+        # 54 of this manual's 296 chunks (its whole Table of Contents) were
+        # exactly this before this filter.
+        first_line, _, rest = stripped.partition("\n")
+        if len(rest.strip()) < MIN_CHUNK_BODY_CHARS:
             continue
         title = forced_title if forced_title else _extract_chunk_title(stripped, source_name)
         result.append({
